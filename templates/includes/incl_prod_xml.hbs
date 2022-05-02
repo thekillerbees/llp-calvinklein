@@ -1,0 +1,76 @@
+        <xml style="display:none">
+            <root>
+                <ajaxurl>/ajax?</ajaxurl>
+                <appkey>{{{appkey}}}</appkey>
+
+                <inputforms>
+                    <inputform>
+                        <formdata id="reversegeocoder">
+                            <geolocs>
+                                <geoloc>
+                                    <latitude></latitude>
+                                    <longitude></longitude>
+                                    <country></country>
+                                </geoloc>
+                            </geolocs>
+                        </formdata>
+                    </inputform>
+                </inputforms>
+                <sources>
+                    <layer>
+                       <name>SlippyMap W2GI</name>
+                       <imageurl>http://st1.slippymap.com/tiles, http://st2.slippymap.com/tiles, http://st3.slippymap.com/tiles, http://st4.slippymap.com/tiles</imageurl>
+                       <options>{map: 'smap-01'}</options>
+                    </layer>
+                    <layer>
+                       <name>SlippyMap Navteq</name>
+                       <imageurl>http://st1.slippymap.com/tiles, http://st2.slippymap.com/tiles, http://st3.slippymap.com/tiles, http://st4.slippymap.com/tiles</imageurl>
+                       <options>{map: 'smap-02'}</options>
+                    </layer>
+                </sources>
+                <collection name="poi">
+                    {{#checkIf stores}}
+                        {{#each stores}}
+                           <poi>
+                                <poinum>{{{poinum}}}</poinum>
+                                <_distance>{{{_distance}}}</_distance>
+                                <icon>{{{icon}}}</icon>
+                                <name>{{{name}}}</name>
+                                <address1>{{{address1}}}</address1>
+                                <address2>{{{address2}}}</address2>
+                                <city>{{{city}}}</city>
+                                <state>{{{state}}}</state>
+                                <province>{{{province}}}</province>
+                                <postalcode>{{{postalcode}}}</postalcode>
+                                <country>{{{country}}}</country>
+                                <latitude>{{{latitude}}}</latitude>
+                                <longitude>{{{longitude}}}</longitude>
+                                <phone>{{{phone}}}</phone>
+                                <clientkey>{{{clientkey}}}</clientkey>
+                                <uid>{{{uid}}}</uid>
+                            </poi>
+                        {{/each}}
+                    {{else}}
+                        <poi>
+                            <poinum>{{{poinum}}}</poinum>
+                            <_distance>{{{_distance}}}</_distance>
+                            <icon>{{{icon}}}</icon>
+                            <name>{{{name}}}</name>
+                            <address1>{{{address1}}}</address1>
+                            <address2>{{{address2}}}</address2>
+                            <city>{{{city}}}</city>
+                            <state>{{{state}}}</state>
+                            <province>{{{province}}}</province>
+                            <postalcode>{{{postalcode}}}</postalcode>
+                            <country>{{{country}}}</country>
+                            <latitude>{{{latitude}}}</latitude>
+                            <longitude>{{{longitude}}}</longitude>
+                            <phone>{{{phone}}}</phone>
+                            <clientkey>{{{clientkey}}}</clientkey>
+                            <uid>{{{uid}}}</uid>
+                        </poi>
+                    {{/checkIf}}
+                </collection>
+            </root>
+        </xml>
+

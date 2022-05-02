@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Cache-Control" content="max-age-600" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=0.6667">
+		<meta name="format-detection" content="telephone=no" />
+		<title>Mobile Store Locator</title>
+		
+		<link rel="stylesheet" type="text/css" href="css/mobile.css" />		
+		<link type="text/css" href="/w2gi/css/style210.css" rel="stylesheet" media="all" >
+		<link rel="stylesheet" type="text/css" href="/w2gi/css/lightwindow.css" />
+				
+
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true&client=gme-where2getit"></script>
+
+		<script type="text/javascript" src="/w2gi/javascript/ace/1.78/prototype.js"></script>
+		<script type="text/javascript" src="/w2gi/javascript/ace/1.78/W2GI_core.js"></script>
+		<script type="text/javascript" src="/w2gi/javascript/ace/1.78/W2GI_mobile.js"></script>
+				
+
+		<script type="text/javascript">
+			dd_search = null;
+
+			document.observe('dom:loaded', function() {
+				ace.mobile.initialize({
+					pageIDs : ['search_panel', 'more_info_panel', 'driving_directions_panel'],
+					map : {
+						gps : true,
+						noCenterMarker : true,
+						noBubbles : true,
+						googleMapOptions : {
+							streetViewControl : false
+						}
+					},
+					touch : true
+				});
+
+				dd_search = new ace.mobile.search({
+					noCenterMarker : true,
+					map : ace.mobile._search.map, // this is the line gets changed when enabling the map when page is loaded; otherwise use (mapID: 'driving_map',)
+					formID : 'driving_directions',
+					panelID : 'directions_results',
+					gps : false,
+					noBubbles : true
+				});
+
+				var addrval = '';
+				$('endaddress').observe('focus', function(event) {
+					addrval = $('endaddress').value;
+				}.bind(this));
+				$('endaddress').observe('blur', function(event) {
+					if (addrval != $('endaddress').value) {
+						var lat = $('driving_directions').select('#dest_latitude');
+						var lon = $('driving_directions').select('#dest_longitude');
+						if (lat.length && lon.length) {
+							lat = lat[0];
+							lat.value = '';
+							lon = lon[0];
+							lon.value = '';
+						}
+					}
+				}.bind(this));
+
+				//added this to reset the map when it is shared between direction search and the other search form
+				$$('#driving_directions_panel #backbutton').invoke("observe", 'click', function(event) {
+					var recnum = $$('#driving_directions input#recnum')[0].value;
+					ace.mobile._search.map.clearMarkers();
+					ace.mobile._search.map.setMap(ace.table.data['results'].records);
+					ace.mobile._search.map.showOnMap(recnum);
+				});
+				$$('#more_info_panel #backbutton').invoke("observe",'click',function(event){
+					var recnum = $$('#search_panel input')[0].value;
+					ace.mobile._search.map.clearMarkers();
+					ace.mobile._search.map.setMap(ace.table.data['results'].records);
+					ace.mobile._search.map.showOnMap(recnum);
+				});
+
+			}.bind(this));
+
+			load_driving_directions_panel = function(recnum, panel) {
+				var poi = Object.clone(ace.table.getRecord(recnum, panel));
+				dd_search.map.clearMarkers();
+				dd_search.map.setMap([poi]);
+				dd_search.map.showOnMap(recnum);
+				var recnum_input = $('driving_directions').select('input#recnum');
+				if (recnum_input.length) {
+					recnum_input = recnum_input[0];
+					recnum_input.value = recnum;
+				}
+				$('endaddress').value = poi.ADDRESS1 + " " + poi.CITY + ", " + poi.STATE + ", " + poi.POSTALCODE;
+				var lat = $('driving_directions').select('#dest_latitude');
+				var lon = $('driving_directions').select('#dest_longitude');
+				if (lat.length && lon.length) {
+					lat = lat[0];
+					lat.value = poi.LATITUDE;
+					lon = lon[0];
+					lon.value = poi.LONGITUDE;
+				}
+				ace.table.data['directions_results'] = {
+					records : [],
+					options : {}
+				};
+				ace.table.addRecord(poi, 'directions_results');
+				$('directions_results').update('');
+				dd_search.bubbleSearch($('driving_directions'), true, 1);
+			}
+		</script>
+
+	</head>
+
+
+	<body onload="ace.click.pageObserve(['linktrack']);">
+		
+		<xml id="application_data" style="display: none;">
+			<root>
+			
+		       <appkey>3310216C-E945-11EA-A1DF-53CCF48ECC77</appkey>
+				<ajaxurl>ajax?</ajaxurl>
+			</root>
+		</xml>
+		
+		<!-- <img id="ajax_activity" style="display: none; position: fixed; top: 50%; left: 50%; margin-left:-16px; margin-top:-16px; z-index: 1000;" src="/w2gi/images/indicator.gif"/> -->
+		
+
+		<div id="ajax_activity" style="background-image: url('/w2gi/images/lightwindow/black-70.png'); background-repeat: repeat; position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; z-index: 500;">
+			<img style="position: absolute; top: 50%; left: 50%; z-index: 1000; margin-left: -16px; margin-top: -16px;" src="/w2gi/images/indicator.gif"/>
+		</div>
+
+		
+		<div id="search_panel" class="sidebar" >
+
+			<div class="searchbox" style="width: 100%; float:left; margin-bottom:10px;">
+				<form id="locator_search">										
+					Enter Zip Code or City and State<br/>
+					<div class="errorText" id="cityStateZipError" style="display:none;"><!-- --></div>						
+					<input id="addressline" name="addressline" type="text" placeholder="Enter Zip Code or City and State" maxlength="100" style="width:70%;"/>
+					<input type="submit" value="Search" />				
+					
+					<input type="hidden" id="latitude" name="latitude" />
+					<input type="hidden" id="longitude" name="longitude" />
+					
+					<xml style="display: none;">
+						<root>
+							<inputform>
+								<formdata id="locatorsearch">
+									<dataview>store_default</dataview>								
+									<geolocs>
+										<geoloc>
+											<addressline></addressline>
+											<latitude></latitude>
+											<longitude></longitude>
+											<country>US</country>
+										</geoloc> 
+									</geolocs> 
+									<searchradius>15|25|50|100|250</searchradius>
+									
+								</formdata>
+							</inputform>
+						</root>
+					</xml>
+				</form>
+			</div>
+
+			<!--<div id="results">-->
+				<ul id="results" class="pageitem" style="clear:both; margin:0px; padding-left:10px; list-style:none;">
+				</ul>
+			<!--</div>-->
+			
+		</div> <!-- end search_panel -->
+		
+
+		<!--  more_info_panel -->
+		<div id="more_info_panel" class="first" style="float:left; position:relative;">
+			
+			<ul id="more_info_results" class="pageitem" style="float:left; margin:0px; padding-left:10px; list-style:none;">
+			</ul>
+			
+			<div id="backbutton" style="display: none; float:right; position:relative; vertical-align:middle;">
+					<a href="javascript:void(0);" style="float:left; font-weight:bold;  font-size:14px;">Back</a>				
+			</div>
+			
+		</div>
+		<!-- end more_info_panel -->
+		
+
+		<div id="map_canvas" style="position:relative; border: 1px solid #cdcdcd; height: 190px; width: 100%; clear:both;">				
+		</div>
+		
+		
+		<div id="driving_directions_panel" style="float: left; position: relative;">
+		
+		
+			<div id="driving_map" style="height: 100%; width: 99%;"></div>
+			
+			<form style="margin-left:5px;" id="driving_directions" onSubmit="">
+				<div style=''>
+					<div class="searchboxBorder" style="margin-bottom:10px; line-height:18px; fotn-size:14px;">
+						Start<br/>
+						Enter address  <span id="useCurrentLoc">or <a href="javascript:void(0);" style="font-weight:bold; " onClick="dd_search.bubbleSearch($('driving_directions'),true,null,'more_info_results');">Use Current Location</a></span>
+						<br/>
+						<input id="startaddress" name="addressline" type="search" placeholder="Enter your starting address" style="width:220px;"/>
+					</div>
+					<div class="searchboxBorder" style="margin-bottom:15px;">
+						End<br/>
+						<input id="endaddress" name="addressline" type="search" placeholder="End" style="width:220px;"/>
+						<input type="hidden" name="recnum" id="recnum" /> 
+						<input type="hidden" name="dest_latitude" id="dest_latitude" />
+						<input type="hidden" name="dest_longitude" id="dest_longitude" />
+												
+						<input id="search" name="search" type="submit" value="Get Directions"/>
+					</div>
+					
+				</div>
+				<xml style="display: none;">
+					<root>
+						<inputforms>
+							<inputform>
+								<formdata id="drivingdirections">
+									<dataview>store_default</dataview>
+									<geolocs>
+										<geoloc>
+											<address1></address1>
+											<city></city>
+											<state></state>
+											<province></province>
+											<postalcode></postalcode>
+											<addressline></addressline>
+											<longitude></longitude>	
+											<latitude></latitude>
+											<country></country>
+										</geoloc>
+										<geoloc>
+											<address1></address1>
+											<city></city>
+											<state></state>
+											<province></province>
+											<postalcode></postalcode>
+											<addressline></addressline>
+											<longitude></longitude>
+											<latitude></latitude>
+											<country></country>
+										</geoloc>
+									</geolocs>
+								</formdata>
+							</inputform>
+						</inputforms>
+					</root>
+				</xml>
+			</form>
+			<ul id="directions_results" class="pageitem" style="margin:0px; clear:both; padding-left:10px; list-style: none;">
+			</ul>
+			<div id="backbutton" style="position:absolute; right:10px; top:10px;">
+					<a href="javascript:void(0);" style="float:left; font-weight:bold;  font-size:14px;">Back</a>
+			
+			</div>
+			
+			
+			
+		</div>
+			
+		<div style="clear: both;"></div>
+		
+		
+		<div id="templates" style="display: none;">
+
+			<!-- icon template start, you can use client's icon here. You may need to modify the .number class in the mobile css file for the appearance of the number -->	
+           	<div id="poi_icon">
+            	<span class="number"><strong>#{POINUM}</strong></span><img id="icon" class="alpha" src="/w2gi/images/icons/pin1.png"/>
+			</div>					
+			<!-- icon template end  -->
+
+			<!-- POI template start -->
+			<ul id="collection_poi" class="pageitem" style="margin:0px; padding-left:10px; list-style:none;">
+
+				<!-- <ul class="ul_head">
+				<li id="head" class="textbox">
+					#{COUNT} locations found.
+				</li>
+				</ul> -->
+
+				<ul class="ul_body" style="margin:0px;">
+
+					<li id="item" class="menu" style="" recnum="#{RECNUM}" action="more_info_only">
+											
+						<div class="vcard" style="cursor:pointer;">
+						
+						
+							<div class="org">#{POINUM}. #{NAME}</div>
+
+							<div class="adr">
+								<div class="street-address">#{ADDRESS1}</div>
+								<span class="locality">#{CITY}</span>, <span class="region"> #{STATE}</span> <span class="postal-code">#{POSTALCODE}</span>
+								<div class="tel" style='margin-top:5px; margin-bottom:5px;'>
+									<div class="work"><a onclick="document.fire('w2gi:track',{'action':'linktrack', 'value': 'ClickToCall' });" href="tel:#{PHONE}">#{PHONE}</a></div>
+								</div>
+							</div>
+
+							<div class="actions" style="vertical-align:middle;">
+								<span style="vertical-align:middle; font-weight:bold; text-decoration:underline; padding-right:10px; display:block;" href="#" >View Map, <br/>Hours, and More</span>
+							</div>
+
+							<!-- !!! The code below is used to link directly to the device native map. !!! -->
+							<!--
+							<div class="actions" style="vertical-align:middle;">
+								<a class="getdirections" target="_parent" href="http://maps.apple.com/maps?q=" locnumber="brand name,#{ADDRESS1} #{CITY}, #{STATE} #{POSTALCODE}" onmouseover="this.href=this.getAttribute('url')+this.getAttribute('locnumber');" url="http://maps.apple.com/maps?q=">Get Directions</a>
+							</div>
+							-->
+						
+				 		</div>
+					</li>
+				</ul>
+			</ul>
+			<!-- POI template end -->
+			
+			<!-- multiple address template start -->
+			<ul id="collection_multiple_address" class="pageitem">
+				<ul class="ul_head">
+					<li id="head" class="textbox">
+						<b>Did you mean:</b>
+					</li>
+				</ul>
+				<ul class="ul_body">
+					<li id="item" recnum="#{POINUM}" action="search_address" class="textbox" style="border:none; padding-top:25px;">
+						<a href="javascript:void(0);">
+							<span>#{ADDRESS1} #{CITY}, #{STATE} #{POSTALCODE} #{COUNTY}</span></a>
+					</li>
+				</ul>
+			</ul>
+			<!-- multiple address template end -->
+			
+			<!-- bubble template start  -->
+            <div id="bubble">
+				<div class="mainbubblecontent" >
+					<div class="mainbubblelocationname">#{NAME}</div>
+					<div class="mainbubbletabcontent" style="font-size:12px;">
+						<div class="tab_content activetabcontent">
+							<div>#{ADDRESS1}</div>
+							<div>#{CITY}, #{STATE} #{POSTALCODE}</div><br/>
+							<div><a href="tel:#{PHONE}" style="color:#000000;">#{PHONE}</a></div>
+							<div>#{_DISTANCE} miles away</div>
+							<a href="javascript:void(0);" onClick="$('dd_#{RECNUM}').show(); this.up().hide();">Get Directions</a>
+						</div>
+						<form style="display: none;" id="dd_#{RECNUM}" onSubmit="ace.mobile._search.bubbleSearch(this); return false;">
+							<input type="hidden" name="recnum" value="#{RECNUM}"/>
+							<a href="javascript:void(0);" id="direction_#{RECNUM}" onClick="if(this.innerHTML=='From') this.innerHTML='To'; else this.innerHTML='From';">From</a>:
+							<input type="text" name="addressline"/>
+							<input type="submit" name="bubblesearch" value="Search" /><br />
+							<a href="javascript:void(0);" style="float:left; font-weight:normal; text-decoration:underline; margin-left:10px;" onClick="ace.mobile._search.bubbleSearch($('dd_#{RECNUM}'), true);">Use Current Location</a>
+							<xml style="display: none;">
+								<root>
+									<inputforms>
+										<inputform>
+											<formdata id="drivingdirections">
+												<dataview>store_default</dataview>
+												<geolocs>
+													<geoloc>
+														<address1></address1>
+														<city></city>
+														<state></state>
+														<province></province>
+														<postalcode></postalcode>
+														<addressline></addressline>
+														<longitude></longitude>	
+														<latitude></latitude>
+														<country></country>
+													</geoloc>
+													<geoloc>
+														<address1></address1>
+														<city></city>
+														<state></state>
+														<province></province>
+														<postalcode></postalcode>
+														<addressline></addressline>
+														<longitude></longitude>
+														<latitude></latitude>
+														<country></country>
+													</geoloc>
+												</geolocs>
+											</formdata>
+										</inputform>
+									</inputforms>
+								</root>
+							</xml>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- bubble template end -->
+			
+			<!-- more info template start -->
+			<ul id="collection_more_info">
+				<ul class="ul_body" style="margin-left:5px; padding:0px;">
+					<li class="textbox" style="padding-left:10px; padding-right:0px;">
+						<b>STORE DETAILS:</b><br/>				
+								<div style="font-weight:bold; margin-bottom:6px;">#{NAME}</div>								     
+
+								<div>#{ADDRESS1}</div>
+								<div>#{CITY}, #{STATE} #{POSTALCODE}</div>
+								<div style="float:left; margin-top:25px; margin-right:15px;"><a onclick="document.fire('w2gi:track',{'action':'linktrack', 'value': 'ClickToCall' });" href="tel:#{PHONE}">#{PHONE}</a></div>					
+																				
+								<div style="float:left; margin-top:25px; margin-right:15px;" class="hide#{URL}"><a href="javascript: void(0);" onClick="window.open('#{URL}','website','status=yes,toolbar=yes,menubar=yes,location=yes,scrollbars=yes,resizable=yes');" style="font-size:12px;">Website</a></div>
+						        
+								<div style="float:left; margin-top:25px;" class="hide#{EMAIL}"><a href="javascript:void(0);" link="mailto:#{EMAIL}" onClick="document.location = this.getAttribute('link')" style="font-size:12px;">Email Us</a></div>       
+																
+							
+								
+						
+						
+						<!-- 
+						<div style="background-color:#FFFFFF; width:97%; float:left; border:1px solid #cdcdcd; position:relative; margin-bottom: 10px;">
+							
+							
+									<table align="left" style="position:relative; margin-left: 10px; margin-top:10px; margin-bottom:10px; font-size:12px; line-height:18px;">
+									<tr class="hide#{MON_OPEN_TIME}"><td colspan="2"><span style="font-size:14px; font-weight:bold; margin-bottom:6px;">Store Hours</span></td></tr>
+									
+									<tr class="hideClosed showmessage#{MON_OPEN_TIME}"><td colspan="2">Please call store for hours.</td></tr>
+									</table> 
+							
+						</div>
+						-->
+						
+						
+					</li>
+					
+					<li style="clear:both; float:left; margin: 20px 10px;">
+												
+							<a style="font-weight:bold; font-size:14px;" href="javascript:void(0);" onClick="document.fire('w2gi:track',{'action':'linktrack', 'value': 'GetDirections' }); ace.mobile.navigation.changeToPage('driving_directions_panel',load_driving_directions_panel.bind(this,'#{RECNUM}','more_info_results'));">Get Directions</a>
+																	  	
+					</li>
+				</ul>
+			</ul>
+			<!-- more info template end -->
+			
+			<!-- maneuvers start -->
+			<div id="collection_maneuvers">
+				<div class="div_head">
+					<li class="textbox" style="font-size:12px;">
+					<span style="font-size:16px; font-weight:bold;">Directions</span><br/>
+						Total distance: #{TOTAL_DISTANCE} #{DISTANCE_UNIT}<br/>
+						Total time: #{TOTAL_TIME} #{TIME_UNIT}
+					</li>
+					<li class="textbox" style="font-size:12px; line-height:18px; border-top:none;">
+						<div>
+							<strong style="color:#339900;">From (A): </strong><br>
+							<div class="addressline">
+								<div class="address_line1" ></div>
+								<div>
+									<span class="address_city"></span>
+									<span class="address_state"></span>
+									<span class="address_zip"></span>
+								</div>
+							</div>
+						</div>
+					</li>
+				</div>
+				<div class="div_foot">
+					<li class="textbox" style="font-size:12px; line-height:18px; border-top:none;">
+						<div>
+							 <strong style="color: #FF0000;"> To (B):</strong><br>
+							<div class="addressline">
+								<div class="address_line1" ></div>
+								<div>
+									<span class="address_city"></span>
+									<span class="address_state"></span>
+									<span class="address_zip"></span>
+								</div>
+							</div>
+						</div>
+					</li>
+				</div>
+				<div class="div_body">
+					<li class="menu" num="#{ID}" action="show_segment" page="driving_directions_panel" style="margin-left:9px; border:none;">
+						<div style="font-size:12px; width:8%; float:left; font-family:Arial,Helvetica,sans-serif; margin-top:10px;">#{ID}.</div>
+						<div style="float:left; margin-top:10px; width:90%;">#{TEXT} #{DISTANCE} #{DISTANCEUOM}</div>
+					</li>
+					<div class="maneuver_pois" id="maneuver_#{ID}">
+						
+					</div>
+				</div>
+			</div>
+			<!-- maneuvers end -->
+			
+			<!-- center marker start -->
+			<div id="center_marker">
+				<img id="icon" src="/w2gi/images/icons/red-star.png" anchorx="15" anchory="14" />
+			</div>
+			<!-- center marker end -->
+			
+			<!-- poi marker start -->
+			<!-- poi marker end -->
+			
+			<!-- error start -->
+			<ul id="error">
+				<li class="textbox">#{MESSAGE}</li>
+			</ul>
+			<!-- error end -->
+
+			<div id="gps_error_default">
+				GPS Error.
+			</div>
+			<!-- error end -->
+            
+            <!-- error start -->
+			<div id="gps_error_permission_denied">
+				GPS Error: Permission was previously denied. Please refresh the page and give permission for the locator to use your current location.
+			</div>
+			<!-- error end -->
+            
+            <!-- error start -->
+			<div id="gps_error_position_unavailable">
+				GPS Error: Position unavailable.
+			</div>
+			<!-- error end -->
+            
+            <!-- error start -->
+			<div id="gps_error_timeout">
+				GPS Error: Timeout
+			</div>
+			<!-- error end -->
+			
+			<!-- driving directions start icon start -->
+			<div id="ddstarticon">
+				<img id="icon" src="/w2gi/images/icons/ddstartpin.png"/>
+			</div>
+			<!-- driving directions start icon end -->
+			
+			<!-- driving directions end icon start -->
+			<div id="ddendicon">
+				<img id="icon" src="/w2gi/images/icons/ddendpin.png"/>
+			</div>
+			<!-- driving directions end icon end -->
+
+		</div>
+		
+		
+
+		<div id="footer" style="background:none;">
+			
+			<div id="copyright">
+			  <br/>
+        			<script type="text/javascript">
+					var d = new Date()
+                        	document.write("&copy; ")
+					document.write(d.getFullYear())
+					document.write("<a href='http://www.brandify.com' target='_new'> Brandify</a>")
+                			document.write("")
+				</script>
+			</div>
+		</div>
+		
+<!-- client footer starts here -->
+
+
+
+		
+	</body>
+</html>
+       

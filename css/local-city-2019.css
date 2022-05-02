@@ -1,0 +1,512 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #333;
+    text-decoration: none;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1.5;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	height:100%;
+}
+
+img {
+    vertical-align: middle;
+}
+
+h1 {
+    color: #0D3246;
+    margin: 40px 0 40px 10px;
+    text-align: center;
+}
+
+h3 {
+    border-bottom:1px solid rgb(190, 200, 207);
+    color: #30A7E6;
+    font-size:24px;
+    font-weight:bold;
+    margin:0 10px;
+}
+
+h4 {
+    font-size:20px;
+    margin-bottom:10px;
+    text-align:center;
+}
+
+h5 {
+    font-size: 20px;
+    color:#B0B0B0;
+  }
+
+.clear {
+    clear:both;
+}
+
+.left {
+    float:left;
+}
+
+
+.spaceRight {
+    margin-right:5px;
+  }
+
+.alignRight {
+text-align:right;
+}
+
+.seventy {
+width:70%;
+}
+
+.fifteen {
+width:15%;
+}
+
+#topBar {
+    background-color: #0A3249;
+    height:60px;
+}
+
+#hamburgerMenu {
+  display:none;
+  cursor:pointer;
+  padding: 10px 30px;
+  float: right;
+}
+
+.hamburger {
+  width: 35px;
+  height: 5px;
+  background-color: #fff;
+  margin: 6px 0;
+}
+
+#linkContainer {
+    z-index:10;
+    float:right;
+}
+
+#linkContainer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#clientLogo {
+    color: #fff;
+    float:left;
+    line-height: 60px;
+    margin-left: 50px;
+}
+
+#linkContainer li {
+    float: left;
+    line-height: 60px;
+    margin-right: 50px;
+    text-align:center;
+    width:100px;
+}
+
+#linkContainer a {
+    color: #fff;
+    cursor:pointer;
+    transition: all .2s ease-in-out;
+}
+
+#linkContainer a:hover {
+    font-size:16px;
+    font-weight:bold;
+}
+
+.hideMobile {
+    display:block;
+}
+
+.mobileOnly {
+  display: none;
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+
+.mobileOnlyAttr {
+  display: none;
+  margin-bottom:20px;
+}
+
+#infoContainer {
+  background: #F5F5F5;
+  float:left;
+}
+
+#iconContainer {
+  text-align:center;
+}
+
+#iconContainer img {
+  transform: scale(.70, .70);
+  cursor:pointer;
+  transition: .3s linear;
+}
+
+#iconContainer img:hover {
+  transform: scale(.80, .80);
+}
+
+#mainContainer, .divContainer {
+    margin-left:auto;
+    margin-right:auto;
+    max-width:1240px;
+    width:75%;
+}
+
+.button {
+  height: 40px;
+  line-height: 40px;
+  width: 120px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.grey {
+  background: #636363;
+  color:#fff;
+}
+
+.turqoise {
+  background: #00A9EC;
+  color:#fff;
+}
+
+.blue {
+  background: #0A3249;
+  border:1px solid #0A3249;
+  color:#fff;
+  cursor:pointer;
+  transition: all .2s ease-in-out;
+}
+
+.blue:hover, .white:hover {
+    font-size:16px;
+    font-weight:bold;
+}
+
+.white {
+  background:#fff;
+  border:1px solid #00A9EC;
+  color: #00A9EC;
+  cursor:pointer;
+  transition: all .2s ease-in-out;
+}
+
+.white a {
+  color: #00A9EC;
+}
+
+.half {
+  float: left;
+  width: calc(50% - 50px);
+  padding: 25px;
+}
+
+#selectState {
+    color: #0D3246;
+    font-size: 24px;
+    margin: 0 0 30px 0px;
+    width: 633px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#map {
+  clear:both;
+  width:100%; 
+  height:400px;
+  margin-bottom:40px;
+}
+
+#staticMap {
+    width:100%;
+    height:100%;
+}
+
+.nearbyCoords {
+    display:none;
+}
+    
+#googleAttribution {
+    width: 65px;
+    position: relative;
+    top: 376px;
+    background: #E8E8E8;
+    pointer-events:none;
+}
+    
+#googleAttribution img {
+    width:100%;
+}
+    
+#googleDate {
+  position: relative;
+  top: 361px;
+  background: #F8F8F8;
+  color: #6A6F73;
+  font-size: 10px;
+  width: 124px;
+  font-family: helvetica;
+  text-align: center;
+  font-weight: bold;
+  float: right;
+  line-height: 15px;
+  pointer-events:none;
+}
+
+.breadcrumb, .breadcrumb a {
+    color: #0D3246;
+}
+
+.itemList {
+    border:2px solid #30A7E6;
+    color:#30A7E6;
+    cursor:pointer;
+    display:inline-block;
+    margin:10px;
+    padding:10px;
+    text-align:center;
+    transition: background-color 0.3s ease-in,
+                color 0.3s ease-in,
+                width .1s linear;
+    width:calc(25% - 47px);
+}
+
+.itemList:hover {
+    background:#30A7E6;
+    color:#fff;
+}
+
+#cityContainer {
+    width: 633px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.cityitemList {
+    margin-bottom:40px;
+    width:50%;
+    float:left;
+    position: relative;
+    left: 5%;
+}
+
+.cityitemList img {
+    float:left;
+    width:24px;
+}
+
+.locationInfo {
+    float:left;
+    margin-left:20px;
+}
+
+.locationInfo a{
+    color: #0D3246;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#footer {
+    background:#000;
+    margin-top:40px;
+  }
+
+  #footer .divContainer {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .footerColumn {
+    width: 32%;
+    display:inline-block;
+    padding-top:40px;
+  }
+
+  .footerColumn ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footerColumn li {
+    color: #B0B0B0;
+    height:20px;
+  }
+
+  #attribution {
+    background:#000;
+    border-top: 1px solid #B0B0B0;
+    padding: 20px 0;
+    margin-top: 20px;
+  }
+
+  #attribution div {
+    color:#B0B0B0;
+  }
+
+  #attribution span {
+    color:#B0B0B0;
+  }
+
+  #footer a {
+      color: #B0B0B0;
+      cursor:pointer;
+      transition: all .2s ease-in-out;
+  }
+
+  #footer a:hover {
+      font-size:16px;
+      font-weight:bold;
+  }
+
+@media (min-width:1075px) and (max-width:1373px) { 
+    .itemList {
+       width:calc(33% - 46px);
+    }
+}
+
+@media (min-width:633px) and (max-width:1074px) { 
+    #clientLogo, #linkContainer {
+        display:none;
+    }
+    .itemList {
+        width:calc(50% - 46px);
+     }
+}
+
+@media (max-width:1074px) {
+    #topBar {
+      display:flex;
+      justify-content: flex-end;
+    }
+
+    #hamburgerMenu {
+      display: block;
+    }
+
+    #linkContainer {
+      display: none;
+      position: absolute;
+      left:0;
+      top: 60px;
+      width:100%;
+    }
+
+    #linkContainer li {
+      background-color: #00A9EC;
+      float:none;
+      height: 60px;
+      width:100%
+    }
+  }
+
+@media (max-width:776px) {
+    #cityContainer, #selectState {
+      width:100%;
+    }
+    .cityitemList {
+      width: 73%;
+      left: 0;
+    }
+
+    .half {
+      width:calc(100% - 50px);
+    }
+
+    #footer .divContainer {
+      flex-direction: column;
+    }
+
+    .desktopOnly {
+      display:none;
+    }
+
+    .footerColumn, .seventy {
+      width:100%
+    }
+
+    .button {
+      width:100%;
+    }
+}
+
+@media (max-width:632px) {
+    #clientLogo, #linkContainer {
+        display:none;
+    }
+    .itemList {
+        width:calc(100% - 44px);
+    }
+}
+
+
+@media (max-width:500px) {
+
+    .cityitemList {
+        width: 100%;
+        left:0
+    }
+
+      #buttons {
+        height: 50px;
+        margin-bottom: 40px;
+        cursor:pointer;
+      }
+
+      #buttons div {
+        height: 50px;
+        line-height: 50px;
+      }
+
+      #attribution {
+        border:none;
+      }
+      .mobileOnly, .mobileOnlyAttr {
+        display:block;
+      }
+      .hideMobile {
+        display:none;
+      }
+
+      .info {
+        width:100%;
+      }
+  }

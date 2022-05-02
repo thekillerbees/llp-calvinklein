@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>{{{page_title}}}</title>
+
+    <meta name="keywords" content="{{{keywords}}}" />
+    <meta name="description" content="{{{description}}}" />
+
+    <link rel="stylesheet" type="text/css" href="{{{basedir}}}/css/productlandingpages.css" />
+	<link type="text/css" href="/w2gi/css/lightwindow.css" rel="stylesheet" media="all"/>
+
+    <script type="text/javascript" src="http://static.where2getit.com/w2gi/javascript/ace/1.77/prototype.js"></script>
+    <script type="text/javascript" src="http://static.where2getit.com/w2gi/javascript/ace/1.77/W2GI_coreNH.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-17001921-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+
+<body onload="ace.click.pageObserve(['linktrack']);">
+    <div id="wrapper">
+
+        <div id="pageheader">
+        </div>
+
+        <div id="main-content">
+            <div id="main-content-wrapper">
+
+                <div id="product_title">
+                    {{{product_title}}}
+                </div>
+
+                <div id="bread_crumb">
+                    {{> 'incl_breadcrumb'}}
+                </div>
+
+                {{#checkIf  NAME=list_a}}
+                    <div id="alist">
+                        <div id="atitle">{{{list_a_title}}}</div>
+                        <TMPL_LOOP NAME=list_a>
+                            <div id="alink"><a linktrack='pplocindx{{{name}}}' href="{{{link}}}">{{{name}}}</a></div>
+                        {{/each}}
+                    </div>
+                {{/checkIf}}
+                {{#checkIf  NAME=list_b}}
+                    <div id="blist">
+                        <div id="btitle">{{{list_b_title}}}</div>
+                        <TMPL_LOOP NAME=list_b>
+                            <div id="blink"><a linktrack='pplocindx{{{name}}}' href="{{{link}}}">{{{name}}}</a></div>
+                        {{/each}}
+                    </div>
+                {{/checkIf}}
+                <div class="clear"></div>
+
+            </div>
+        </div>
+
+        <div id="pagefooter">
+        </div>
+
+    </div>
+    <!-- Start XML data island  -->
+        <xml>
+            <root>
+                <ajaxurl>/ajax?</ajaxurl>
+                <appkey>{{{appkey}}}</appkey>
+            </root>
+        </xml>
+    <!-- End XML data island  -->
+</body>

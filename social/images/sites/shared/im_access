@@ -1,0 +1,2 @@
+_filesystem.writable=false
+_general.disabled_tools=createdir,createdoc,zip,upload,edit,rename,cut,copy,paste,delete,addfavorite,removefavorite

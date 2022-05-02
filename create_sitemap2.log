@@ -1,0 +1,46 @@
+[2020-10-12 13:03:30]	22624	Start. Getting database connection.
+[2020-10-12 13:03:30]	22624	Getting site information from database
+[2020-10-12 13:03:30]	22624	get_site locator SQL: 
+		select l.uid, l.schemaname, l.name,
+			l.authurl, l.appkey,
+			l.localsites, l.urlstructure,
+			a.name as accountname, c.name as clientname, c.masterschema
+		from w2gi.locator l
+		join w2gi.account a on a.uid = l.accountuid
+		join w2gi.client  c on c.uid = a.clientuid
+		where l.schemaname = 'calvinklein'  and l.appkey = '3319E9CC-E945-11EA-A1DF-53CCF48ECC77'
+		and l.localsites = true
+		and l.authurl is not null
+		order by case when l.authurl ~ '^http://' then 1 else 2 end
+		limit 1
+	
+[2020-10-12 13:03:30]	22624	get_site locatortemplate SQL: 
+		select templatetype, defaulttemplate, locationfilter, alternateclientkey
+		from calvinklein.locatortemplate
+		where templatetype = 'Locator::Location'
+		order by case when defaulttemplate = true then 1 else 2 end ASC
+		limit 1
+	
+[2020-10-12 13:03:30]	22624	Getting list of URLs from database.
+[2020-10-12 13:03:30]	22624	get_urls SQL: 
+				select url, priority, to_char( now(), 'YYYY-MM-DDT00:00:00-05:00' ) as lastmod
+				from (
+					select 'https://stores.calvinklein.us/' as url, 0.3::decimal as priority, 0::int as level
+					union all select distinct 'https://stores.calvinklein.us/' || lower(state) || '/' as url, 0.5, 1
+						from calvinklein.storelocator where country = 'US' and state <> '' 
+					union all select distinct 'https://stores.calvinklein.us/' || lower(w2gi.urlescape(province)) || '/' as url, 0.5, 1
+						from calvinklein.storelocator where country <> 'US' and province <> '' 
+					union all select distinct 'https://stores.calvinklein.us/' || lower(state) || '/' || lower(w2gi.urlescape(city)) || '/' as url, 0.5, 2
+						from calvinklein.storelocator where country = 'US' and state <> '' and city <> '' 
+					union all select distinct 'https://stores.calvinklein.us/' || lower(w2gi.urlescape(province)) || '/' || lower(w2gi.urlescape(city)) || '/' as url, 0.5, 2
+						from calvinklein.storelocator where country <> 'US' and province <> '' and city <> '' 
+					union all select distinct 'https://stores.calvinklein.us/' || lower(state) || '/' || lower(w2gi.urlescape(city)) || '/' || clientkey || '/' as url, 0.7, 3
+						from calvinklein.storelocator where country = 'US' and state <> '' and city <> '' and clientkey <> '' 
+					union all select distinct 'https://stores.calvinklein.us/' || lower(w2gi.urlescape(province)) || '/' || lower(w2gi.urlescape(city)) || '/' || clientkey || '/' as url, 0.7, 3
+						from calvinklein.storelocator where country <> 'US' and province <> '' and city <> '' and clientkey <> '' 
+				) urls order by level,url
+			
+[2020-10-12 13:03:30]	22624	Generating sitemap file(s).
+[2020-10-12 13:03:36]	22624	Sitemap with 350 URLs saved to '/u/client/calvinklein/local/sitemap.xml'.
+[2020-10-12 13:03:36]	22624	Compressed the file '/u/client/calvinklein/local/sitemap.xml' to '/u/client/calvinklein/local/sitemap.xml.gz'.
+[2020-10-12 13:03:36]	22624	Finished.

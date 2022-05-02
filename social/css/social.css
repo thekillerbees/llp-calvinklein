@@ -1,0 +1,338 @@
+@import url('shared.css');
+
+
+/*Global Styles*/
+
+body {
+	margin:			3px;
+	padding:			0;
+	color:			#1d1b1b;
+	font-family:		Arial,Helvetica,sans-serif;
+	font-size: 			12px;
+}
+img {
+	border:			0;
+}
+a {
+	color:			#666666;
+}
+form {
+	margin:			0;
+}
+input, select {
+	font-family:		Arial,Helvetica,sans-serif;
+        font-size: 		12px;  
+}
+input.addressentry {      
+        width:	 		220px;
+}
+
+/* End Global Styles */
+
+
+/* --------------------------------------------------- */
+
+
+/* Structural Styles */
+
+#outer {
+	max-width: 			820px;
+	margin: 			0 auto;
+}
+
+#controls {
+      float:			left;
+	width:			100%;
+	margin-bottom:		5px;
+	background:			#3B5998;
+	color:			#fff;
+}
+#locator {
+	float:			left;
+	width:			100%;
+	z-index: 			0;	
+	position:			relative;
+	clear:			both;
+}
+#map {
+	float:			left;
+	width:			66%;
+	height:			500px;	
+	position:			relative;
+	border: 			1px solid #dbdce2;
+}
+#panel {
+	float:			right;
+	height:			500px;
+	overflow-x:			hidden;
+	overflow-y:			auto;
+	width:			33%;	
+	position:			relative;
+	border: 			1px solid #dbdce2;
+	border-left:		0px;
+	background:			#EDEFF4;
+}
+
+/* End Structural Styles */
+
+
+/* --------------------------------------------------- */
+
+
+/* POI Styles */
+
+#panel table {
+	border-spacing:		0px;
+	border-collapse: 		collapse;
+	padding:			0px;
+	margin:			0px;
+	width:			100%;	
+
+}
+#panel table th {
+	padding:			5px;
+	text-align:			left;
+	font-size:			14px;
+	line-height:		27px;
+	color:			#fff;
+	border-bottom: 		1px solid #29468A;
+	background:			#627AAD;
+}
+#panel table thead tr.poi {
+	background-color: 	#f8f8f8;
+	height: 			20px;
+}
+#panel table td {
+	padding:			10px 4px; 
+	margin:			0px;
+	text-align:			left;	
+	font-size:			12px;
+	vertical-align:		top;
+	line-height:		17px;
+	border-bottom: 		1px solid #D8DADE;
+}
+#panel table td.maneuver {
+	$padding-right:		20px;
+}
+#panel table .prev_results {
+	float:			left;	
+	text-decoration: 		none;
+}
+#panel table .next_results {
+	float:			right;	
+	text-decoration: 		none;
+}
+#panel table tr.odd {
+}
+#panel table tr.even {
+}
+#panel table tr.active {
+	background-color: 		#eee;
+}
+#panel table p {
+	margin:			0px;
+	padding:			0px;
+}
+
+/* End POI Styles */
+
+
+/* --------------------------------------------------- */
+
+
+/* Misc. Styles */
+
+select#search_country {width: auto;}
+select#bubble_country {width: 187px; margin-top:3px;}
+select#orig_country, select#dest_country {width: 226px; }
+
+#intro_text {
+    font-size: 			12px;
+    padding: 			15px;
+}
+#senddirectionsto {
+	font-size: 			12px;
+}
+#senddirectionsto a {
+	color: 			#fff;
+}
+
+#criteriacontainter, 
+#criteriacontainter input, 
+#criteriacontainter label {
+	vertical-align:		middle;
+}
+
+#criteriacontainter div {
+	float: 			left;
+	padding: 			0 15px;
+}
+
+/* End Misc. Styles*/
+
+
+/* --------------------------------------------------- */
+
+
+/* Link Styles*/
+
+a.store_name:link 			{ text-decoration: underline; color: #666666; }
+a.store_name:visited 		{ text-decoration: underline; color: #666666; }
+a.store_name:hover 		{ text-decoration: none; color: #666666; }
+a.store_name:active 		{ text-decoration: underline; color: #666666; }
+
+a.next_results:link, 	a.prev_results:link  	{ text-decoration: none; color: #666666; font-weight: bold; padding:0 5px; text-align: right;}
+a.next_results:visited, a.prev_results:visited 	{ text-decoration: none; color: #666666; font-weight: bold; padding:0 5px; text-align: right;}
+a.next_results:hover, 	a.prev_results:hover 	{ text-decoration: none; color: #666666; font-weight: bold; padding:0 5px; text-align: right;}
+a.next_results:active, 	a.prev_results:active 	{ text-decoration: none; color: #666666; font-weight: bold; padding:0 5px; text-align: right;}
+
+/* End Link Styles*/
+
+
+
+/* Icon Bar Styles*/
+
+#icon_bar {
+	width:				auto; 
+	float: 			right;
+}
+
+#icon_bar ul{
+	list-style-type:		 none;
+	margin: 			0;
+	padding: 			2px 7px;
+	line-height:			18px;
+}
+
+#icon_bar a.links {
+	font-size:			11px;
+	text-align:			right;
+	vertical-align:		middle;
+	text-decoration:		none;
+	text-decoration:		none;
+	white-space:			nowrap;
+	color:				#fff;
+	padding-left: 		22px;
+
+}
+
+#icon_bar .ibprint{ background: url(/w2gi/images/iconbar/print_icon.gif) no-repeat scroll left center transparent;}
+#icon_bar .ibemail{ background: url(/w2gi/images/iconbar/email_icon.gif) no-repeat scroll left center transparent;}
+#icon_bar .iblink { background: url(/w2gi/images/iconbar/link_icon.gif) no-repeat scroll 1px center transparent;}
+
+
+#icon_bar .links span,
+#icon_bar a.links img {
+	vertical-align:		middle;
+}
+
+/* End Icon Bar Styles*/
+
+
+/* --------------------------------------------------- */
+
+
+/* General Locator Styles */
+
+xml {
+	width:			0;
+	height:			0;
+	display:			none;
+}
+.icon {
+        position:      	 	relative;
+        width:          	33px;
+        height:         	28px;
+}
+.icon img {
+	position:			absolute;
+	top:				0px;
+	left:				0px;
+	cursor:			pointer;
+}
+
+.icon div {
+    color: 				white;
+    cursor: 			pointer;
+    font-size: 			12px;
+    font-weight: 			bold;
+    left: 				0;
+    position: 			absolute;
+    text-align: 			center;
+    top: 				7px;
+    width: 				28px;
+}
+
+#center_marker {
+	width: 			30px;
+	height:			28px;
+	cursor:			default;	
+}
+#center_marker img {
+	position:			absolute;
+	top:				0px;
+	left:				0px;
+	width: 			30px;
+	height:			28px;
+	cursor:			default;	
+}
+#ajax_activity {
+	position:			absolute;
+	top:				20px;
+	right:			20px;
+	width:			32px;
+	height:			32px;        
+	z-index:			99;
+}
+
+#w2gi_copyright {
+        position:           	absolute;
+        right:            	3px;
+        bottom:            	3px;
+        text-decoration:   	none;
+        font:          		bold 12px arial;
+        background:          	transparent;
+        z-index:           	999;
+}
+
+#navteq_copyright {
+        background:         	transparent none repeat scroll 0%;
+        bottom:              	3px;
+        font-family:         	arial;
+        font-size:           	12px;
+        font-weight:        	bold;
+        left:                	3px;
+        line-height:         	normal;
+        position:           	absolute;
+        text-decoration:   	none;
+        z-index:            	999;
+}
+
+#w2gifooter,
+#navteqfooter {
+	position:       		relative;
+	font-size:      		10px;
+	font-weight:    		bold;
+	vertical-align:		middle;
+	height:			27px;
+	margin:			3px 0;
+}
+#w2gifooter {
+	text-align:     		left;
+	 float:			left;
+	line-height:		25px;
+}
+#navteqfooter {
+	text-align:     		left;
+	float:			right;
+	width: 			215px;
+}
+#navteqfooter img {
+	float:			left;
+	padding:			2px 6px 2px 0;
+}
+
+/* End General Locator Styles*/
+
+
+/* --------------------------------------------------- */

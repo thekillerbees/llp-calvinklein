@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="usUser full homepage dj_webkit dj_safari dj_contentbox noRetinaLinesSupport ready loaded">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180374740-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-180374740-1');
+    </script> -->
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5283NZX');</script>
+    <!-- End Google Tag Manager -->
+
+    <script>
+      setTimeout(function(){
+        switchClass();
+      },50)
+       function switchClass() {
+        var htmlElement = document.getElementsByTagName("html")[0];
+        if(window.innerWidth > 960) {
+          if(!htmlElement.classList.contains('desktop')){
+            htmlElement.classList.add('desktop');
+          }
+          if(htmlElement.classList.contains('mobile')){
+            htmlElement.classList.remove('mobile');
+          }
+        } else {
+          if(htmlElement.classList.contains('desktop')){
+            htmlElement.classList.remove('desktop')
+          }
+          if(!htmlElement.classList.contains('mobile')){
+            htmlElement.classList.add('mobile');
+          }
+        }
+      }
+    </script>
+
+        <meta name="google-site-verification" content="70LC1o6UQqUK8wyNwSLwQBd0wOPAU8r2aiJJLw0Qc20" />
+        
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link rel="shortcut icon" type="image/x-icon" href="//media1.calvinklein.com/images/static/e-comm20-09/favicon.ico"/>
+        <link rel="apple-touch-icon" sizes="57x57" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-144x144.png" />
+        <title>Calvin Klein Stores | Men's, women's and children's apparel and more.</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=0.6667">
+        <meta name="description" content="Locate a Calvin Klein store near you in our US and Canada branches. Browse our selection of designer underwear, athletic clothes, jeans & more stylish outfits." />
+        <meta name="keywords" content="" />
+        <meta name='format-detection' content='telephone=no' />
+        <link rel="canonical" href="https://stores.calvinklein.us/" />
+        <link rel="stylesheet" type="text/css" href="/css/local/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="/css/local/pvh.css" />
+        <link rel="stylesheet" type="text/css" href="/css/local/ck.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+        <link rel="stylesheet" type="text/css" href="/css/local/main.alt.css" />
+        <script type="text/javascript" src="/w2gi/javascript/backbone/bb/lib/jquery.js"></script>
+        <script data-main="/w2gi/javascript/backbone/bb/dist/bones" src="/w2gi/javascript/backbone/bb/lib/require.js"></script>
+        <script>
+            var W2GI = {
+                config : {
+                    appkey : '{{{appkey}}}',
+                    pageObserve: ['linktrack'],				
+                }
+            }
+        </script>
+        <script>
+          $(function(){
+            // switchClass()
+            $(window).on('resize',function(){
+                switchClass();
+            })
+          });
+        </script>
+        <style>
+          html.mobile .logoWrapper,html.mobile #headerTopRight,html.mobile #headerMyAccountNavWrapper, html.desktop #headerLinks, html.desktop div#searchBar {
+            display: none;
+          }
+        </style>
+    </head>
+    <body class="index">
+
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5283NZX"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+        <div class="page">
+            {{> 'header.simplified.2'}}
+            <main id="mainContainer">
+                <section class="storeMain indexList">
+                    <h1>Calvin Klein Store Locations</h1>
+                    <!-- <ul id="selectState">Select a State:</ul> -->
+                    
+                    {{#each contentlist_pc}}
+                        <h3>{{{countryname}}}</h3>
+                        <ul>
+                            {{#each statelist}}
+                            <li>
+                                <a data-linktrack="State index page - {{{link_name}}}" class="itemList ga_w2gi_lp" data-galoc="CalvinKlein - StatePage_{{{link_name}}}" data-gaact="Click_to_StatePage" href="{{{link}}}">{{{link_name}}}</a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    {{/each}}
+                        <section class="covid-listing">
+                  <h2>COVID-19 Information</h2>
+                  <p>We are working to provide a safe environment for our customers by limiting occupancy to promote social distancing and increasing frequency of routine cleaning. Associates and customers are required to wear a mask at all times inside the store to maintain a safe environment.</p>
+                  <p>For more information:</p>
+                  <p>
+                    <a href="https://www.calvinklein.ca/en/covid-19-information" target="_blank" class="ga_w2gi_lp" data-galoc="CalvinKlein - StateLevel" data-gaact="Click_to_Covid_CanadaShoppers">Canada Shoppers</a>
+                    <span>&nbsp;&nbsp;</span>
+                    <a href="https://www.calvinklein.us/en/covid-19-information" target="_blank" class="ga_w2gi_lp" data-galoc="CalvinKlein - StateLevel" data-gaact="Click_to_Covid_CanadaShoppers">US Shoppers</a>
+                  </p>
+                </section>
+                </section>
+             
+            </main>	
+            {{> 'footer.simplified.listing'}}
+         </div>
+         <script>
+          $(document).ready(function(){
+              $('#hamburgerMenu').on('click',function(){
+                $('#linkContainer').slideToggle(300, function(){});
+              });
+            });
+           $(window).resize(function(){
+            if($(window).width() > 1074){
+              if($('#linkContainer').is(':hidden')){
+                $('#linkContainer').show();
+              }
+            } else if ($(window).width() < 1075) {
+              if($('#linkContainer').is(':visible')){
+                $('#linkContainer').hide();
+              }
+            }
+          })
+        </script>
+    </body>
+</html>

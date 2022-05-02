@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>{{{page_title}}}</title>
+
+    <meta name="keywords" content="{{{keywords}}}" />
+    <meta name="description" content="{{{description}}}" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="stylesheet" type="text/css" href="{{{basedir}}}/css/productlandingpages.css" />
+    <link type="text/css" href="http://static.where2getit.com/w2gi/css/style.css" rel="stylesheet" media="all"/>
+    <link type="text/css" href="http://static.where2getit.com/w2gi/css/lightwindow.css" rel="stylesheet" media="all"/>
+
+    <script type="text/javascript" src="http://static.where2getit.com/w2gi/javascript/ace/1.77/prototype.js"></script>
+    <script type="text/javascript" src="http://static.where2getit.com/w2gi/javascript/ace/1.77/W2GI_core.js"></script>
+    <script type="text/javascript" src="http://static.where2getit.com/w2gi/javascript/ace/1.77/W2GI_maps.js"></script>
+    <script type="text/javascript" src="http://static.where2getit.com/w2gi/javascript/ace/1.77/W2GI_slippymap.js"></script>
+
+    <script type="text/javascript">
+        function loadSlippyMap() {
+            var options = {
+                dynamicSearch: true,
+                geoip: false,
+                theme: null,
+                routeStyle: {   strokeWidth: 8,
+                                strokeOpacity: .5,
+                                strokeColor: '#0000FF' },
+                controls: [ new OpenLayers.Control.PanZoomBar(),
+                            new OpenLayers.Control.Navigation() ]
+             };
+
+             OpenLayers.IMAGE_RELOAD_ATTEMPTS = 2;
+             OpenLayers.ImgPath='http://static.where2getit.com/w2gi/images/zoombar/';
+
+            SlippyMap.load('map', 'panel', options);
+        }
+
+        function printit(){
+            if (window.print) {
+                window.print() ;
+            }
+            else {
+                var WebBrowser = '<object id="WebBrowser1" width="0" height="0" classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></object>';
+                document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+                WebBrowser1.ExecWB(6, 2);
+                WebBrowser1.outerHTML = "";
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-17001921-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+
+</head>
+
+<body onload="loadSlippyMap();ace.click.pageObserve(['linktrack']);" onunload="SlippyMap.unload();">
+    {{#checkIf incl_map}}
+        {{> 'incl_prod_xml'}}
+        {{> 'incl_map_tmpls'}}
+    {{/checkIf}}
+    <div id="wrapper">
+        <div id="pageheader">
+        </div>
+
+        <div id="main-content">
+            <div id="main-content-wrapper">
+                <div id="leftcol">
+
+                    {{> 'incl_icon_bar'}}
+
+                    {{#checkIf incl_etailers}}
+                        <div id="etailers_container">
+                            <div id="etailers_title">
+                                <div id="etailers_title_txt">Where to Buy Online</div>
+                            </div>
+                            <div id="elist_container">
+                                {{#checkIf  NAME=etailers_found}}
+                                    <table id="etailer_listings">
+                                        <TMPL_LOOP NAME=etailers>
+                                            <tr class="etailer_listing">
+                                                {{#checkIf  NAME=storeimage}}
+                                                    <td align="center" lass="etailer_logo_img">
+                                                        <a linktrack="ppetailimage{{{storeuid}}}" href="" link="{{{buyurl}}}" onclick="this.href=this.getAttribute('link');" title="Buy Now" target="_blank"><img src="{{{storeimage}}}" alt="{{{storename}}}" border="0"></a>
+                                                    </td>
+                                                {{else}}
+                                                    <td align="center" class="etailer_logo_txt">
+                                                        <a linktrack="ppetailtext{{{storeuid}}}" href="" link="{{{buyurl}}}" onclick="this.href=this.getAttribute('link')" title="Buy Now" target="_blank">{{{storename}}}</a>
+                                                    </td>
+                                                {{/checkIf}}
+                                                <td class="etailer_listing">
+                                                    <div id="etailers_availability">{{{instock}}}</div>
+                                                    <div id="etailers_buy_now_button_container">
+                                                        <div id="etailers_buy_now_button" class="buy_now_button">
+                                                            <a linktrack="ppetailbuybutt{{{storeuid}}}" href="" link="{{{buyurl}}}" onclick="this.href=this.getAttribute('link')" title="Buy Now" target="_blank">&rarr; BUY NOW</a>
+                                                        </div>
+                                                        <div style="clear:both"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                    </table>
+                                {{else}}
+                                    <div id="etailer_no_listing">No Online Stores Found</div>
+                                {{/checkIf}}
+                            </div>
+                            <div id="etailers_footer">
+                                &nbsp;
+                            </div>
+                        </div>
+                    {{/checkIf}}
+
+                    {{#checkIf incl_poi}}
+                        <div id="locs_container">
+                            <div id="locs_title">
+                                <div id="loclist_title">Where to Buy In-store</div>
+                            </div>
+                            {{#checkIf  NAME=stores_found}}
+                                {{#checkIf incl_map}}
+                                    {{> 'incl_search_frms'}}
+                                    <div id="map_container">
+                                        <div id="map"></div>
+                                    </div>
+                                    <div id="poi_header">
+                                        Nearby Locations Found
+                                    </div>
+                                {{/checkIf}}
+                            {{/checkIf}}
+                            <div id="loclist_container">
+                                {{#checkIf  NAME=stores_found}}
+                                    <div id="panel"></div>
+                                {{else}}
+                                    <div id="no_listing">No Stores Found</div>
+                                {{/checkIf}}
+                            </div>
+                            <div id="locs_footer">
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        {{#checkIf incl_map}}{{/checkIf}}
+
+                    {{/checkIf}}
+
+
+                    {{#checkIf incl_nb}}
+                        <div id="near_by_wrapper">
+                            <div id="near_by_box">
+                                {{#checkIf  NAME=cities_near_by}}
+                                    <div id="near_by_cities">
+                                        <div id="near_by_title">Cites Close to this Location</div>
+                                        <div id="near_by_list">{{{cities_near_by}}}</div>
+                                    </div>
+                                    <br />
+                                {{/checkIf}}
+                                {{#checkIf  NAME=postalcodes_near_by   }}
+                                    <div id="near_by_postalcodes">
+                                        <div id="near_by_title">Zip Codes / Postal Codes Close to this Location</div>
+                                        <div id="near_by_list">{{{postalcodes_near_by}}}</div>
+                                    </div>
+                                {{/checkIf}}
+                            </div>
+                        </div>
+                    {{/checkIf}}
+
+                </div>
+
+                <div id="rightcol">
+                    <div id="product_wrapper">
+                        <div id="cat_title">
+                            {{{category1}}}{{#checkIf category2}} - {{{category2}}}{{/checkIf}}{{#checkIf category3}} - {{{category3}}}{{/checkIf}}
+                        </div>
+
+                        <div id="bc_wrapper">
+                            {{> 'incl_breadcrumb'}}
+                        </div>
+
+                        <div id="product_detail_title">
+                            {{{product_title}}}
+                        </div>
+
+                        <div id="product_detail_title_loc">
+                            {{{product_title_loc}}}
+                        </div>
+
+                        <div id="product_details">
+                            <div id="product_description">
+                                {{#checkIf  NAME=image_url}}
+                                    <img src="{{{image_url}}}" alt="{{{product_title}}}" border="0" align="right" style="padding-left:5px;padding-bottom:5px">
+                                {{/checkIf}}
+
+                                {{{product_description}}}
+
+                            </div>
+
+                            <div style="clear:both"></div>
+                        </div>
+
+                        {{#checkIf  NAME=product_url}}
+                            <div id="product_button">
+                                <div class="button">
+                                    <a linktrack='ppmoreinfobutt{{{sku}}}' href="{{{product_url}}}" target="_new" title="{{{product_title}}}">MORE PRODUCT INFO</a>
+                                </div>
+                            </div>
+                        {{/checkIf}}
+
+                        {{#checkIf  NAME=reviews_found}}
+                            <div id="product_reviews">
+                                {{> 'incl_reviews'}}
+                            </div>
+                        {{/checkIf}}
+
+                        {{#checkIf  NAME=corp_blurb}}
+                            <div id="corporate_blurb">
+                                {{{corp_blurb}}}
+                            </div>
+                        {{/checkIf}}
+
+                    </div>
+                </div>
+
+                <div style="clear:both"></div>
+
+            </div>
+        </div>
+
+        <div id="pagefooter">
+            <div id="w2gi_footer">
+                <div id="powered_by">
+                    <script type="text/javascript">
+                        var d = new Date()
+                        document.write("Maps Powered by <a href='http://www.brandify.com' target='_new'>Brandify </a> ")
+                        document.write("Copyright &copy; ")
+                        document.write(d.getFullYear())
+                        document.write(", All Rights Reserved.</ br>")
+                        document.write("")
+                    </script>
+                </div>
+
+                <div id="navteqfooter">
+                    <script type="text/javascript">
+                        var d = new Date()
+                        document.write(" <img src=http://static.where2getit.com/w2gi/images/logo_navteq_large.gif align='left'> ")
+                        document.write(" &copy; Copyright ")
+                        document.write(d.getFullYear())
+                        document.write(" NAVTEQ Corp.  ")
+                    </script>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

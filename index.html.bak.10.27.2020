@@ -1,0 +1,1077 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+        <title>Store Locator</title>
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5283NZX');</script>
+        <!-- End Google Tag Manager -->
+
+        <script>
+         function cleanHours(today) {
+            if(today.toLowerCase() != 'closed'){
+                var openHours = today.split('-'),
+                openTime = parseInt(openHours[0].slice(0,1)),
+                openTimeShow = openHours[0].replace(':00',''),
+                closeTime = parseInt(openHours[1].slice(0,1)) + 12,
+                closeTimeShow = openHours[0].replace(':00','') + '-' + openHours[1].replace(':00','');
+                return closeTimeShow
+            }
+        }
+        </script>
+
+        <script>
+            var W2GI = {
+                config: {
+                    appkey: 'F5C66E24-E944-11EA-A1DF-53CCF48ECC77',
+                    autoStart: true,
+                    locator: {                        
+                        theme:null,                        
+                        noZoomOnPan: true,
+                        locatorlocale: 'en_EN',
+                        alertError: false,
+                        formdata: {
+                            geoip: true,
+                            dataview: 'store_default',
+                            limit: 20,
+                            geolocs: {
+                                geoloc: [{
+                                    addressline:    '',
+                                    country:        '',
+                                    latitude:       '',
+                                    longitude:      ''
+                                }]
+                            },
+                            searchradius: '50|150|250',                            
+                            where: {
+                              or: {
+                                icon : {like:''}
+                              }
+                            }
+                        },
+                        drivingdirections: {
+                            disableDynamicRoutes: false,
+                            formdata: {
+                                <tmpl_if expr="is_wireless_device == 1">
+                                gps: 'first',
+                                <tmpl_else>
+                                geoip: true,
+                                </tmpl_if>
+                                dataview: 'store_default',
+                                map: {
+                                    size :'330,225',
+                                    icons:{
+                                        start: {
+                                            path: 'ddstartpin.png'
+                                        },
+                                        end:{
+                                            path: 'ddendpin.png'
+                                        }
+                                    }
+                                },
+                                geolocs: {
+                                    geoloc: [{
+                                        address1:       '',
+                                        city:           '',
+                                        state:          '',
+                                        province:       '',
+                                        postalcode:     '',
+                                        addressline:    '',
+                                        country:        '',
+                                        latitude:       '',
+                                        longitude:      ''
+                                    }]
+                                }
+                            }
+                        },
+                       imgPath:  'images/icons/zoombar_new',
+                        controls: [{ name: 'zoom', options: {} }],
+                        dynamicSearch: true,
+                        routeStyle: {
+                            strokeWidth:     8,
+                            strokeOpacity:  .5,
+                            strokeColor:    '#0000FF'
+                        },
+                        sources: [  
+                           { 
+                                name: 'Google Normal',
+                                        options: {
+                                        disableDoubleClickZoom : true,
+                                        displayName : 'Map',
+                                        projection: 'EPSG:900913', 
+                                        units: 'm',
+                                        type: 'roadmap', 
+                                        maxZoomLevel:18,
+                                    }
+                            }
+                        ]
+                    }
+
+                 },
+                 custom_ob: {
+                   updateRecords : function(recs) {
+                        var date = new Date();
+                        var today = date.getDay();
+                        var records;
+                        $(recs).each (function(i,e) {
+                            e.mon_hours_2 = cleanHours(e.mon_hours);
+                            e.tues_hours_2 = cleanHours(e.tues_hours);
+                            e.wed_hours_2 = cleanHours(e.wed_hours);
+                            e.thurs_hours_2 = cleanHours(e.thurs_hours);
+                            e.fri_hours_2 = cleanHours(e.fri_hours);
+                            e.sat_hours_2 = cleanHours(e.sat_hours);
+                            e.sun_hours_2 = cleanHours(e.sun_hours);
+
+                            if(e.postalcode)
+                            var postal = e.postalcode.length;
+
+                            if(postal == 10) {
+                                var cut = e.postalcode.substring(0, 5);
+                                e.postalcode = cut;
+                            }
+                            //if(e.holidayhours){
+                             //   temp = e.holidayhours;
+                            //    e.holidayhours1=temp.replace(/,/g,"<br>");
+                           // } 
+
+                           if(e.holidayhours){
+                                e.holidayhour = e.holidayhours.replace(/,/g,'<br>');
+                            }
+
+                            if (today == 0) {
+                                e.SUNCHECK = 1;
+                                e.TODAYHOURS = e.sun_hours_2;
+                                e.OPENTODAY = e.sun_hours_2;
+                            }
+
+                            if (today == 1) {
+                                e.MONCHECK = 1;
+                                 e.TODAYHOURS = e.mon_hours_2;
+                                 e.OPENTODAY = e.mon_hours_2;
+                            }
+
+                            if (today == 2) {
+                                e.TUECHECK = 1;
+                                e.TODAYHOURS = e.tues_hours_2;
+                                e.OPENTODAY = e.tues_hours_2;
+                            }
+
+                            if (today == 3) {
+                                e.WEDCHECK = 1;
+                                e.TODAYHOURS = e.wed_hours_2;
+                                e.OPENTODAY = e.wed_hours_2;
+                            }
+
+                            if (today == 4) {
+                                e.THRCHECK = 1;
+                                e.TODAYHOURS = e.thurs_hours_2;
+                                e.OPENTODAY = e.thurs_hours_2;
+                            }
+
+                            if (today == 5) {
+                                e.FRICHECK = 1;
+                                e.TODAYHOURS = e.fri_hours_2;
+                                e.OPENTODAY = e.fri_hours_2;
+                            }
+
+                            if (today == 6) {
+                                e.SATCHECK = 1;
+                                e.TODAYHOURS = e.sat_hours_2;
+                                e.OPENTODAY = e.sat_hours_2;
+                            }
+
+                            if(e.city){
+                              e.city2 = e.city.toLowerCase().replace(/ /g,"-");
+                            }
+
+                            if(e.state){
+                              e.state2 = e.state.toLowerCase().replace(/ /g,"-");
+                            }else if (e.province) {
+                                e.state2 = e.province.toLowerCase().replace(/ /g,"-");
+                            }
+
+                        }.bind(this));
+                        recs = shuffleArray(recs);
+                        return recs;
+                    },
+                },
+            }
+        </script>
+        <script src="/w2gi/javascript/backbone/bb/lib/jquery.js"></script>
+        <script data-main="/w2gi/javascript/backbone/bb/dist/bones.min" src="/w2gi/javascript/backbone/bb/lib/require.js"></script>
+        <script src="javascript/custom.d.js"></script>
+        <script type="text/javascript">
+          var clUid;
+          var collectionCount;
+
+          W2GI.loaded = function($) { 
+            // on page load (for when there is no response)
+            parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+
+            ace.util.DomEvent.on("w2gi:directionsupdated", function() {
+                var els = document.getElementsByClassName('updateUID')
+                for (let index = 0; index < els.length; index++) {
+                    els[index].href = els[index].href + clUid
+                    
+                }
+            })
+            // on initial response and searches
+            ace.util.DomEvent.on("w2gi:proximityresponse", function() {
+                  setTimeout(function(){
+                    parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                    var searchInput = document.getElementById('search_input');
+                    var userLocation = document.getElementById('userLocation');
+                    if (searchInput !== '') {
+                        userLocation.textContent = searchInput.value;
+                    } else {
+                        userLocation.textContent = 'you';
+                    }
+                  }, 100);
+            });
+            // when no results are returned. Note that the delay must be at least 800 or the modal popup will not display properly
+            ace.util.DomEvent.on("w2gi:fetchError", function() {
+                  setTimeout(function(){
+                  parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                  }, 800);
+            });
+            // Browser is resized
+            $(window).resize(function() {
+                setTimeout(function(){
+                    parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                }, 100);
+            }); 
+            // When pagination is present and occurs
+            ace.util.DomEvent.on("w2gi:sliceupdated", function() {
+                setTimeout(function(){
+                    parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                }, 100);
+            });
+            ace.collection.appendOptions('#bubble_country', 'Account::Country', {}, 'account_country', 'name', 'description');
+          }
+          function searchCountry(country) {
+              require(['jquery'], function($) {
+                  $('.search-box').val('')
+                  $('.country_val').val(country)
+                  ace.util.searchExternal('locator_search');  
+              })         
+          } 
+
+          $('#map').on('pageshow', function(){
+                google.maps.event.trigger(map, "resize");
+          });
+
+          
+
+          function shuffleArray(array) {
+              var i = array.length;
+              while(i--){
+                 if(array[i].icon == "warehouse") {
+                    array.splice(i,1);
+                 }
+              }
+              collectionCount = array.length;
+              return array;
+          }
+
+        </script>    
+        <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link href="//hosted.where2getit.com/w2gi/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/custom.t.css">
+        <link rel="stylesheet" type="text/css" href="css/fonts.css">
+        <link rel="stylesheet" href="https://use.typekit.net/xlu8arf.css">
+        <!--<link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet'>-->
+        <style>
+
+            .button-search {
+                font-size:14px;
+                font-family: 'Klein-55Regular';
+                position:relative;
+                top: 2px;
+                height: 39px;
+            }
+
+            .attribution {
+                display:none !important;
+            }
+            div.filter_div > span {
+                display: inline-block;
+                max-width: calc(100% - 102px);
+                height: auto;
+            }
+             body{
+                font-family: futura-pt, sans-serif;
+                /*font-family: futura std, sans-serif;*/
+                font-weight: 400;
+                font-style: normal;
+            }
+            #listview.active{
+                background-color:#00174f;
+            }
+            #mapview.default{
+                background-color:white;
+            }
+            .country-drop{
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                height: 36px;
+                width: 223px;
+                margin-top: 10px;
+                margin-left: 15px;
+                padding-left: 10px;
+                background: url(images/new/chevron_down.png) no-repeat scroll 194px 11px;
+                text-indent: 1px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+             @media (max-width: 801px) and (min-width: 1px){
+
+                 @supports (-webkit-touch-callout: none) {
+                     .button-search {
+                         height: 43px !important;
+                        top: -0.5px !important;
+                    }
+                }
+
+                @supports not (-webkit-touch-callout: none) {
+                    .button-search {
+                         height: 40px !important;
+                         top: -1px !important;
+                    }
+                }
+            
+                 .search-box {
+                     font-size:16px !important;
+                 }
+                 .poiAdjust {
+                     margin-top:0 !important;
+                 }
+                .adjustTop {
+                    top:173px !important;
+                    padding-bottom:173px;
+                }
+               #moreinfo_mobile_directions, #moreinfo_mobile_back {
+                      min-width: 107px;
+               }
+               .poi_mobile_directions {
+                      display: inline-block;
+               }
+               .poi {
+                top: 0px !important;
+                max-height: none !important;
+                }
+                .wrapper {
+                    top: 0;
+                }
+                .poi {
+                    margin-top:173px;
+                }
+                #locator_search {
+                    margin-bottom: 13px;
+                }
+             } 
+            
+            @media (min-width: 802px){
+
+            .map{
+                width: calc(100% - 500px);
+                left: 500px;
+            }
+            }
+
+            #iconOverlay {
+                display:none;
+                position: absolute;
+                z-index: 99;
+                top: calc(50% - 39px);
+                left: calc(50% - -142px);
+            }
+
+            @media (max-width:800px) {
+                .content-list.poi-result li {
+                    width:100%;
+                }
+
+                #iconOverlay {
+                    visibility:hidden;
+                }
+                .country-drop{
+                    max-width: calc(100% - 100px);
+                }
+                .poi {
+                    max-height: 588px;
+                }
+                .close_text {
+                    right: calc(78% - 24px);
+                    width: 70px;
+                }
+            }
+            @media (max-width: 350px) and (min-width: 1px) {
+                .close_text {
+                    right: auto;
+                }
+                .store-email{display:none;}
+                .poi_mobile_directions {margin-top:29px;}
+                .more_info_header h1{
+                    font-size:16px;
+                }
+            }
+             .more_info_header h1{
+                font-size:20px;
+             }
+             .about-header11{
+                display:block;
+             }
+             .about-header10{
+                display:none;
+             }
+             .hide-header11{
+                display:none;
+             }
+             .hide-header10{
+                display:block;
+             }
+             #moreinfo_back {
+                 width: 92px;
+                top: 1px;
+                padding: 10px 0px;
+                float:left;
+            }
+            .remove403 {display:none !important;}
+            .reveal403 {display:block !important}
+
+            .sub_poi_wrapper_mobile_second {
+                height: auto;
+                width:100%;
+            }
+            .poi_box div {
+                max-width: 241px;
+                margin:7px 0;
+            }
+            #back_image {
+                 margin-left: 10px;
+            }
+            .poi{
+                max-height: 588px;
+                top: 155px;
+            }
+            #filters {
+                top: 195px;
+            }
+            #search_country{
+                font-family: futura-pt, sans-serif;
+                margin-top: 1px;
+            }
+
+            .hideShow, hideShow0 {
+                display:block;
+            }
+            .hideShow1 {
+                display:none !important;
+            }
+            .showHide, .showHide0 {
+                display:none !important;
+            }
+            .showHide1 {
+                display:block;
+                font-weight:bold;
+            }
+
+            .specialSection {
+                display:none;
+            }
+
+            .lobby-head {
+                font-weight: bold;
+                margin: 13px 0px 3px;
+                color:rgb(51, 51, 51);
+            }
+
+            #moreinfoDirections {
+                background: #000;
+                color: #fff;
+                border: #000;
+                margin: 15px 0 20px 20px;
+                padding:10px;
+                cursor:pointer;
+            }
+
+            @media (max-width: 350px) and (min-width: 1px)
+                .poi_box {
+                    margin-left: 75px !important;
+                }
+
+                @media (min-width:1px) and (max-width:801px) {
+
+                .moreInfo {
+                    top: 0 !important;
+                }
+
+                .wrapperCustom {
+                    top:0 !important;
+                    z-index: 99999;
+                    opacity: 1;
+                    background: #fff;
+                }
+        </style> 
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5283NZX"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div id="w2gi_wrapper">
+            <div data-w2gi="locator" class="box-wrapper">
+            <div id="iconOverlay">
+                    <img src="images/new/pin.png" style="width: 50px;" alt="Map Pin">
+                </div>
+                <div class="forms-poi-box">
+                    <div class="form-wrapper" >
+                        <div class="locator-wrapper" role="form">
+                            <form id="locator_search" role="search" autocomplete="off" >
+                                <h1 tabindex="0">Find a Calvin Klein Store</h1>
+                                <label for="search_input" style="display:block;margin: 1rem 0px 1rem 1rem;font-size: 17px;color: #000;">Enter City and State or Zip Code</label>
+                                <input id="search_input" type="text" class="search-box" name="addressline" onfocus="this.value=''" placeholder="Enter City and State or Zip Code"/>
+                                <button aria-label="Search" class="button-search ga_w2gi_loc" data-galoc="CalvinKlein - LocatorSearchButton" data-gaact="Click_to_SearchLocations">Find</button>
+                                <input style="position:absolute; left:-9999px;" type="submit" aria-label="Search" role="button" value="" name="search"/>
+                                 <span role="link" id="filter_button_mobile" onclick="open_filters_mobile();" alt="Open filters on mobile">Filter +</span>
+                                <span role="link" id="filter_button_up_mobile" onclick="close_filters_mobile();" alt="Close filters on mobile">Filter -</span>
+                                <label for="searchradius" style="position:absolute; left:-9999px;" aria-hidden="true">Search Radius</label>
+                                <select id="searchradius" style="display:none;" name="searchradius" aria-hidden="true">
+                                    <option value=""></option>
+                                    <!--<option value="15">15 miles</option>-->
+                                    <option value="50">50 miles</option>
+                                    <option value="150">150 miles</option>
+                                    <option value="250">200 miles</option>
+                                </select>
+                                <div id="filters">
+                                    <div id="filter_bar">
+                                        <div>Filters</div>
+                                    </div>
+                                    <div class="filter_div">
+                                         <img class="filter_unselected" src="images/new/retail_th.png" onclick="toggleFilter(event);" alt="First filter unselected">
+                                         <img class="filter_selected" src="images/new/retail_th.png" onclick="untoggleFilter(event);" alt="First filter selected">
+                                         <span style="cursor:pointer;top:3px;" onclick="toggleFilters(event);">Tommy Hilfiger Company Stores (Retail & Outlet)</span>
+                                         <img class ="check_image" src="images/new/filter_check.png" alt="First filter checkmark" style="right: 11px;">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox">Company</label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="company" id="show-stores-checkbox" class="filter_checkbox"/>
+                                    </div>
+                                    <div class="filter_div">
+                                         <img class="filter_unselected" src="images/new/retail_th.png" onclick="toggleFilter(event);" alt="First filter unselected">
+                                         <img class="filter_selected" src="images/new/retail_th.png" onclick="untoggleFilter(event);" alt="First filter selected">
+                                         <span style="cursor:pointer;" onclick="toggleFilters(event);">Pop-up Shops</span>
+                                         <img class ="check_image"src="images/new/filter_check.png" alt="First filter checkmark">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox"></label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="popup" id="show-stores-checkbox" class="filter_checkbox"/>
+                                    </div>
+                                    <div class="filter_div" style="display:none;"> 
+                                         <img class="filter_unselected" src="images/new/outlet_th.png" onclick="toggleFilter(event);" alt="Second filter unselected">
+                                         <img class="filter_selected" src="images/new/outlet_th.png" onclick="untoggleFilter(event);" alt="Second filter selected">
+                                         <span>Department Stores</span>
+                                         <img src="images/new/filter_check.png" alt="Second filter checkmark">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox1">department</label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="department" id="show-stores-checkbox1" class="filter_checkbox"/>
+                                    </div>
+                                    <div class="filter_div" style="display:none;">
+                                         <img class="filter_unselected" src="images/new/promotion_th.png" onclick="toggleFilter(event);" alt="Fourth filter unselected">
+                                         <img class="filter_selected" src="images/new/promotion_th.png" onclick="untoggleFilter(event);" alt="Third filter selected">
+                                         <span>Specialty Stores</span>
+                                         <img class ="check_image" src="images/new/filter_check.png" alt="Fourth filter checkmark">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox3">Specialty</label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="specialty" id="show-stores-checkbox3" class="filter_checkbox"/>
+                                    </div>
+                                    <div class="filter_div" style="display:none;">
+                                         <img class="filter_unselected" src="images/new/promotion_th.png" onclick="toggleFilter(event);" alt="Fourth filter unselected">
+                                         <img class="filter_selected" src="images/new/promotion_th.png" onclick="untoggleFilter(event);" alt="Third filter selected">
+                                         <span>TH Specialty Stores</span>
+                                         <img class ="check_image" src="images/new/filter_check.png" alt="Fourth filter checkmark">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox3">Specialty</label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="specialty" id="show-stores-checkbox3" class="filter_checkbox"/>
+                                    </div>
+                                    <div class="filter_div">
+                                         <img class="filter_unselected" src="images/new/factory.png" onclick="toggleFilter(event);"  alt="Third filter unselected">
+                                         <img class="filter_selected" src="images/new/factory.png" onclick="untoggleFilter(event);" alt="Third filter selected">
+                                         <span style="cursor:pointer;" onclick="toggleFilters(event);">Clearance Stores</span>
+                                         <img class ="check_image" src="images/new/filter_check.png" alt="Third filter checkmark">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox2">Clearance</label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="clearance" id="show-stores-checkbox2" class="filter_checkbox" />
+                                    </div>
+                                    
+                                    <span aria-label="Click here to apply filters" role="button">
+                                        <div id="apply_button" onclick="applyFilters();">APPLY FILTERS</div>
+                                        <div id="apply_button_mobile" onclick="applyFilters_mobile();">APPLY FILTERS</div>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="dd-form-wrapper" style="display:none"></div>
+                <div id="wrapper" class="wrapper">
+                    <h3 id="dummyDiv" class="mobileHidden" class="internal">
+                        <div id="dummyText" class="internal"></div>
+                        <div class="pinContainer">
+                            <img class="pinBlack" src= "images/icon-pin-black.png"/>
+                        </div>
+                        <div class="hamburgerContainer">
+                            <img class="hamburgerGrey" onclick="hideMap()" src="images/icon-hamburger-grey.png"/>
+                        </div>
+                    </h3>
+                    <div id="mapEl" class="map mobileInactive"></div>
+                    <div id="poiEl" class="poi" ></div>
+                    <div id="indicator"></div>
+                </div>
+                <div class="attribution">
+                    <span class="attribution">
+                        Mapping Locator Powered by <a href="http://www.brandify.com/" target="_new">Brandify </a>Copyright &copy; <script>document.write(new Date().getFullYear())</script>, All Rights Reserved.
+                    </span>
+                    
+                    <div id="navteqfooter" style="display:none">
+                        <script type="text/javascript">
+                            var d = new Date()
+                            document.write(" <img src=/w2gi/images/logo_navteq_large.gif alt='Navtech Logo'/> ")
+                            document.write(" &copy; Copyright ")
+                            document.write(d.getFullYear())
+                            document.write(" NAVTEQ Corp.  ")
+                        </script>
+                        <a href="http://www.where2getit.com/terms/terms.html" onClick="window.open(this.href,'_blank','width=988,height=600,scrollbars=yes,location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=yes');return false;">Use Subject to Terms and Conditions</a>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+                <div class="modal">
+                    <a href="#" class="closeBtn">Close</a>
+                    <p></p>
+                </div>
+                <div class="street-view-wrapper">
+                    <a class="gs" data-action="close">Close</a>
+                    <div id="streetViewCtn" class="street-view"></div>
+                </div>
+            </div>
+            <!-- Templates -->
+            <div class="templates">
+                <script id="locator_addressline" type="text/x-handlebars-template" aria-hidden="true">
+                    {{#if address1}}{{address1}}{{else}}{{#if addressline}}{{addressline}}{{/if}}{{ city }} {{ county }} {{ state }} {{postalcode}}{{/if}}
+                </script>
+                <script id="directions_addressline" type="text/x-handlebars-template">
+                    {{#if address1}}{{address1}} {{ city }} {{ state }} {{postalcode}} {{else}}{{#if addressline}}{{addressline}}{{/if}} {{ city }} {{ state }} {{postalcode}}{{/if}}
+                </script>
+                <script id="collection_multiple_address" type="text/x-handlebars-template">
+                    <h3>Please select your location</h3>
+                    <ul class="content-list address-suggestions">
+                        {{#each this}}
+                            <li data-id={{@index}}><strong>{{address1}} {{ city }} {{ county }}</strong>{{ state }} {{postalcode}}</li>
+                        {{/each}}
+                    </ul>
+                </script>
+                <!-- poi template start -->
+                <script id="collection_poi" type="text/x-handlebars-template"> 
+                    <h3 id="locationsDiv" tabindex="0" class="heavy"><div class="internal">{{count}} locations near <span id="userLocation" class="heavy">you</span></div>
+                        <div id="pinContainer">
+                            <img id="pinGrey" onclick="showMap();" class="ga_w2gi_loc" data-galoc="CalvinKlein - MapView" data-gaact="Click_to_MapView" src= "images/icon-pin-grey.png"/>
+                            <img id="pinBlack" class="mobileHidden ga_w2gi_loc" data-galoc="CalvinKlein - MapView" data-gaact="Click_to_MapView" src= "images/icon-pin-black.png"/>
+                        </div>
+                        <div id="hamburgerContainer">
+                            <img id="hamburgerBlack" class="ga_w2gi_loc" data-galoc="CalvinKlein - ListView" data-gaact="Click_to_ListView" src="images/icon-hamburger-black.png"/>
+                            <img id="hamburgerGrey" onclick="hideMap()"class="mobileHidden ga_w2gi_loc" data-galoc="CalvinKlein - ListView" data-gaact="Click_to_ListView" src="images/icon-hamburger-grey.png"/>
+                        </div>
+                    </h3>
+                    <ul class="content-list poi-result">
+                        {{#each pois}}
+                         <div class ="poi_wrapper">
+                            <li data-id={{@index}} data-uid={{uid}} class="poi-item" >
+                             <div class = "sub_poi_wrapper_mobile">
+                                <div class="sub_poi_wrapper_mobile_second">
+                                    <div class="icon_div">
+                                        <img src="images/ckpin.png" alt="Map Pin">
+                                        <span> {{collectionIndex}}</span> 
+                                         <div class = "close_text_mobile">
+                                            {{#if _distance}} {{_distance}} </br>{{_distanceuom}}s {{/if}}
+                                        </div>
+                                    </div>
+                                    <div class = "poi_box">
+                                        <div>
+                                            <div tabindex="0">{{{address1}}}<br/>{{{address2}}}<br/>{{city}}, {{state}} {{postalcode}}</div>
+                                            {{#if phone}}
+                                            <div tabindex="0" aria-label="Phone number" class="desktopPhone">
+                                                <a role="link" class=" ga_w2gi_loc" data-galoc="{{name}} {{{address1}}} - {{clientkey}}" data-gaact="Click_To_Call" aria-label="phone number" href="javascript:void(0);" onclick="window.parent.location = 'tel:{{phone}}';" >{{phone}}</a>
+                                            </div>
+                                             {{/if}}
+                                             <div tabindex="0" class="heavy black"><span class="dot"></span>Open today {{OPENTODAY}}</div>
+                                             <div class="linksDesktop">
+                                                <!--<a href="#" class="left heavy" data-action="more_info" onclick="hideSearchFormMobile();">Store Details</a>-->
+                                                <a href="https://stores.calvinklein.us/{{state2}}/{{city2}}/{{clientkey}}/" class="left heavy ga_w2gi_loc" data-galoc="{{name}} {{{address1}}} - {{clientkey}}" data-gaact="Click_to_Mobile_View_Store_Details">Store Details</a>
+
+                                                <a style="position: relative; right: 25px;" href="https://maps.apple.com?q=Calvin Klein, {{address1}} {{{address2}}},{{city}},{{state}}{{postalcode}}" class="right border_bottom_grey heavy ga_w2gi_loc" data-galoc="{{name}} {{{address1}}} - {{clientkey}}" data-gaact="Click_to_Mobile_GetDirections" href="">Directions</a>
+                                             </div>
+                                             <div class="grey clear">Preferred Loyalty Program Eligible</div>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                                <div class = "sub_poi_wrapper">
+                                    <div>
+                                        <div class="icon_div">
+                                            <img src="images/ckpin.png" alt="Map Pin">
+                                            <span> {{collectionIndex}}</span> 
+                                        </div>
+                                        <div class = "close_text">
+                                          {{#if _distance}} {{_distance}} </br>{{_distanceuom}}s {{/if}}
+                                        </div>
+                                    </div>
+                                    <div class = "poi_box">
+                                        <div tabindex="0" class="addressHeader heavy">{{name}}</div>
+                                        <div>
+                                            <div tabindex="0">{{{address1}}}<br/>{{{address2}}}<br/>{{city}}, {{state}} {{postalcode}}</div>
+                                            {{#if phone}}
+                                            <div tabindex="0" aria-label="Phone number" class="desktopPhone">{{phone}}</div>
+                                             {{/if}}
+                                             <div tabindex="0" class="heavy black"><span class="dot"></span>Open today {{OPENTODAY}}</div>
+                                             <div class="linksDesktop">
+                                                <a href="https://stores.calvinklein.us/{{state2}}/{{city2}}/{{clientkey}}/" class="left heavy ga_w2gi_loc" data-galoc="{{name}} {{{address1}}} - {{clientkey}}" data-gaact="Click_to_View_Store_Details">Store Details</a>
+                                                <a style="position: relative; right: 25px;" href="https://maps.apple.com?q=Calvin Klein, {{address1}} {{{address2}}},{{city}},{{state}}{{postalcode}}" class="right border_bottom_grey heavy ga_w2gi_loc" data-galoc="{{name}} {{{address1}}} - {{clientkey}}" data-gaact="Click_to_GetDirections" href="">Directions</a>
+                                             </div>
+                                             <div class="grey clear">Preferred Loyalty Program Eligible</div>
+                                        </div>
+                                        <p style="margin-top:10px;">
+                                            {{#if url}}
+                                                <span style="margin-left:0px; display:inline; margin-right:10px;">
+                                                    <a href="javascript: void(0);" onclick="window.open('{{url}}','website','status=yes,toolbar=yes,menubar=yes,location=yes,scrollbars=yes,resizable=yes');" class=" ga_w2gi_loc" data-galoc="{{name}} {{{address1}}} - {{clientkey}}" data-gaact="Click_to_View_Website">Website</a>
+                                                </span>{{/if}}
+                                            {{#if email}}
+                                                <span style="margin-left:0px; display:inline;" >
+                                                    <a href="javascript:void(0);" link="mailto:{{email}}" onclick="document.location = this.getAttribute('link')" class=" ga_w2gi_loc" data-galoc="{{name}} {{{address1}}} - {{clientkey}}" data-gaact="Click_to_Email">Email Us</a>
+                                                </span>{{/if}}
+                                        </p>
+                                        <!--<span style="display:none !important">
+                                            <span class="viewBubble" style="margin-top:10px;">
+                                                <a data-action="open_bubble">Drive it</a> - Distance: {{_distance}} miles
+                                            </span>
+                                            <span>
+                                            Send location to <a class="lightwindow" data-width="366" data-height="515" data-url="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&action=emaillocatorstart&template=emaillocatorstart&uid={{uid}}" title="Send to Email" href="" >Email</a>
+                                            <a class="lightwindow" data-width="700" data-height="500" data-url="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&action=smslocatorstart&template=smslocatorstart&uid={{uid}}" title="Send to Mobile" href="" >Mobile</a>
+                                            </span>
+                                            <span>
+                                            </span>
+                                            <span> <a data-initialtab="Hours" data-action="open_bubble">View Hours</a></span>
+                                        </span>-->
+                                    </div>
+                                </div>
+                                <!--<div class = "poi_mobile_directions" style="display:none" onclick="window.open('http://maps.apple.com?q={{brandname}} {{address1}} {{{address2}}},{{city}},{{state}}{{postalcode}}')"> GET DIRECTIONS</div>-->
+                            </li>
+                         </div>
+                        {{/each}}
+                    </ul>
+                    <div class="poi_paging_wrapper">
+                        <span class="poi_paging_prev"><i class="fa fa-arrow-left"></i><span>Previous</span></span>
+                        <span class="poi_paging_next"><span>Next</span><i class="fa fa-arrow-right"></i></span>
+                    </div>
+                </script>
+                <!-- poi template end -->
+                 <script id="collection_more_info" type="text/x-handlebars-template" data-slicesize="20">
+                    <ul class="content-list poi-result moreinfo_box">
+                        <li data-id={{index}} data-uid={{uid}} class="poi-item">
+                            <div id="moreinfoHeader">
+                                <h1>{{name}}</h1>
+                            </div>
+                            <div id="moreinfoAddress">
+                                {{address1}} <br/>
+                                {{city}}, {{state}} {{postalcode}} <br/>
+                            </div>
+                            <button onclick="window.open('https://maps.apple.com?q=Calvin Klein, {{address1}} {{{address2}}},{{city}},{{state}}{{postalcode}}');"id="moreinfoDirections">Get Directions</button>
+                             <div id="desktop_hours">
+                                <div style="display: inline;">
+                                    <span>Store Hours</span>
+                                    <div class="week_head">
+                                        <div class="weekinfo day{{MONCHECK}}">    
+                                            <div class="weekday">Monday:</div> 
+                                            <div class="weekhours">{{mon_hours_2}}</div>
+                                        </div>
+                                        <div class="weekinfo day{{TUECHECK}}">
+                                            <div class="weekday">Tuesday:</div> 
+                                            <div class="weekhours">{{tues_hours_2}}</div>
+                                        </div>
+                                        <div class="weekinfo day{{WEDCHECK}}">
+                                            <div class="weekday">Wednesday:</div> 
+                                            <div class="weekhours">{{wed_hours_2}}</div>
+                                        </div>
+                                        <div class="weekinfo day{{THRCHECK}}">
+                                            <div class="weekday">Thursday:</div> 
+                                            <div class="weekhours">{{thurs_hours_2}}</div>
+                                        </div>
+                                        <div class="weekinfo day{{FRICHECK}}">
+                                            <div class="weekday">Friday:</div>  
+                                            <div class="weekhours">{{fri_hours_2}}</div>
+                                        </div>
+                                        <div class="weekinfo day{{SATCHECK}}">
+                                            <div class="weekday">Saturday:</div>  
+                                            <div class="weekhours">{{sat_hours_2}}</div>
+                                        </div>
+                                        <div class="weekinfo day{{SUNCHECK}}" style="padding-bottom:10px;">
+                                            <div class="weekday">Sunday:</div>  
+                                            <div class="weekhours">{{sun_hours_2}}</div> 
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="moreinfoFooter" class="clear">
+                                <h2>About {{name}}</h2>
+                                <div>A clothing store for women and men, shop<br/> the latest arrivals in underwear, apparel,<br/> accessories and more.</div>
+                            </div>                            
+                            
+                        </li>
+                    </ul>
+                </script>
+                <!--  <a data-action="show_all" href="javascript:void(0);">Back</a> -->
+                
+                <!-- driving directions panel template end -->
+                <script id="collection_maneuvers" type="text/x-handlebars-template">
+                    <div role="link" id="search_return" onclick="window.location.reload()" style="visibility: hidden;">
+                        <i id="back_image" data-action="show_all" onclick="moreinfo_changeback();" class="far fa-arrow-alt-circle-left fa-2x"></i>
+                        <!--<img src="images/new/back_to_search.png" alt="Back Arrow">-->
+                        <span>Back to Search Results</span>
+                    </div>
+                    <div class = "dist_time"><span>Distance:</span> {{total_distance}} miles</div>      
+                    <div class = "dist_time"><span>Drive time:</span> {{total_time}} minutes drive</div>
+                    <p class="maneuver_start">
+                        From (A): {{#if fromAddress.address1}} {{fromAddress.address1}}, {{/if}} {{fromAddress.city}} {{fromAddress.state}} {{fromAddress.postalcode}}
+                    </p>
+                    <ul class="content-list maneuver-result">
+                        {{#each maneuverlist}}
+                            <li data-id={{@index}} data-uid={{uid}}>
+                               {{incIndex @index}} {{text}} {{distance}} {{distanceuom}}
+                            </li>
+                        {{/each}}
+                    </ul>
+                    <p class="maneuver_end">
+                        To (B): {{#if toAddress.address1}} {{toAddress.address1}}, {{/if}} {{toAddress.city}} {{toAddress.state}} {{toAddress.postalcode}} </strong>
+                    </p>
+                </script>
+                
+                <!-- driving directions panel template end -->
+                <!-- driving directions form template start -->
+                <script id="dd-template" type="text/x-handlebars-template">
+                
+                    <div role="link" id="search_return" onclick="window.location.reload()" style="margin-top: 12px;">
+                        <i id="back_image" data-action="show_all" onclick="moreinfo_changeback();" class="far fa-arrow-alt-circle-left fa-2x"></i>
+                        <!--<img src="images/new/back_to_search.png" alt="Back Arrow">-->
+                        <span>Back to Search Results</span>
+                    </div>
+                    <form id="driving_directions" autocomplete="off">
+                         <div class="icon-bar">
+                            <a href="#" onclick="window.open(ace.util.printUrl('locator-print.html'), 'print', 'toolbar=no, resizable=yes, scrollbars=yes, menubar=yes');"><i class="fa fa-print"></i>Print</a>
+                        </div>
+                        <label for="start_address">
+                            <span>From:</span><input type="text" id="start_address" class="search-box"  data-action="start" name="addressline" placeholder="Start address">
+                        </label>
+                        <label for="end_address">
+                            <span>To:</span><input type="text" id="end_address" class="search-box"  data-action="end" name="addressline" placeholder="End address">
+                        </label>
+                            <button role="link" class="button-search dd-button-search">GET DIRECTIONS</button>
+                              <input type="hidden" id="longitude" name="longitude" aria-hidden="true"/>
+                              <input type="hidden" id="latitude" name="latitude" aria-hidden="true"/>
+                              <input type="hidden" id="dest_longitude" name="dest_longitude" aria-hidden="true"/>
+                              <input type="hidden" id="dest_latitude" name="dest_latitude" aria-hidden="true"/>
+                    </form>
+                    <span style="padding: 1rem;">
+                    <a class="store-phone updateUID" style="display:none; margin-right: 1rem;font-weight: 700;" params="lightwindow_height=450,lightwindow_width=720,lightwindow_loading_animation=false" href="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&amp;action=smslocatorstart&amp;template=smsdirectionstart&amp;uid={{uid}}"
+                    title="Send to Mobile" onclick="window.open(this.href, 'Send to Mobile', 'width=720, height=450, toolbar=no, resizable=yes, scrollbars=yes, menubar=yes'); return false;">Send To Phone</a>
+                    
+                    <a class="store-email updateUID" style=" display:none; font-weight: 700;" params="lightwindow_height=450,lightwindow_width=720,lightwindow_loading_animation=false" href="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&amp;action=emaillocatorstart&amp;template=emaillocatorstart&amp;uid={{uid}}"
+                    title="Send to Email" onclick="window.open(this.href, 'Send to Email', 'width=720, height=450, toolbar=no, resizable=yes, scrollbars=yes, menubar=yes'); return false;">Send To Email</a>
+                    
+                    </span>
+                </script>
+                <!-- driving directions form template end -->
+                
+                <!-- icon template start  -->
+                <script id="default" type="text/x-handlebars-template">
+                    <div class="icon" data-bubbleid="bubble" data-width="33" data-height="40" data-offsetx="-16" data-offsety="-40" data-labeloffsetx="6" data-labeloffsety="15"  data-fontcolor="#ffffff" data-fontsize="24" data-display="true">
+                            <img class="alpha" src="images/ckpin.png" style="cursor:pointer;" alt="Map Pin"/>
+                    </div>
+                </script>
+                <script id="default2" type="text/x-handlebars-template">
+                    <div class="icon" data-bubbleid="bubble" data-width="33" data-height="40" data-offsetx="-16" data-offsety="-40" data-labeloffsetx="6" data-labeloffsety="15"  data-fontcolor="#ffffff" data-fontsize="24" data-display="true">
+                            <img class="alpha" src="images/ckpin.png" style="cursor:pointer;" alt="Map Pin"/>
+                    </div>
+                </script>
+                <!-- icon template end -->
+                 <!-- bubble template start -->
+                <script id="bubble" data-offsetx="10" data-offsety="0" 
+                    <tmpl_if name="is_wireless_device">data-width="200" data-height="216" data-margintop="100" data-marginbottom="0" data-marginleft="100" data-marginright="100" <tmpl_else>data-width="0" data-height="0" data-margintop="100" data-marginbottom="0" data-marginleft="100" data-marginright="100"</tmpl_if>
+                    type="text/x-handlebars-template">
+
+                    <ul class="tabs" style="display:none;">
+                        <li class="active" data-tab="tab1">Address</li>
+                    </ul>
+                    <div class="tab-content active" data-tab="tab1">
+                        <ul>
+                          <li>{{address1}}<li>
+                          <li>{{city}}, {{state}} {{postalcode}}<li>
+                        </ul>
+                        <a role="link" aria-label="phone number" href="javascript:void(0);" onclick="window.parent.location = 'tel:{{phone}}';" >
+                            <div>{{phone}}</div>
+                        </a>
+                        <div>Get Directions</div>
+                        <div class="dd-wrapper" style="display:none !important;">
+                            <form id="dd" autocomplete="off">
+                                <label for="input_bubble" style="position:absolute; left:-9999px;" aria-hidden="true">Enter Address</label>
+                                <input id="input_bubble" size="18" type="text" name="addressline" class="direction_address" value="{{addressline}}" />
+                                <label for="bubble_submit" style="position:absolute; left:-9999px;" aria-hidden="true">Submit Address</label>
+                                <input id="bubble_submit" type="submit" value="" class="search_arrow">
+                                <!-- <input size="19" type="text" name="addressline" style="display:none;" class="direction_address" value="{{address1}}, {{city}}, {{state}} {{postalcode}} " />
+                                <input type="submit" value="" class="search_arrow" style="display:none;"> -->
+                                <label for="bubble_country" style="position:absolute; left:-9999px;" aria-hidden="true">Country</label>
+                                <select id="bubble_country" name="country" class="country_selection" style="display:none">
+                                    <option value="">Select a country</option>
+                                     {{#each options}}
+                                    <option value="{{value}}" {{#if selected}}selected="selected"{{/if}}>{{text}}</option>
+                                    {{/each}}
+                                </select>
+                                <input type="submit" value="Go" style="display:none;" >
+                            </form>
+                        </div>
+                    </div>
+                </script>
+                <!-- bubble template end -->
+                <!-- center marker template start -->
+                <script id="center_marker" type="text/x-handlebars-template">
+                    <div class="icon" data-bubbleid="bubble" data-width="30" data-height="28"  data-offsetx="-15" data-offsety="-14" >
+                        <img class="alpha" src="https://hosted.where2getit.com/w2gi/images/zoombar/blank.gif" alt="Center Star" />
+                    </div>
+                </script>
+                <!-- center marker template end -->
+                <!-- dd end markers template start  -->
+                <script id="ddstarticon" type="text/x-handlebars-template">
+                    <div  class="end_icon" data-height="38" data-width="27" data-offsetx="-13" data-offsety="-38">
+                       <img class="alpha" src="images/new/ddstartpin-new.png" alt="Start Icon"/>
+                    </div>
+                </script>
+                <script id="ddendicon" type="text/x-handlebars-template">
+                    <div class="end_icon" data-height="38" data-width="27" data-offsetx="-13" data-offsety="-38">
+                        <img class="alpha" src="images/new/ddendpin-new.png" alt="End Icon"/>
+                    </div>
+                </script>
+                <!-- dd end markers template start  -->
+                <script id="panel_error_message" type="text/x-handlebars-template">
+                    <div id="error_message"><span class="locerror">{{error}}</span></div>
+                </script>
+            </div>
+        </div> <!-- end of w2gi wrapper -->
+        <script> 
+            var anchorIn = document.createElement('a');
+            anchorIn.setAttribute('href', '#');
+            anchorIn.setAttribute('title', 'Zoom In');
+
+            var anchorOut = document.createElement('a');
+            anchorOut.setAttribute('href', '#');
+            anchorOut.setAttribute('title', 'Zoom Out');
+                
+        </script>
+        <script>
+            function enterCheck(e) {
+                if (13 == e.keyCode) {
+                var target = event.target;
+                target.click();
+                }
+            }
+
+            function hideSearchForm() {
+                var poiEl = document.getElementById('poiEl');
+                poiEl.classList.add("moreInfo");
+            }
+
+            function hideSearchFormMobile() {
+                var poiEl = document.getElementById('poiEl');
+                var mapEl = document.getElementById('mapEl');
+                poiEl.classList.add("moreInfo");
+                var wrapperEl = document.getElementById('wrapper');
+                wrapperEl.classList.add("wrapperCustom");
+                mapEl.classList.remove('mobileInactive');
+                mapEl.style.order="1";
+            }
+
+            function revealDummyDiv() {
+                var locationsDiv = document.getElementById('locationsDiv');
+                var dummyDiv = document.getElementById('dummyDiv');
+                var dummyText = document.getElementById('dummyText');
+                dummyText.textContent = locationsDiv.textContent;
+                dummyDiv.classList.remove('mobileHidden');
+                locationsDiv.classList.add('mobileHidden');
+            }
+
+            function hideDummyDiv() {
+                var locationsDiv = document.getElementById('locationsDiv');
+                var dummyDiv = document.getElementById('dummyDiv');
+                dummyDiv.classList.add('mobileHidden');
+                locationsDiv.classList.remove('mobileHidden');
+            }
+
+            function showMap() {
+                revealDummyDiv();
+                var mapEl = document.getElementById('mapEl');
+                mapEl.classList.remove('mobileInactive');
+
+                var poiEl = document.getElementById('poiEl');
+                poiEl.classList.add('poiAdjust');
+
+                var hamburgerBlack = document.getElementById('hamburgerBlack');
+                var hamburgerGrey = document.getElementById('hamburgerGrey');
+                var pinGrey = document.getElementById('pinGrey');
+                var pinBlack = document.getElementById('pinBlack');
+
+                hamburgerBlack.classList.add('mobileHidden');
+                hamburgerGrey.classList.remove('mobileHidden');
+                pinGrey.classList.add('mobileHidden');
+                pinBlack.classList.remove('mobileHidden');
+
+                var wrapperEl = document.getElementById('wrapper');
+                wrapperEl.classList.add('adjustTop');
+                
+                var w2giHeight =  $('#w2gi_wrapper').height();
+                console.log(w2giHeight);
+                var newHeight = w2giHeight + 300;
+                console.log(newHeight);
+                var numChange = parseInt(newHeight);
+                console.log(numChange);
+
+                setTimeout(function(){
+                    parent.postMessage("w2gi:iframeHeightUpdated" + "//" + numChange + "//" + $('#w2gi_wrapper').width(),"*");
+                 }, 100);
+
+
+            }
+
+            function hideMap() {
+                hideDummyDiv();
+                var mapEl = document.getElementById('mapEl');
+                mapEl.classList.add('mobileInactive');
+
+                var poiEl = document.getElementById('poiEl');
+                poiEl.classList.remove('poiAdjust');
+
+                var hamburgerBlack = document.getElementById('hamburgerBlack');
+                var hamburgerGrey = document.getElementById('hamburgerGrey');
+                var pinGrey = document.getElementById('pinGrey');
+                var pinBlack = document.getElementById('pinBlack');
+
+                hamburgerBlack.classList.remove('mobileHidden');
+                hamburgerGrey.classList.add('mobileHidden');
+                pinGrey.classList.remove('mobileHidden');
+                pinBlack.classList.add('mobileHidden');
+
+                var wrapperEl = document.getElementById('wrapper');
+                wrapperEl.classList.remove('adjustTop');
+                parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+            }
+        </script>
+</body>
+
+</html>

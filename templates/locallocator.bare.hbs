@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+		<meta name='format-detection' content='telephone=no' />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="canonical" href="{{{cityindex_url_lc}}}{{{clientkey}}}/" />
+
+		<title>locations in {{{city_pc}}}, {{{state_longname_pc}}} | {{{name}}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="locations in {{{city_pc}}}, {{{state_longname_pc}}}." />
+
+		<!--
+		Open Graph Tag IMPORTANT NOTE!
+		Use only one of the sets below.
+		Delete the other one not being used.
+		-->
+		<!-- Non-Restaurant Set -->
+		<meta property="fb:app_id" content="[client app_id]" />
+		<meta property="og:type" content="business.business" />
+		<meta property="og:url" content="{{{cityindex_url}}}{{{clientkey}}}" />
+		<meta property="og:title" content="{{{name}}}" />
+		<meta property="og:description" content="locations in {{{city_pc}}}, {{{state_longname_pc}}}." />
+		<meta property="og:image" content="" />
+		<meta property="business:contact_data:street_address" content="{{{address1_pc}}}" />
+		<meta property="business:contact_data:locality" content="{{{city_pc}}}" />
+		<meta property="business:contact_data:region" content="{{{state}}}" />
+		<meta property="business:contact_data:postal_code" content="{{{postalcode}}}" />
+		<meta property="business:contact_data:country_name" content="{{{country}}}" />
+		<meta property="business:contact_data:phone_number" content="{{{phone}}}" />
+		<meta property="business:contact_data:website" content="{{{cityindex_url}}}{{{clientkey}}}" />
+		<meta property="place:location:latitude" content="{{{latitude}}}" />
+		<meta property="place:location:longitude" content="{{{longitude}}}" />
+
+		<!-- Restaurant Set -->
+		<!-- <meta property="fb:app_id" content="[client app_id]" />
+		<meta property="og:type" content="restaurant.restaurant" />
+		<meta property="og:url" content="{{{cityindex_url}}}{{{clientkey}}}" />
+		<meta property="og:title" content="{{{name}}}" />
+		<meta property="og:description" content="[use meta description]" />
+		<meta property="og:image" content="" />
+		<meta property="restaurant:contact_info:street_address" content="{{{address1_pc}}}" />
+		<meta property="restaurant:contact_info:locality" content="{{{city_pc}}}" />
+		<meta property="restaurant:contact_info:region" content="{{{state}}}" />
+		<meta property="restaurant:contact_info:postal_code" content="{{{postalcode}}}" />
+		<meta property="restaurant:contact_info:country_name" content="{{{country}}}" />
+		<meta property="restaurant:contact_info:phone_number" content="{{{phone}}}" />
+		<meta property="restaurant:contact_info:website" content="{{{cityindex_url}}}{{{clientkey}}}" />
+		<meta property="place:location:latitude" content="{{{latitude}}}" />
+		<meta property="place:location:longitude" content="{{{longitude}}}" />
+		-->
+
+		<link type="text/css" href="http://static.where2getit.com/w2gi/css/style.css" rel="stylesheet" media="all"/>
+		
+		<link rel="stylesheet" type="text/css" href="http://hosted.where2getit.com/calvinklein/css/base-responsive.local.css">
+
+		<script type="text/javascript">
+            document.observe = document.fire = function () {
+            };
+		</script>		
+		
+		
+		<script type="application/ld+json">
+	    {
+	      "@context": "http://schema.org",
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [{
+	        "@type": "ListItem",
+	        "position": 1,
+	        "item": {
+	          "@id": "{{{topindex_url_lc}}}",
+	          "name": "Index"
+	        }
+	      },{
+	        "@type": "ListItem",
+	        "position": 2,
+	        "item": {
+	          "@id": "{{{stateindex_url_lc}}}",
+	          "name": "{{{state}}}"
+	        }
+	      },{
+	        "@type": "ListItem",
+	        "position": 3,
+	        "item": {
+	          "@id": "{{{cityindex_url_lc}}}",
+	          "name": "{{{city}}}"
+	        }
+	      }]
+	    }
+	    </script>
+    
+    
+    
+		<script type="application/ld+json">
+		{
+		  "@context":"http://schema.org",
+		  "@type":"LocalBusiness",
+		  "@id":"{{{clientkey}}}",
+		  "name": "{{{NAME}}}",
+		  "address":{
+		    "@type":"PostalAddress",
+		    "streetAddress":"{{{address1}}}",
+		    "addressLocality":"{{{city}}}",
+		    "addressRegion":"{{{state}}}",
+		    "postalCode":"{{{postalcode}}}",
+		    "addressCountry":"{{{country}}}"
+		  },
+		"containedIn":"Mall/Shopping Center Column Header", //if applied, use the tmpl_var to retrieve the database value 
+		"geo":{
+		    "@type":"GeoCoordinates",
+		    "latitude":{{{latitude}}},
+		    "longitude":{{{longitude}}}
+		  },
+		"branchOf": {
+		    "name":"Brand Name",
+		    "url": "http://www.rootdomain.com/"
+		  },
+		 
+		 /* please check the wiki doc to see how to create the aveRating object as used below in order to pull the ratingValue and ratingcount on the page
+		    "aggregateRating": {
+            "@type": "AggregateRating",
+		<W2GI name="ReviewRatings" options="contentname=avgRating,graphsource=brandify-google,elapsed=1000"></W2GI>
+          },
+		  
+		  */
+		  
+		 "url":"{{{cityindex_url}}}{{{clientkey}}}",
+		  "telephone":"{{{phone}}}",
+		  "logo" : "http://www.example.com/logo", 
+		  "image":"http://www.example.com/LocationImageURL", //if applied, use the tmpl_var to retrieve the database value
+		  "openingHoursSpecification":[  // if the location file does not have the hours separated into open/close for each day, remove the below section
+		    {
+		      "@type":"OpeningHoursSpecification",
+		      "dayOfWeek":[
+		        "Monday"
+		      ],
+		      "opens":"{{{mon_o}}}",
+		      "closes":"{{{mon_c}}}"
+		    },
+		    {
+		      "@type":"OpeningHoursSpecification",
+		      "dayOfWeek":[
+		        "Tuesday"
+		      ],
+		      "opens":"{{{tue_o}}}",
+		      "closes":"{{{tue_c}}}"
+		    },
+		    {
+		      "@type":"OpeningHoursSpecification",
+		      "dayOfWeek":[
+		        "Wednesday"
+		      ],
+		      "opens":"{{{wed_o}}}",
+		      "closes":"{{{wed_c}}}"
+		    },
+		    {
+		      "@type":"OpeningHoursSpecification",
+		      "dayOfWeek":[
+		        "Thursday"
+		      ],
+		      "opens":"{{{thu_o}}}",
+		      "closes":"{{{thu_c}}}"
+		    },
+		        {
+		      "@type":"OpeningHoursSpecification",
+		      "dayOfWeek":[
+		        "Friday"
+		      ],
+		      "opens":"{{{fri_o}}}",
+		      "closes":"{{{fri_c}}}"
+		    },    {
+		      "@type":"OpeningHoursSpecification",
+		      "dayOfWeek":[
+		        "Saturday"
+		      ],
+		      "opens":"{{{sat_o}}}",
+		      "closes":"{{{sat_c}}}"
+		    },
+		        {
+		      "@type":"OpeningHoursSpecification",
+		      "dayOfWeek":[
+		        "Sunday"
+		      ],
+		      "opens":"{{{sun_o}}}",
+		      "closes":"{{{sun_c}}}"
+		    }
+		  ]
+		  //"menu":"http://www.example.com/menu", //if applied, use the tmpl_var to retrieve the database value
+		  //"acceptsReservations":"True" //if applied, use the tmpl_var to retrieve the database value
+		}
+		</script>		
+		
+
+		<script type="text/javascript" src="/w2gi/javascript/backbone/bb/lib/jquery.js"></script>
+		<script>
+            var W2GI = {
+                collection : {},
+                config : {
+                    appkey : '{{{appkey}}}',
+                    pageObserve : ['linktrack'],
+                    autoStart : true,
+                    locator : {
+                        cgeo : false,
+                        theme : null,
+                        cdirections : false,
+                        formdata : {
+                            geoip : true,
+                            dataview : 'store_default',
+                            limit : 250,
+                            geolocs : {
+                                geoloc : [{
+                                    addressline : '',
+                                    country : '',
+                                    latitude : '',
+                                    longitude : ''
+                                }]
+                            },
+                            searchradius : '20|50|75|100|500'
+                        },
+                        drivingdirections : {
+                            disableDynamicRoutes : false,
+                            formdata : {
+                                dataview : 'store_default',
+                                geolocs : {
+                                    geoloc : [{
+                                        address1 : '',
+                                        city : '',
+                                        state : '',
+                                        province : '',
+                                        postalcode : '',
+                                        addressline : '',
+                                        country : '',
+                                        latitude : '',
+                                        longitude : ''
+                                    }]
+                                }
+                            }
+                        },
+                        imgPath : '/w2gi/images/zoombar/',
+                        controls : [{
+                            name : 'panZoom', // use panZoomBar if needs the full
+                            // bar
+                            options : {
+                                zoomWheelEnabled : false
+                            }
+                        }],
+                        //noZoomOnPan: true,
+                        //zoom: 15,
+                        dynamicSearch : false,
+                        routeStyle : {
+                            strokeWidth : 8,
+                            strokeOpacity : 0.5,
+                            strokeColor : '#0000FF'
+                        },
+                       sources : [{
+							name : 'SlippyMap W2GI',
+							imageurl : '//st1.slippymap.com/tiles, //st2.slippymap.com/tiles',
+							options : {
+								map : 'smap-01'
+							}
+						}, {
+							name : 'SlippyMap Navteq',
+							imageurl : '//st1.slippymap.com/tiles, //st2.slippymap.com/tiles',
+							options : {
+								map : 'smap-02'
+							}
+						}]
+
+                    }
+                }
+            };
+            W2GI.collection.poi = [
+            {{#checkIf pois}}
+            {{#each pois}} {
+                poinum : '{{poinum}}',
+                icon : '{{icon}}',
+                name : '{{name}}',
+                address1 : '{{address1}}',
+                address2 : '{{address2}}',
+                city : '{{city}}',
+                state : '{{state}}',
+                province : '{{province}}',
+                postalcode : '{{postalcode}}',
+                country : '{{country}}',
+                latitude : '{{latitude}}',
+                longitude : '{{longitude}}',
+                phone : '{{phone}}',
+                mon_sat : '{{mon_sat}}',
+                sun : '{{sun}}',
+                monfrihours : '{{monfrihours}}',
+                sathours : '{{sathours}}',
+                sunhour : '{{sunhour}}',
+                specialhours : '{{{specialhours}}}',
+                showshour : '{{showshour}}',
+                clientkey : '{{clientkey}}',
+                uid : {{uid}},
+                main_loc : '{{main_loc}}',
+                loc_url : '{{loc_url}}'
+            } {{#checkUnless @last}},{{/checkUnless}}{{/each}}
+            {{else}}
+            {
+            poinum : '{{poinum}}',
+            icon : '{{icon}}',
+            name : '{{name}}',
+            address1 : '{{address1}}',
+            address2 : '{{address2}}',
+            city : '{{city}}',
+            state : '{{state}}',
+            province : '{{province}}',
+            postalcode : '{{postalcode}}',
+            country : '{{country}}',
+            latitude : '{{latitude}}',
+            longitude : '{{longitude}}',
+            phone : '{{phone}}',
+            mon_sat : '{{mon_sat}}',
+            sun : '{{sun}}',
+            monfrihours : '{{monfrihours}}',
+            sathours : '{{sathours}}',
+            sunhour : '{{sunhour}}',
+            specialhours : '{{{specialhours}}}',
+            showshour : '{{showshour}}',
+            clientkey : '{{clientkey}}',
+            uid : '{{uid}}',
+            main_loc : '{{main_loc}}',
+            loc_url : '{{loc_url}}'
+            }
+            {{/checkIf}}
+            ]
+
+		</script>
+		<script data-main="/w2gi/javascript/backbone/bb/dist/bones.min" src="/w2gi/javascript/backbone/bb/lib/require.js"></script>
+		<script type="text/javascript">
+            //document.observe('w2gi:bubbleOpen', function() {
+            jQuery(document).on("w2gi:locatorloaded", function () {
+                //console.log("loaded");
+
+                $('#btn-external').on('click', function (event, element) {
+                    
+                    $('li.poi-item').first().find('.open_bubble')[0].click();
+                })
+
+                ace.util.Event.on("popup:loaded", function () {
+                    $('#bubble_hours').html($('#all_hours_table').html());
+                    $("#map form.bubble_form_2").on("submit", function (evt) {
+                        evt.preventDefault();
+                    });
+                    //$('#map .bubble_form_2 .bubble_input')[0].focus();
+
+                    $('#map .bubble_form_2 .bubble_go2').on("click", function (event) {
+                        generate_directions($('#map .bubble_form_2 .bubble_input').val(), $('#map .bubble_form_2 .bubble_endaddress').val());
+                    });
+
+                });
+            });
+
+            function generate_directions (startaddress, endaddress) {
+
+                endaddress = endaddress.replace("#", "poundsign");
+
+                if (bubbleValidate(startaddress)) {
+                    $('#directions_url').data('url', '' + startaddress + '&addressline=' + '{{{latitude}}},{{{longitude}}}' + '&addresslineDisplay=' + endaddress);
+                    ace.util.alertExternal($('#directions_url'));
+                    //$('#directions_url').click();
+                    //performClick($('#directions_url'));
+                }
+            }
+
+            function bubbleValidate (bubbleInput) {
+                if (bubbleInput.length > 0 && bubbleInput.length < 5 && !isNaN(bubbleInput)) {
+                    ace.util.alert("Please enter a valid ZIP code.");
+                    return false;
+                }
+
+                if (bubbleInput.length == 0) {
+                    ace.util.alert("Please enter a starting address.");
+                    return false;
+                }
+
+                return true;
+            }
+
+            function performClick (node) {
+                if ((navigator.userAgent.match(/Safari/i))) {
+                    var evObj = document.createEvent('MouseEvents');
+                    evObj.initMouseEvent('click', true, true, window);
+                    node.dispatchEvent(evObj);
+                } else {
+                    node.click();
+                }
+            }
+
+		</script>
+
+		<style>
+			.hidefirst0 {
+				display: none !important;
+			}
+			.hideit {
+				display: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="templates" style="display: none;">
+			<script id="locator_addressline" type="text/x-handlebars-template">
+				^((#if address1^))^((address1^))^((else^))^((#if addressline^))^((addressline^))^((/if^))^(( city ^)) ^(( county ^)) ^(( state ^)) ^((postalcode^))^((/if^))
+			</script>
+		   	<script id="directions_addressline" type="text/x-handlebars-template">
+                ^((#if address1^))^((address1^)) ^(( city ^)) ^(( state ^)) ^((postalcode^)) ^((else^)) ^((#if addressline^))^((addressline^))^((/if^)) ^(( city ^)) ^(( state ^)) ^((postalcode^))^((/if^))
+            </script>
+			<script id="collection_multiple_address" type="text/x-handlebars-template">
+				<h3>Please select your location</h3>
+				<ul class="content-list address-suggestions">
+				^((#each this^))
+				<li data-id=^((@index^))><strong>^((address1^)) ^(( city ^)) ^(( county ^))</strong>^(( state ^)) ^((postalcode^))</li>
+				^((/each^))
+				</ul>
+			</script>
+
+			<!-- icon template start  -->
+			<script id="default" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="30" data-height="27" data-offsetx="-15" data-offsety="-27">
+				<img class="alpha" src="http://hosted.where2getit.com/w2gi/images/icons/pin1.png" alt="icon" />
+				<div action="open_bubble">
+				^((poinum^))
+				</div>
+				</div>
+			</script>
+			<script id="main_icon" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble"  data-width="30" data-height="30" data-offsetx="-15" data-offsety="-30" data-labeloffsetx="-1" data-labeloffsety="15" data-fontcolor="#ffffff" data-fontsize="10" data-fontweight="bold" data-display="true">
+				<img class="alpha" src="http://hosted.where2getit.com/w2gi/images/icons/pin1.png" alt="icon" />
+				<div action="open_bubble">
+				^((poinum^))
+				</div>
+				</div>
+			</script>
+			<script id="other_icon" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="33" data-height="40" data-offsetx="-17" data-offsety="-40" data-labeloffsetx="-1" data-labeloffsety="28" data-fontcolor="#ffffff" data-fontsize="10" data-fontweight="bold" data-display="true">
+				<img class="alpha" src="http://hosted.where2getit.com/w2gi/images/icons/gray-pin-shadow.png" alt="icon" />
+				<div action="open_bubble">
+				^((poinum^))
+				</div>
+				</div>
+			</script>
+			<script id="center_marker" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="30" data-height="28"  data-offsetx="-11" data-offsety="-33">
+				<img class="alpha" alt="redstar" src="http://hosted.where2getit.com/w2gi/images/zoombar/blank.gif"/>
+				</div>
+			</script>
+			<script id="ddstarticon" type="text/x-handlebars-template">
+				<div class="end_icon" data-width="27" data-height="38" data-offsetx="-16" data-offsety="-28">
+				<img class="alpha" alt="start" src="http://static.where2getit.com/w2gi/images/icons/ddstartpin.png"/>
+				</div>
+			</script>
+			<script id="ddendicon" type="text/x-handlebars-template">
+				<div class="end_icon" data-width="27" data-height="38" data-offsetx="-16" data-offsety="-28">
+				<img class="alpha" alt="end" src="http://static.where2getit.com/w2gi/images/icons/ddendpin.png"/>
+				</div>
+			</script>
+			<!-- icon template end -->
+
+			<!-- bubble template start -->
+			<script id="bubble" data-offsetx="15" data-offsety="-18" {{#checkIf is_wireless_device}}data-width="1" data-height="1"{{else}}data-width="220" data-height="180" {{/checkIf}} type="text/x-handlebars-template">
+         
+         		<ul class="tabs" style="display:none;">
+				<li class="active" data-tab="tab1">Address</li>
+				<li data-tab="tab2">Hours</li>
+				<li data-tab="tab3">Amenities</li>
+				</ul>
+				<div class="tab-content active" data-tab="tab1">
+				<b>^((name^))</b>
+				<ul>
+				<li>^((address1^))</li>
+				<li>^((city^)), ^((state^)) ^((postalcode^))</li>
+				</ul>
+
+				<div class="dd-wrapper">
+				<div class="origin-select">
+				Directions:&nbsp; <a href="#" data-action="to" class="">To</a> | <a href="#" data-action="from">From</a> Here
+				</div>
+				<form id="dd" autocomplete="off" style="margin-top:5px;">
+				<span>From:</span> <br/>
+				<input size="19" type="text" name="addressline" value="^((addressline^))" style="width: 130px;"/>
+				<select id="bubble_country" name="country" class="country_selection" style="display:none;">
+				<option value="^((country^))">^((country^))</option>
+				</select>
+				<input type="submit" value="Go" style="width:30px;"/>
+				</form>
+				</div>
+				</div>
+				<div class="tab-content" data-tab="tab2">tab2</div>
+				<div class="tab-content" data-tab="tab3">
+				<div class="gboxDiv">
+				<a class="gs" data-action="show">Street View</a>
+				</div>
+				</div>
+			</script>
+			<!-- bubble template end -->
+
+			<!-- POI table template start -->
+			<script id="collection_poi" type="text/x-handlebars-template">
+
+				<ul class="content-list poi-result"> 
+
+				^((#each pois^))
+				<li data-id=^((@index^)) data-uid=^((uid^)) class="poi-item hidefirst^((@index^))" style="float: left; margin-right:10px; margin-bottom:10px;">
+
+				<div class="nearby_icon">
+				<span class="poinum"> 
+				<div>
+				<a data-action="open_bubble" style="cursor:pointer;color:#fff;">^((incIndex @index^))</a>
+				</div>
+				</span>
+				</div>
+
+				<div class="nearby_details">  
+				<div>
+				<span style="font-weight:bold;">^((name^))</span>
+				<a data-action="open_bubble" data-linktrack="view-on-map-click" class="open_bubble">View on map </a>
+
+				</div>
+
+				<div class="address1">
+				^((address1^))
+				</div>
+
+				<div class="address2">
+				^((city^)), ^((state^))^((province^)) ^((postalcode^))
+				<br />
+				Phone: ^((phone^))
+				</div>
+
+				</div>
+
+				</li>
+
+				^((/each^))
+				</ul>
+			</script>
+			<!-- POI table template end -->
+
+			<!-- More Info table template start -->
+			<script id="collection_more_info" type="text/x-handlebars-template">
+				<table odd_row_class="odd" even_row_class="even" active_row_class="active" slice_size="5">
+				<thead>
+				<tr>
+				<td></td>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+				<td></td>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr recnum="#{POINUM}">
+				<td width="33px" valign="top">
+				<div templateid="#{ICON}"></div>
+				</td>
+				<td width="310px">
+				<a action="open_bubble" class="store_name" recnum="#{POINUM}" href="javascript:void(0);">#{NAME}</a>
+				<br/>
+				#{ADDRESS1}
+				<br/>
+				#{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}
+				<br/>
+				<strong>#{PHONE}</strong>
+				</td>
+				</tr>
+				<tr>
+				<td colspan="2">
+				<a action="show_all" recnum="#{POINUM}" href="javascript:void(0);">Show All Locations</a>
+				</td>
+				</tr>
+				</tbody>
+				</table>
+			</script>
+			<!-- More Info table template end -->
+
+			<!-- Ambiguous address table template start -->
+			<!--script id="collection_multiple_address" type="text/x-handlebars-template">
+				<table odd_row_class="odd" even_row_class="even" active_row_class="active">
+				<thead>
+				<tr>
+				<th>Did you mean:</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+				<td></td>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr recnum="#{POINUM}">
+				<td width="250px">
+				<a action="search_address" recnum="#{POINUM}" href="javascript:void(0);">#{ADDRESS1} #{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}</a>
+				<br/>
+				#{COUNTY}
+				</td>
+				</tr>
+				</tbody>
+				</table>
+			</script-->
+			<!-- Ambiguous address table template end -->
+
+			<!-- driving directions panel template end -->
+			<script id="collection_maneuvers" type="text/x-handlebars-template">
+				<p>
+				<a class="search_again" href="javascript:void(0);" target="_parent" onclick="window.location.reload()">Back to Store Details</a>
+				</p>
+
+				<h3>Driving Directions</h3>
+				<p><strong>Distance: ^((total_distance^)) miles.         Drive time: ^((total_time^)) minutes</strong></p>
+				<p class="maneuver_start">
+				From (A): <strong>^((#if fromAddress.address1^))^((fromAddress.address1^))^((else^))^((#if fromAddress.addressline^))^((fromAddress.addressline^))^((/if^)) ^(( fromAddress.city ^)) ^(( fromAddress.county ^)) ^(( fromAddress.state ^)) ^((fromAddress.postalcode^))^((/if^)) </strong>
+				</p>
+				<ul class="content-list maneuver-result">
+				^((#each maneuverlist^))
+				<li data-id=^((@index^)) data-uid=^((uid^))>
+				<strong>^((incIndex @index^)) </strong>^((text^)) ^((distance^)) ^((distanceuom^))
+				</li>
+				^((/each^))
+				</ul>
+				<p class="maneuver_end">
+				To (B): <strong>^((#if toAddress.address1^))^((toAddress.address1^))^((else^))^((#if toAddress.addressline^))^((toAddress.addressline^))^((/if^)) ^(( toAddress.city ^)) ^(( toAddress.county ^)) ^(( toAddress.state ^)) ^((toAddress.postalcode^))^((/if^)) </strong>
+				</p>
+
+			</script>
+
+			<!-- Maneuvers table template end -->
+			<div id="lightwindow_cache" params="lightwindow_width=400, lightwindow_height=300, lightwindow_loading_animation=false">
+				<span id="lightwindow_cache_data" style="line-height: auto;
+				overflow: visible,
+				position: relative;float: left;width: 100%;"></span>
+			</div>
+		</div>
+		<!-- End Locator Map/POI List Templates -->
+
+		<div data-w2gi="locator" id="w2gilocalmain" >
+
+			<div id="form">
+
+				<form id="locator_search" autocomplete="off"></form>
+				<form id="driving_directions" autocomplete="off" style="display: none;">
+
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									From:
+								</td>
+								<td>
+									<input class="addressentry" id="startaddress" type="text" size="28" name="addressline" value="Start address" onClick="clear_search_directions_box(this);"/>
+									To:
+								</td>
+								<td>
+									<input class="addressentry" id="endaddress" type="text" size="28" name="addressline" value="End address" onClick="clear_search_directions_box(this);"/>
+									<input id="driving_directions_button" type="submit" value="Get Directions" name="driving_directions"/>
+								</td>
+								<td>
+									<a class="search_toggle" href="javascript:void(0);" style="font-size:12px;">Search Again</a>
+								</td>
+							</tr>
+
+							<!-- <tr><td colspan="3" style="text-align:right;"></td></tr> -->
+						</tbody>
+					</table>
+				</form>
+			</div>
+			<!-- end of form -->
+
+			<!-- Start Breadcrumb -->
+			<div class="breadcrumb">
+				<a data-linktrack="Top index page" href="{{{topindex_url_lc}}}" >Select a Location</a> &gt; <a data-linktrack="State index page - {{{state_longname_pc}}}" href="{{{stateindex_url_lc}}}" >{{{state_longname_pc}}} ({{{state}}}{{{province}}})</a> &gt; <a data-linktrack="City index page - {{{city_pc}}}" href="{{{cityindex_url_lc}}}" >{{{city_pc}}}</a>
+				<!--{{{city}}}-->
+			</div>
+			<!-- End Breadcrumb -->
+
+			<!-- main location info -->
+			<div class="addressBlock">
+
+				<div class="main_icon">
+					1
+				</div>
+
+				<div style="float:left; margin-bottom:10px;">
+				
+					<h1 style="margin-top:0px;"><span style="text-transform:capitalize;">{{{lc name}}}</span></h1>
+					
+					{{{address1}}}
+					<br/>
+					{{{city_pc}}}, {{{state}}}{{{postalcode}}}
+
+
+					{{#checkIf phone '!=' ''}}
+					
+					<a href="tel:{{{phone}}}"> <span>{{{phone}}}</span> </a>
+					
+					{{/checkIf}}
+
+					{{#checkIf email '!=' ''}}
+					<div>
+						<a href="mailto:{{{email}}}" data-linktrack="email-click"> <span>Email Dealer</span> </a>
+					</div>
+					{{/checkIf}}
+
+					{{#checkIf url '!=' ''}}
+					<div class="hideit{{{url}}}">
+						<a href="javascript: void(0);"  data-linktrack="website-click" onclick="window.open('{{{url}}}','website','toolbar=1,location=1,directories=1,status=1,menubar=1,scrollbars=1,resizable=1');"> <span>Website</span> </a>
+					</div>
+					{{/checkIf}}
+
+					<div>
+						{{#checkIf is_wireless_device}}
+							<a onClick="ace.click.track({'action':'linktrack', 'value': 'Get Directions clicked - mobile' });" href="http://maps.google.com/maps?q=" locnumber="brand name, {{{address1_pc}}}, {{{city_pc}}} {{{state}}} {{{postalcode}}}" onmouseover="this.href=this.getAttribute('url')+this.getAttribute('locnumber');" url="http://maps.google.com/maps?q=" style="font-weight:bold;">Get Directions</a>
+	                 	{{else}}						
+							<a id="btn-external" href="javascript:void(0);" data-linktrack="directions-click" style="font-weight:bold;"> <div class="dealer-link-image"></div> Directions </a>
+						{{/checkIf}}
+					</div>
+
+					<div>
+						<a class="lightwindow" data-width="366" data-height="320" data-linktrack="send-to-phone-click" data-url="http://hosted.where2getit.com/lite?appkey={{{appkey}}}&amp;action=smslocatorstart&amp;template=smslocatorstart&amp;uid={{{uid}}}" data-title="Send to Phone" href="javascript: void(0);" style="font-weight:bold;b"> Send to phone </a>
+						<br/>
+						<a class="lightwindow" data-width="366" data-height="520" data-linktrack="send-to-email-click" data-url="http://hosted.where2getit.com/lite?appkey={{{appkey}}}&amp;action=emaillocatorstart&amp;template=emaillocatorstart&amp;uid={{{uid}}}" data-title="Send to Phone" href="javascript: void(0);" style="font-weight:bold;"> Send to email </a>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- close of outer address div -->
+
+			<div class="map_panel">
+				<div id="map" class="map"></div>
+				<div id="panel" class="poi panel"></div>
+				<!-- nearby locartions info, if applied -->
+			</div>
+
+			<div id="cities_list">
+				<div class="title">
+					Cities Close to this Area:
+				</div>
+				{{{cities_near_by}}}
+			</div>
+
+			<div id="postalcodes_list">
+				<div class="title">
+					Zip Codes Close to this Area:
+				</div>
+				{{{postalcodes_near_by}}}
+			</div>
+
+			<div class="overlay"></div>
+
+			<div class="modal">
+				<a href="#" class="closeBtn">Close</a>
+				<div id="lightwindow_title_bar" style="position:absolute; left:0px; top:0px; padding-top:2px; height:28px; width: 366px;">
+					<div id="lightwindow_title_bar_inner" style="">
+						<span id="lightwindow_title_bar_title">Send to Phone</span>
+					</div>
+				</div>
+				<div class="bottom_bar"></div>
+				<p></p>
+			</div>
+
+			<div class="footer">
+
+				<div id="w2gifooter">
+			    	<script type="text/javascript">
+			
+						var d = new Date()
+			
+						document.write("<a href='http://www.brandify.com' target='_new'>Store Locator Software</a> Powered by Brandify ")
+			                            document.write("Copyright &copy; ")
+						document.write(d.getFullYear())
+			
+						document.write(", All Rights Reserved.<br/>")                		
+			
+					</script>
+			   
+			    </div>
+			    
+				<div id="navteqfooter" style="display: none;">
+					<script type="text/javascript">
+                        var d = new Date ()
+                        document.write(" <img src=/w2gi/images/logo_navteq_large.gif> ")
+                        document.write(" &copy; Copyright ")
+                        document.write(d.getFullYear())
+                        document.write(" NAVTEQ Corp.  ")
+					</script>
+					<a href="http://www.brandify.com/company/terms/" onClick="window.open(this.href,'_blank','width=988,height=600,scrollbars=yes,location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=yes');return false;">Use Subject to and Conditions</a>
+				</div>
+
+			</div>
+
+		</div><!-- end w2gilocalmain  -->
+
+	</body>
+</html>

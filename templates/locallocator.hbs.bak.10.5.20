@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en" class="{{#checkIf is_wireless_device}} mobile usUser full homepage dj_webkit dj_safari dj_contentbox noRetinaLinesSupport ready loaded {{else}}desktop usUser full homepage dj_webkit dj_chrome dj_contentbox noRetinaLinesSupport ready loaded{{/checkIf}}">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<link rel="shortcut icon" type="image/x-icon" href="//media1.calvinklein.com/images/static/e-comm20-09/favicon.ico"/>
+	<link rel="apple-touch-icon" sizes="57x57" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-57x57.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-144x144.png" />
+	<link rel="canonical" href="{{{cityindex_url}}}{{{clientkey}}}" />
+     <!--BHODATA ='Mon $mon_hours,Tue $tues_hours,Wed $wed_hours,Thu $thurs_hours,Fri $fri_hours,Sat $sat_hours,Sun $sun_hours';-->
+	<title>Store locations in {{{city_pc}}}, {{{state_longname_pc}}} | Calvin Klein</title>
+
+	<meta name="description" content="Calvin Klein Stores locations in {{{city_pc}}}, {{{state_longname_pc}}}.">
+
+
+	<!--
+	Open Graph Tag IMPORTANT NOTE!
+	Use only one of the sets below.
+	Delete the other one not being used.
+	-->
+	<!-- Non-Restaurant Set -->
+	<meta property="fb:app_id" content="125927008189016" />
+	<meta property="og:type" content="business.business" />
+	<meta property="og:url" content="{{{cityindex_url}}}{{{clientkey}}}" />
+	<meta property="og:title" content="{{{name}}}" />
+	<meta property="og:description" content="Calvin Klein Stores locations in {{{city_pc}}}, {{{state_longname_pc}}}." />
+	<meta property="og:image" content="https://locations.where2getit.com/calvinklein/images/local/ck-storefront.jpg" />
+	<meta property="og:image:height" content="315" />
+	<meta property="og:image:width" content="600" />
+	<meta property="business:contact_data:street_address" content="{{{address1_pc}}}" />
+	<meta property="business:contact_data:locality" content="{{{city_pc}}}" />
+	<meta property="business:contact_data:region" content="{{{state}}}" />
+	<meta property="business:contact_data:postal_code" content="{{{postalcode}}}" />
+	<meta property="business:contact_data:country_name" content="{{{country}}}" />
+	<meta property="business:contact_data:phone_number" content="{{{phone}}}" />
+	<meta property="business:contact_data:website" content="{{{cityindex_url}}}{{{clientkey}}}" />
+	<meta property="place:location:latitude" content="{{{latitude}}}" />
+	<meta property="place:location:longitude" content="{{{longitude}}}" />
+
+
+	
+	<!-- BHODATA = 'Mon $open_mon-$close_mon, Tue $open_tue-$close_tue, Wed $open_wed-$close_wed, Thu $open_thu-$close_thu, Fri $open_fri-$close_fri, Sat $open_sat-$close_sat, Sun $open_mon-$close_sat'; -->
+
+
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/5.0.0/sanitize.min.css" /> -->
+	<link type="text/css" href="/w2gi/css/style.css" rel="stylesheet" media="all"/>
+	<link rel="stylesheet" type="text/css" href="/calvinklein/css/local/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="/calvinklein/css/local/pvh.css" />
+	<link rel="stylesheet" type="text/css" href="/calvinklein/css/local/ck.min.css" />
+	<link rel="stylesheet" type="text/css" href="/calvinklein/css/local/fonts.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="/calvinklein/css/local/main.css" />
+	<!-- <script src="/calvinklein/js/ck.headerNav.js"></script> -->
+	<script src="/calvinklein/js/main.js"></script>
+
+			<script type="text/javascript">
+	            document.observe = document.fire = function () {
+	            };
+			</script>		
+			
+			
+			<script type="application/ld+json">
+		    {
+		      "@context": "http://schema.org",
+		      "@type": "BreadcrumbList",
+		      "itemListElement": [{
+		        "@type": "ListItem",
+		        "position": 1,
+		        "item": {
+		          "@id": "{{{topindex_url_lc}}}",
+		          "name": "Index"
+		        }
+		      },{
+		        "@type": "ListItem",
+		        "position": 2,
+		        "item": {
+		          "@id": "{{{stateindex_url_lc}}}",
+		          "name": "{{{state}}}"
+		        }
+		      },{
+		        "@type": "ListItem",
+		        "position": 3,
+		        "item": {
+		          "@id": "{{{cityindex_url_lc}}}",
+		          "name": "{{{city}}}"
+		        }
+		      }]
+		    }
+		    </script>
+	    
+	    
+	    
+			<script type="application/ld+json">
+			{
+			  "@context":"http://schema.org",
+			  "@type":"Store",
+			  "@id":"{{{clientkey}}}",
+			  "name": "{{{NAME}}}",
+			  "address":{
+			    "@type":"PostalAddress",
+			    "streetAddress":"{{{address1}}}",
+			    "addressLocality":"{{{city}}}",
+			    "addressRegion":"{{{state}}}",
+			    "postalCode":"{{{postalcode}}}",
+			    "addressCountry":"{{{country}}}"
+			  },
+			"geo":{
+			    "@type":"GeoCoordinates",
+			    "latitude":{{{latitude}}},
+			    "longitude":{{{longitude}}}
+			  },
+			"branchOf": {
+			    "name":"Calvin Klein",
+			    "url": "https://calvinklein.com"
+			  },
+			  
+			 "url":"{{{cityindex_url}}}{{{clientkey}}}",
+			  "telephone":"{{{phone}}}",
+			  "logo" : "https://stores.fjallraven.com/dest/img/fjallraven-logo.png",
+		      "image":"/calvinklein/images/local/ck-storefront.jpg",
+			 
+			  "openingHoursSpecification":[
+			      {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Monday"
+			        ],
+			        "opens":"{{{BHO_MON_OPEN}}}",
+			        "closes":"{{{BHO_MON_CLOSED}}}"
+			      },
+			      {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Tuesday"
+			        ],
+			        "opens":"{{{BHO_TUE_OPEN}}}",
+			        "closes":"{{{BHO_TUE_CLOSED}}}"
+			      },
+			      {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Wednesday"
+			        ],
+			        "opens":"{{{BHO_WED_OPEN}}}",
+			        "closes":"{{{BHO_WED_CLOSED}}}"
+			      },
+			      {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Thursday"
+			        ],
+			        "opens":"{{{BHO_THU_OPEN}}}",
+			        "closes":"{{{BHO_THU_CLOSED}}}"
+			      },
+			          {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Friday"
+			        ],
+			        "opens":"{{{BHO_FRI_OPEN}}}",
+			        "closes":"{{{BHO_FRI_CLOSED}}}"
+			      },    {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Saturday"
+			        ],
+			        "opens":"{{{BHO_SAT_OPEN}}}",
+			        "closes":"{{{BHO_SAT_CLOSED}}}"
+			      },
+			          {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Sunday"
+			        ],
+			        "opens":"{{{BHO_SUN_OPEN}}}",
+			        "closes":"{{{BHO_SUN_CLOSED}}}"
+			      }
+			    ]
+			  //"menu":"http://www.example.com/menu", //if applied, use the tmpl_var to retrieve the database value
+			  //"acceptsReservations":"True" //if applied, use the tmpl_var to retrieve the database value
+			}
+			</script>		
+			
+
+			<script type="text/javascript" src="/w2gi/javascript/backbone/bb/lib/jquery.js"></script>
+			<script>
+	            var W2GI = {
+	                collection : {},
+	                config : {
+	                    appkey : '6A1DA4D2-8D8A-11E7-A07A-F839407E493E',
+	                    pageObserve : ['linktrack'],
+	                    autoStart : true,
+	                    locator : {
+	                        cgeo : false,
+	                        theme : null,
+	                        cdirections : false,
+	                        formdata : {
+	                            geoip : true,
+	                            dataview : 'store_default',
+	                            limit : 250,
+	                            geolocs : {
+	                                geoloc : [{
+	                                    addressline : '',
+	                                    country : '',
+	                                    latitude : '',
+	                                    longitude : ''
+	                                }]
+	                            },
+	                            searchradius : '20|50|75|100|500'
+	                        },
+	                        drivingdirections : {
+	                            disableDynamicRoutes : false,
+	                            formdata : {
+	                                dataview : 'store_default',
+	                                geolocs : {
+	                                    geoloc : [{
+	                                        address1 : '',
+	                                        city : '',
+	                                        state : '',
+	                                        province : '',
+	                                        postalcode : '',
+	                                        addressline : '',
+	                                        country : '',
+	                                        latitude : '',
+	                                        longitude : ''
+	                                    }]
+	                                }
+	                            }
+	                        },
+	                        imgPath : '/w2gi/images/zoombar/',
+	                        controls : [{
+	                            name : 'panZoom', // use panZoomBar if needs the full
+	                            // bar
+	                            options : {
+	                                zoomWheelEnabled : false
+	                            }
+	                        }],
+	                        //noZoomOnPan: true,
+	                        //zoom: 15,
+	                        dynamicSearch : false,
+	                        routeStyle : {
+	                            strokeWidth : 8,
+	                            strokeOpacity : 0.5,
+	                            strokeColor : '#0000FF'
+	                        },
+	                     
+							sources: [  
+	                           { 
+	                                name: 'Google Normal',
+	                                        options: {
+	                                        disableDoubleClickZoom : true,
+	                                        displayName : 'Map',
+	                                        projection: 'EPSG:900913', 
+	                                        units: 'km',
+	                                        type: 'roadmap', 
+	                                        maxZoomLevel:18,
+	                                    }
+	                            }
+	                        ]
+
+	                    }
+	                }
+	            };
+	            W2GI.collection.poi = [
+	            {{#checkIf pois}}
+	            {{#each pois}} {
+	                poinum : '{{poinum}}',
+	                icon : '{{icon}}',
+	                name : '{{name}}',
+	                address1 : '{{address1}}',
+	                address2 : '{{address2}}',
+	                city : '{{city}}',
+	                state : '{{state}}',
+	                province : '{{province}}',
+	                postalcode : '{{postalcode}}',
+	                country : '{{country}}',
+	                latitude : '{{latitude}}',
+	                longitude : '{{longitude}}',
+	                phone : '{{phone}}',
+	                open_mon: '{{open_mon}}',
+	                close_mon: '{{close_mon}}',
+	                open_tue: '{{open_tue}}',
+	                close_tue: '{{close_tue}}',
+	                open_wed: '{{open_wed}}',
+	                close_wed: '{{close_wed}}',
+	                open_thu: '{{open_thu}}',
+	                close_thu: '{{close_thu}}',
+	                open_fri: '{{open_fri}}',
+	                close_fri: '{{close_fri}}',
+	                open_sat: '{{open_sat}}',
+	                close_sat: '{{close_sat}}',
+	                open_sun: '{{open_sun}}',
+	                close_sun: '{{close_sun}}',
+	                clientkey : '{{clientkey}}',
+	                uid : '{{uid}}',
+	                main_loc : '{{main_loc}}',
+	                loc_url : '{{loc_url}}'
+	            } {{#checkUnless @last}},{{/checkUnless}}{{/each}}
+	            {{else}}
+	            {
+	            poinum : '{{poinum}}',
+	            icon : '{{icon}}',
+	            name : '{{name}}',
+	            address1 : '{{address1}}',
+	            address2 : '{{address2}}',
+	            city : '{{city}}',
+	            state : '{{state}}',
+	            province : '{{province}}',
+	            postalcode : '{{postalcode}}',
+	            country : '{{country}}',
+	            latitude : '{{latitude}}',
+	            longitude : '{{longitude}}',
+	            phone : '{{phone}}',
+	            open_mon: '{{open_mon}}',
+                close_mon: '{{close_mon}}',
+                open_tue: '{{open_tue}}',
+                close_tue: '{{close_tue}}',
+                open_wed: '{{open_wed}}',
+                close_wed: '{{close_wed}}',
+                open_thu: '{{open_thu}}',
+                close_thu: '{{close_thu}}',
+                open_fri: '{{open_fri}}',
+                close_fri: '{{close_fri}}',
+                open_sat: '{{open_sat}}',
+                close_sat: '{{close_sat}}',
+                open_sun: '{{open_sun}}',
+                close_sun: '{{close_sun}}',
+	            clientkey : '{{clientkey}}',
+	            uid : '{{uid}}',
+	            main_loc : '{{main_loc}}',
+	            loc_url : '{{loc_url}}'
+	            }
+	            {{/checkIf}}
+	            ]
+
+			</script>
+			<script data-main="/w2gi/javascript/backbone/bb/dist/bones.min" src="/w2gi/javascript/backbone/bb/lib/require.js"></script>
+			<script type="text/javascript">
+	            //document.observe('w2gi:bubbleOpen', function() {
+	            jQuery(document).on("w2gi:locatorloaded", function () {
+	                //console.log("loaded");
+
+	                $('#btn-external').on('click', function (event, element) {
+	                    
+	                    $('li.poi-item').first().find('.open_bubble')[0].click();
+	                })
+
+	                ace.util.Event.on("popup:loaded", function () {
+	                    $('#bubble_hours').html($('#all_hours_table').html());
+	                    $("#map form.bubble_form_2").on("submit", function (evt) {
+	                        evt.preventDefault();
+	                    });
+	                    //$('#map .bubble_form_2 .bubble_input')[0].focus();
+
+	                    $('#map .bubble_form_2 .bubble_go2').on("click", function (event) {
+	                        generate_directions($('#map .bubble_form_2 .bubble_input').val(), $('#map .bubble_form_2 .bubble_endaddress').val());
+	                    });
+
+	                });
+
+	                var date = new Date();
+	                var day = date.getDay();
+	                switch (day) {
+                    case 0:
+                        $('.storeHours-item:last-of-type').addClass('bold');
+                        break;
+                    case 1:
+                        $('.storeHours-item:first-of-type').addClass('bold');
+                        break;
+                    case 2:
+                        $('.storeHours-item:nth-of-type(2)').addClass('bold');
+                        break;
+
+                    case 3:
+                        $('.storeHours-item:nth-of-type(3)').addClass('bold');
+                        break;
+                    case 4:
+                        $('.storeHours-item:nth-of-type(4)').addClass('bold');
+                        break;
+                    case 5:
+                        $('.storeHours-item:nth-of-type(5)').addClass('bold');
+                        break;
+                    case 6:
+                        $('.storeHours-item:nth-of-type(6)').addClass('bold');
+                        break;
+                }
+
+	            });
+
+	            function generate_directions (startaddress, endaddress) {
+
+	                endaddress = endaddress.replace("#", "poundsign");
+
+	                if (bubbleValidate(startaddress)) {
+	                    $('#directions_url').data('url', '' + startaddress + '&addressline=' + '{{{latitude}}},{{{longitude}}}' + '&addresslineDisplay=' + endaddress);
+	                    ace.util.alertExternal($('#directions_url'));
+	                    //$('#directions_url').click();
+	                    //performClick($('#directions_url'));
+	                }
+	            }
+
+	            function bubbleValidate (bubbleInput) {
+	                if (bubbleInput.length > 0 && bubbleInput.length < 5 && !isNaN(bubbleInput)) {
+	                    ace.util.alert("Please enter a valid ZIP code.");
+	                    return false;
+	                }
+
+	                if (bubbleInput.length == 0) {
+	                    ace.util.alert("Please enter a starting address.");
+	                    return false;
+	                }
+
+	                return true;
+	            }
+
+	            function performClick (node) {
+	                if ((navigator.userAgent.match(/Safari/i))) {
+	                    var evObj = document.createEvent('MouseEvents');
+	                    evObj.initMouseEvent('click', true, true, window);
+	                    node.dispatchEvent(evObj);
+	                } else {
+	                    node.click();
+	                }
+	            }
+
+
+
+	            function tConvert (time) {
+	               // Check correct time format and split into components
+	               time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+	                if (time.length > 1) { // If time format correct
+	                  time = time.slice (1);  // Remove full string match value
+	                  time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+	                  time[0] = +time[0] % 12 || 12; // Adjust hours
+	                }
+	                return time.join (''); // return adjusted time or original string
+	              }
+
+
+			</script>
+
+			<style>
+				.hidefirst0 {
+					display: none !important;
+				}
+				.hideit, .olPopupCloseBox {
+					display: none;
+				}
+
+				.hideit0000000 {
+					display: none;
+				}
+
+				.bold {
+					font-weight: bold;
+				}
+
+				.w2gi-backbone .map > div.w2gifooter, #map > div.w2gifooter {
+				    bottom: -45px;
+				    box-sizing: border-box;
+				    font-size: 1rem;
+				    height: auto !important;
+				    margin-top: 10px;
+				    padding: 0;
+				    position: absolute;
+				    text-align: center;
+				}
+
+				.mobile #headerMyAccountNavWrapper {
+					display: none;
+				}
+
+				@media (max-width: 1025px) and (min-width: 768px) {
+					.w2gi-backbone .map > div.w2gifooter, #map > div.w2gifooter {
+				    	bottom: -70px;
+					}
+				}
+
+				@media (max-width: 767px) {
+					.w2gi-backbone .map > div.w2gifooter, #map > div.w2gifooter {
+						bottom: -58px;
+					}
+				}
+
+			</style>
+
+
+
+</head>
+<body class="{{#checkIf is_wireless_device}} ae-lang-en ae-device-mobile {{else}} ae-lang-en ae-device-desktop rfk_wbh {{/checkIf}}">
+	<div class="page">
+
+	{{#checkIf is_wireless_device}}
+		{{> 'header_mobile'}}
+	{{else}}
+		{{> 'header'}}
+	{{/checkIf}}
+
+	<div id="templates" style="display: none;">
+			<script id="locator_addressline" type="text/x-handlebars-template">
+				^((#if address1^))^((address1^))^((else^))^((#if addressline^))^((addressline^))^((/if^))^(( city ^)) ^(( county ^)) ^(( state ^)) ^((postalcode^))^((/if^))
+			</script>
+		   	<script id="directions_addressline" type="text/x-handlebars-template">
+                ^((#if address1^))^((address1^)) ^(( city ^)) ^(( state ^)) ^((postalcode^)) ^((else^)) ^((#if addressline^))^((addressline^))^((/if^)) ^(( city ^)) ^(( state ^)) ^((postalcode^))^((/if^))
+            </script>
+			<script id="collection_multiple_address" type="text/x-handlebars-template">
+				<h3>Please select your location</h3>
+				<ul class="content-list address-suggestions">
+				^((#each this^))
+				<li data-id=^((@index^))><strong>^((address1^)) ^(( city ^)) ^(( county ^))</strong>^(( state ^)) ^((postalcode^))</li>
+				^((/each^))
+				</ul>
+			</script>
+
+			<!-- icon template start  -->
+			<script id="default" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="42" data-height="60" data-offsetx="-21" data-offsety="-30"  data-display="false" >
+				<img class="alpha" src="/calvinklein/images/local/map-pin.svg" alt="icon" />
+				<div action="open_bubble">
+				^((poinum^))
+				</div>
+				</div>
+			</script>
+			<script id="main_icon" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="42" data-height="60" data-offsetx="-21" data-offsety="-30" data-labeloffsetx="-1" data-labeloffsety="15" data-fontcolor="#ffffff" data-fontsize="10" data-fontweight="bold" data-display="false">
+				<img class="alpha" src="/calvinklein/images/local/map-pin.svg" alt="icon" />
+				<div action="open_bubble">
+				^((poinum^))
+				</div>
+				</div>
+			</script>
+			<script id="other_icon" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="42" data-height="60" data-offsetx="-21" data-offsety="-30" data-labeloffsetx="-1" data-labeloffsety="28" data-fontcolor="#ffffff" data-fontsize="10" data-fontweight="bold" data-display="false">
+				<img class="alpha" src="/calvinklein/images/local/map-pin.svg" alt="icon" />
+				<div action="open_bubble">
+				^((poinum^))
+				</div>
+				</div>
+			</script>
+			<script id="center_marker" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="30" data-height="28"  data-offsetx="-11" data-offsety="-33">
+				<img class="alpha" alt="redstar" src="http://hosted.where2getit.com/w2gi/images/zoombar/blank.gif"/>
+				</div>
+			</script>
+			<script id="ddstarticon" type="text/x-handlebars-template">
+				<div class="end_icon" data-width="27" data-height="38" data-offsetx="-16" data-offsety="-28">
+				<img class="alpha" alt="start" src="http://static.where2getit.com/w2gi/images/icons/ddstartpin.png"/>
+				</div>
+			</script>
+			<script id="ddendicon" type="text/x-handlebars-template">
+				<div class="end_icon" data-width="27" data-height="38" data-offsetx="-16" data-offsety="-28">
+				<img class="alpha" alt="end" src="http://static.where2getit.com/w2gi/images/icons/ddendpin.png"/>
+				</div>
+			</script>
+			<!-- icon template end -->
+
+			<!-- bubble template start -->
+			<script id="bubble" data-offsetx="15" data-offsety="-18" {{#checkIf is_wireless_device}}data-width="1" data-height="1"{{else}}data-width="220" data-height="180" {{/checkIf}} type="text/x-handlebars-template">
+         
+         		<ul class="tabs" style="display:none;">
+				<li class="active" data-tab="tab1">Address</li>
+				<li data-tab="tab2">Hours</li>
+				<li data-tab="tab3">Amenities</li>
+				</ul>
+				<div class="tab-content active" data-tab="tab1">
+				<b>^((name^))</b>
+				<ul>
+				<li>^((address1^))</li>
+				<li>^((city^)), ^((state^)) ^((postalcode^))</li>
+				</ul>
+
+				<div class="dd-wrapper">
+				<div class="origin-select">
+				Directions:&nbsp; <a href="#" data-action="to" class="">To</a> | <a href="#" data-action="from">From</a> Here
+				</div>
+				<form id="dd" autocomplete="off" style="margin-top:5px;">
+				<span>From:</span> <br/>
+				<input size="19" type="text" name="addressline" value="^((addressline^))" style="width: 130px;"/>
+				<select id="bubble_country" name="country" class="country_selection" style="display:none;">
+				<option value="^((country^))">^((country^))</option>
+				</select>
+				<input type="submit" value="Go" style="width:30px;"/>
+				</form>
+				</div>
+				</div>
+				<div class="tab-content" data-tab="tab2">tab2</div>
+				<div class="tab-content" data-tab="tab3">
+				<div class="gboxDiv">
+				<a class="gs" data-action="show">Street View</a>
+				</div>
+				</div>
+			</script>
+			<!-- bubble template end -->
+
+			<!-- POI table template start -->
+			<script id="collection_poi" type="text/x-handlebars-template">
+
+				<ul class="content-list poi-result"> 
+
+				^((#each pois^))
+				<li data-id=^((@index^)) data-uid=^((uid^)) class="poi-item hidefirst^((@index^))" style="float: left; margin-right:10px; margin-bottom:10px;">
+
+				<div class="nearby_icon">
+				<span class="poinum"> 
+				<div>
+				<a data-action="open_bubble" style="cursor:pointer;color:#fff;">^((incIndex @index^))</a>
+				</div>
+				</span>
+				</div>
+
+				<div class="nearby_details">  
+				<div>
+				<span style="font-weight:bold;">^((name^))</span>
+				<a data-action="open_bubble" data-linktrack="view-on-map-click" class="open_bubble">View on map </a>
+
+				</div>
+
+				<div class="address1">
+				^((address1^))
+				</div>
+
+				<div class="address2">
+				^((city^)), ^((state^))^((province^)) ^((postalcode^))
+				<br />
+				Phone: ^((phone^))
+				</div>
+
+				</div>
+
+				</li>
+
+				^((/each^))
+				</ul>
+			</script>
+			<!-- POI table template end -->
+
+			<!-- More Info table template start -->
+			<script id="collection_more_info" type="text/x-handlebars-template">
+				<table odd_row_class="odd" even_row_class="even" active_row_class="active" slice_size="5">
+				<thead>
+				<tr>
+				<td></td>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+				<td></td>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr recnum="#{POINUM}">
+				<td width="33px" valign="top">
+				<div templateid="#{ICON}"></div>
+				</td>
+				<td width="310px">
+				<a action="open_bubble" class="store_name" recnum="#{POINUM}" href="javascript:void(0);">#{NAME}</a>
+				<br/>
+				#{ADDRESS1}
+				<br/>
+				#{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}
+				<br/>
+				<strong>#{PHONE}</strong>
+				</td>
+				</tr>
+				<tr>
+				<td colspan="2">
+				<a action="show_all" recnum="#{POINUM}" href="javascript:void(0);">Show All Locations</a>
+				</td>
+				</tr>
+				</tbody>
+				</table>
+			</script>
+			<!-- More Info table template end -->
+
+			<!-- Ambiguous address table template start -->
+			<!--script id="collection_multiple_address" type="text/x-handlebars-template">
+				<table odd_row_class="odd" even_row_class="even" active_row_class="active">
+				<thead>
+				<tr>
+				<th>Did you mean:</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+				<td></td>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr recnum="#{POINUM}">
+				<td width="250px">
+				<a action="search_address" recnum="#{POINUM}" href="javascript:void(0);">#{ADDRESS1} #{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}</a>
+				<br/>
+				#{COUNTY}
+				</td>
+				</tr>
+				</tbody>
+				</table>
+			</script-->
+			<!-- Ambiguous address table template end -->
+
+			<!-- driving directions panel template end -->
+			<script id="collection_maneuvers" type="text/x-handlebars-template">
+				<p>
+				<a class="search_again" href="javascript:void(0);" target="_parent" onclick="window.location.reload()">Back to Store Details</a>
+				</p>
+
+				<h3>Driving Directions</h3>
+				<p><strong>Distance: ^((total_distance^)) miles.         Drive time: ^((total_time^)) minutes</strong></p>
+				<p class="maneuver_start">
+				From (A): <strong>^((#if fromAddress.address1^))^((fromAddress.address1^))^((else^))^((#if fromAddress.addressline^))^((fromAddress.addressline^))^((/if^)) ^(( fromAddress.city ^)) ^(( fromAddress.county ^)) ^(( fromAddress.state ^)) ^((fromAddress.postalcode^))^((/if^)) </strong>
+				</p>
+				<ul class="content-list maneuver-result">
+				^((#each maneuverlist^))
+				<li data-id=^((@index^)) data-uid=^((uid^))>
+				<strong>^((incIndex @index^)) </strong>^((text^)) ^((distance^)) ^((distanceuom^))
+				</li>
+				^((/each^))
+				</ul>
+				<p class="maneuver_end">
+				To (B): <strong>^((#if toAddress.address1^))^((toAddress.address1^))^((else^))^((#if toAddress.addressline^))^((toAddress.addressline^))^((/if^)) ^(( toAddress.city ^)) ^(( toAddress.county ^)) ^(( toAddress.state ^)) ^((toAddress.postalcode^))^((/if^)) </strong>
+				</p>
+
+			</script>
+
+			<!-- Maneuvers table template end -->
+			<div id="lightwindow_cache" params="lightwindow_width=400, lightwindow_height=300, lightwindow_loading_animation=false">
+				<span id="lightwindow_cache_data" style="line-height: auto;
+				overflow: visible,
+				position: relative;float: left;width: 100%;"></span>
+			</div>
+		</div>
+	<!-- End Locator Map/POI List Templates -->
+
+
+
+	<div data-w2gi="locator" id="w2gilocalmain" >
+
+		<div id="form">
+
+			<form id="locator_search" autocomplete="off"></form>
+			<form id="driving_directions" autocomplete="off" style="display: none;">
+
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								From:
+							</td>
+							<td>
+								<input class="addressentry" id="startaddress" type="text" size="28" name="addressline" value="Start address" onClick="clear_search_directions_box(this);"/>
+								To:
+							</td>
+							<td>
+								<input class="addressentry" id="endaddress" type="text" size="28" name="addressline" value="End address" onClick="clear_search_directions_box(this);"/>
+								<input id="driving_directions_button" type="submit" value="Get Directions" name="driving_directions"/>
+							</td>
+							<td>
+								<a class="search_toggle" href="javascript:void(0);" style="font-size:12px;">Search Again</a>
+							</td>
+						</tr>
+
+						<!-- <tr><td colspan="3" style="text-align:right;"></td></tr> -->
+					</tbody>
+				</table>
+			</form>
+		</div>
+		<!-- end of form -->
+		<nav class="nav">
+			<ul>
+				<li>
+					<a class="nav-item" data-linktrack="Top index page" href="{{{topindex_url_lc}}}" >Select a State</a>  
+				</li>
+				<li>
+					<a class="nav-item" data-linktrack="State index page - {{{state_longname_pc}}}" href="{{{stateindex_url_lc}}}" >{{{state_longname_pc}}}</a> 
+				</li>
+				<li>
+					<a class="nav-item" data-linktrack="City index page - {{{city_pc}}}" href="{{{cityindex_url_lc}}}" >{{{city_pc}}}</a>
+				</li>
+			</ul>
+		</nav>
+		<main class="storeMain">
+			<div class="storeContent">
+				<div class="storeContent-inner">
+					<div class="storeContent-text js-showMore-target">
+						<div class="storeContent-preamble">
+							<h1>{{{name}}} in {{{city_pc}}}, {{{state}}}</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						</div>
+						<!-- <div> -->
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						</div>
+
+						<button class="showMore js-showMore" aria-label="click for more">
+							<span 
+								class="screen-reader-text" 
+								aria-hidden="true"
+							></span>
+						</button>
+					</div>
+
+				<div class="storeAddress">
+					<div class="storeAddress_nap">
+						<span class="storeAddress-text" aria-label="store address">
+							{{{address1}}}  <span>{{{city_pc}}}, {{{state}}} {{{postalcode}}}</span>
+						</span>
+						<a class="storeAddress-link" data-linktrack="phone-click-{{{clientkey}}}" href="tel:{{{phone}}}" aria-label="Phone number">
+							{{{phone}}}
+						</a>
+					</div>
+					<div class="directions_wrapper">
+						<a data-linktrack="directions-click-{{{clientkey}}}" class="sa-get-dir mob" href="http://maps.apple.com/maps?q={{{name}}}, {{{address1}}}  {{{city_pc}}}, {{{state}}}{{{postalcode}}}"> Get Directions </a>
+
+						<a data-linktrack="directions-click-{{{clientkey}}}" class="sa-get-dir" href="http://maps.google.com/maps?q={{{name}}}, {{{address1}}}  {{{city_pc}}}, {{{state}}}{{{postalcode}}}"> Get Directions </a>
+					</div>
+				</div>
+			</div>
+
+			<div class="spaceTaker" aria-hidden="true"></div>
+
+			<div class="hero">
+				<img src="/calvinklein/images/local/ck-storefront.jpg" alt="Calvin Klein store in {{{city_pc}}}, {{{state_longname_pc}}}" />
+			</div>
+
+			<div class="storeMap map" id="map">
+				<div class="w2gifooter">
+					<div id="w2gifooter">
+				    	<script type="text/javascript">
+				
+							var d = new Date()
+				
+							document.write("<a href='http://www.brandify.com' target='_new'>Store Locator Software</a> Powered by Brandify ")
+				                            document.write("Copyright &copy; ")
+							document.write(d.getFullYear())
+				
+							document.write(", All Rights Reserved.<br/>")                		
+				
+						</script>
+				   
+				    </div><br/>
+				</div>
+			</div>
+
+			<div class="storeInfo">
+		
+				<div class="storeInfo-openHours" >
+					<h3 class="storeHours-title">
+						Store Hours
+					</h3>
+					<ul class="storeHours">
+						{{#checkIf country '==' 'US'}}
+
+							<!-- us hours -->
+
+							{{#checkIf mon_hours}}
+							<li class="storeHours-item">
+								<span>
+									Monday
+								</span>
+								<span>
+									{{{mon_hours}}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf tues_hours}}
+							<li class="storeHours-item">
+								<span>
+									Tuesday
+								</span>
+								<span>
+									{{{tues_hours}}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf wed_hours}}
+							<li class="storeHours-item">
+								<span>
+									Wednesday
+								</span>
+								<span>
+									{{{wed_hours}}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf thurs_hours}}
+							<li class="storeHours-item">
+								<span>
+									Thursday
+								</span>
+								<span>
+									{{{thurs_hours}}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf fri_hours}}
+							<li class="storeHours-item">
+								<span>
+									Friday
+								</span>
+								<span>
+									{{{fri_hours}}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf sat_hours}}
+							<li class="storeHours-item">
+								<span>
+									Saturday
+								</span>
+								<span>
+									{{{sat_hours}}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf sun_hours}}
+							<li class="storeHours-item">
+								<span>
+									Sunday
+								</span>
+								<span>
+									{{{sun_hours}}}
+								</span>
+							</li>
+							{{/checkIf}}
+
+
+						{{else}}
+
+						<!-- non us hours -->
+						{{#checkIf open_mon}}
+							<li class="storeHours-item">
+								<span>
+									Monday
+								</span>
+
+								<span>
+									{{open_mon}} - {{close_mon}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf open_tue}}
+							<li class="storeHours-item">
+								<span>
+									Tuesday
+								</span>
+
+								<span>
+									{{open_tue}} - {{close_tue}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf open_wed}}
+							<li class="storeHours-item">
+								<span>
+									Wednesday
+								</span>
+
+								<span>
+									{{open_wed}} - {{close_wed}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf open_thu}}
+							<li class="storeHours-item">
+								<span>
+									Thursday
+								</span>
+
+								<span>
+									{{open_thu}} - {{close_thu}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf open_fri}}
+							<li class="storeHours-item">
+								<span>
+									Friday
+								</span>
+
+								<span>
+									{{open_fri}} - {{close_fri}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf open_sat}}
+							<li class="storeHours-item">
+								<span>
+									Saturday
+								</span>
+
+								<span>
+									{{open_sat}} - {{close_sat}}
+								</span>
+							</li>
+							{{/checkIf}}
+							{{#checkIf open_sun}}
+							<li class="storeHours-item">
+								<span>
+									Sunday
+								</span>
+
+								<span>
+									{{open_sun}} - {{close_sun}}
+								</span>
+							</li>
+							{{/checkIf}}
+
+
+
+						{{/checkIf}}
+					</ul>
+				</div>
+
+				{{#checkIf extra_details}}
+				<div class="storeEvent">
+					<h3 class="storeEvent-title">
+						 Store Events and Updates
+					</h3>
+
+					<div class="storeEvent-link">
+						{{extra_details}}
+					</div>
+				</div>
+				{{/checkIf}}
+			</div>
+
+			<div class="streetView" style="display:none;">
+			</div>
+		</main>
+
+		
+	</div> <!-- close of #w2gilocalmain -->
+	{{> 'footer'}}
+	<style>
+		
+	</style>
+	<script>
+
+		// desktop header functions
+
+		$(function(){
+			if($(window).width() > 768){
+				$('.headerNavItem').on('mouseenter',function(){
+					a = '';
+
+					if($(this).hasClass('inactive')){
+						a = 'true';
+					} 
+					$('#headerNavList .headerNavItem').each(function(e){
+						$(this).addClass('inactive');
+					})
+					$(this).addClass('hover').find('.headerNavItem').removeClass('inactive');
+
+					if(a == 'true'){
+						var leftPos = $(this).offset().left * -1;
+						console.log(leftPos)
+						$(this).find('.headerNavDropDown').removeClass('hidden').css({'visibility':'visible','opacity':'1','left':leftPos});
+					} else {
+						var leftPos = $(this).offset().left * -1;
+						console.log(leftPos)
+						$(this).find('.headerNavDropDown').removeClass('hidden').css({'visibility':'visible'}).animate({'opacity':'1','left':leftPos});
+					} 
+					a = '';
+				});
+
+				$('.headerNavItem').on('mouseleave',function(e){
+					$(this).removeClass('hover');
+					$(this).removeClass('hover').find('.headerNavItem').addClass('inactive');
+					if($('.headerNavItem:hover').length != 0){
+						$(this).find('.headerNavDropDown').removeClass('hidden').css({'visibility':'hidden','opacity':'0'});
+					} else {
+						$(this).find('.headerNavDropDown').removeClass('hidden').css({'visibility':'hidden'}).animate({'opacity':'0'});
+					}
+				});
+
+				$('#headerNavList').on('mouseleave',function(){
+					$('#headerNavList .headerNavItem').each(function(e){
+						$(this).removeClass('inactive');
+					});
+				});
+
+				$('.searchButtonWrapper').on('click',function(){
+					$(this).parent().css({'visibility':'hidden'}).animate({'opacity':'0'});
+					$('#headerNavList').css({'visibility':'hidden'}).animate({'opacity':'0'});
+					$('.searchWrapper,.menuIcon').removeClass('hidden').css({'visibility':'visible'}).animate({'opacity':'1'});
+					$('<div class="searchShadow" style="visibility: hidden; opacity: 0;" onclick="$(\'.searchWrapper,.menuIcon,.searchShadow\').addClass(\'hidden\').css({\'visibility\':\'hidden\'}).animate({\'opacity\':\'0\'});$(\'#headerTopRight,#headerNavList\').css({\'visibility\':\'visible\'}).animate({\'opacity\':\'1\'});setTimeout(function(){$(\'.searchShadow\').remove();},100);"></div>').appendTo('body');$('.searchShadow').css({'visibility':'visible'}).animate({'opacity':'1'});
+				});
+
+
+
+				$('.desktop .menuIcon').on('click',function(){
+					$('.searchWrapper,.menuIcon,.searchShadow').addClass('hidden').css({'visibility':'hidden'}).animate({'opacity':'0'});
+					$('#headerTopRight,#headerNavList').css({'visibility':'visible'}).animate({'opacity':'1'});
+					setTimeout(function(){
+						$('.searchShadow').remove();
+					},100);
+				});
+
+
+
+			}
+		});
+
+		// mobile header functions
+
+		$(function(){
+			if($(window).width() < 769){
+				$('#menuButton').on('click',function(){
+					$('body').css({'overflow':'hidden','position':'relative'});
+					$('#menuButton').addClass('open');
+					$('#headerNavWrapper').addClass('visible open').animate({'left':'0'}).css({'height':'100vh'});
+					$('.shadow').removeClass('hidden').show().css({'visibility':'visible'}).animate({'opacity':'1'})
+				});
+				$('.navBarCloseWrapper a, .shadow').on('click',function(){
+					$('body').css({'overflow':'','position':''});
+					$('#headerNavWrapper').animate({
+						'left':'-100%'
+					},function(){
+						$('#headerNavWrapper').removeClass('visible open').css({'height':''})
+					});
+					$('.shadow').animate({
+						'opacity':'0'
+					},function(){
+						$('.shadow').addClass('hidden').css({'visibility':'hidden'})
+					});
+				});
+				    
+				$('.headerNavItem a').on('click',function(){
+					$(this).parent().attr('data-is-open','true');
+					$(this).parent().next().removeClass('hidden').css('top','0');
+					$('#headerNavList').animate({'left':'-100%'});
+				});
+
+				$('.headerNavBack').on('click',function(){
+					$(this).closest('.headerNavDropDown').prev().removeAttr('data-is-open','');
+					$('#headerNavList').animate({'left':'0'});
+					$(this).closest('.headerNavDropDown').addClass('hidden').css('top','');
+
+				});
+
+				$('.plusIcon').on('click',function(){
+					$(this).closest('.dropDownColumn').removeClass('close').addClass('open')
+					$(this).parent().next().css({'visibility':'visible','display':'block','height':'auto'}).animate({'opacity':'1'});
+				})
+
+				$('.minusIcon').on('click',function(){
+					$(this).parent().next().animate({'opacity':'0'});
+					$(this).parent().next().css({'visibility':'hidden','display':'none','height':'0'})
+					$(this).closest('.dropDownColumn').removeClass('open').addClass('close');
+				});
+
+				$('.footer-links-col.expand').on('click',function(){
+					var $linkCol = $(this);
+					var $footerLink = $(this).find('.footer-link');
+					var $heading = $linkCol.find('h5');
+					var openClass = 'open';
+
+					var $this = $heading;
+					var $parent = $linkCol;
+
+					$linkCol.removeAttr('style');
+
+					if($parent.hasClass(openClass)) {
+
+						$linkCol.removeClass(openClass);
+
+					} else {
+
+						var height = 0;
+
+						$this.parent($linkCol).find('> *').each(function() {
+							height = height+$(this).outerHeight();
+						});
+
+						$this.parent($linkCol).height(height);
+
+						$($linkCol).removeClass(openClass);
+						$parent.addClass(openClass);
+
+					}
+				})
+
+				// $('.shadow').on('click',function(){
+				// 	$('body').css({'overflow':'','position':''});
+				// 	$('#menuButton').removeClass('open');
+				// 	$('#headerNavWrapper').animate({'left':'0'},function(){$('#headerNavWrapper').removeClass('visible open').css({'height':'100vh'})
+				// 	});
+				// 	$('.shadow').animate({'opacity':'1'},function(){
+				// 		$('.shadow').addClass('hidden').show().css({'visibility':'visible'});
+				// 	});
+				// })
+			}
+		});
+	</script>
+	<script>
+		
+	</script>
+</div>
+<!-- <div class="searchShadow"></div> -->
+</body>
+</html>
+

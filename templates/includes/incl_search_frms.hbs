@@ -1,0 +1,95 @@
+                    <div id="form">
+                        <form id="product_search" autocomplete="off">
+                            <table border="0" cellpadding="1" cellspacing="1" style="display:none;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input id="inputaddress" class="addressentry" type="text" name="addressline" value="{{{adminunit}}},{{{state}}}" onClick="clear_search_directions_box(this);" />
+                                        </td>
+                                        <td><input id="search_button" type="submit" value="Search" name="search"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <xml style="display:none">
+                                <root>
+                                    <inputform>
+                                        <formdata id="locatorsearch">
+                                            <dataview>store_default</dataview>
+                                            <geolocs>
+                                                <geoloc>
+                                                    <addressline></addressline>
+                                                    <longitude></longitude>
+                                                    <latitude></latitude>
+                                                </geoloc>
+                                            </geolocs>
+                                            <searchradius>25</searchradius>
+                                            <sku>{{{sku}}}</sku>
+                                        </formdata>
+                                    </inputform>
+                                </root>
+                            </xml>
+                        </form>
+                        <form id="driving_directions" autocomplete="off" style="display:none; margin-top:6px;">
+                            <input type="hidden" id="longitude" name="longitude"/>
+                            <input type="hidden" id="latitude" name="latitude"/>
+                            <input type="hidden" id="dest_longitude" name="dest_longitude"/>
+                            <input type="hidden" id="dest_latitude" name="dest_latitude"/>
+                            <div style="display:none;">
+                            <table width="100%" border="0" cellpadding="1" cellspacing="1">
+                                <tbody>
+                                    <tr>
+                                        <td width="6%" align="left">
+                                            <span style="font-size: 12px; color:#000;">From:</span>
+                                        </td>
+                                        <td width="34%" align="left">
+                                            <input id="startaddress" class="text_box1" type="text" name="addressline" value="Start address" onClick="clear_search_directions_box(this);"/>
+                                            <img style="cursor: pointer;" width="10" height="14" src="http://static.where2getit.com/w2gi/images/ddirflip.png" title="Switch start and end address" alt="Switch start and end address"/>
+                                            <span style="font-size: 12px; color:#000;">To:</span>
+                                        </td>
+                                         <td width="26%" align="left">
+                                            <input id="endaddress" class="text_box1" type="text" name="addressline" value="End address" onClick="clear_search_directions_box(this);"/>
+                                        </td>
+                                        <td width="19%" align="left"><input id="search_button" type="submit" value="Get Directions" name="driving_directions" style="width:90px;"/></td>
+                                        <td width="15%" align="left"><a class="search_toggle" action="linktrack" linktrack="New Search" href="javascript:void(0);">New Search</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                            <xml style="display:none">
+                                <root>
+                                    <inputforms>
+                                        <inputform>
+                                            <formdata id="drivingdirections">
+                                                <dataview>store_default</dataview>
+                                                    <geolocs>
+                                                        <geoloc>
+                                                           <address1></address1>
+                                                            <city></city>
+                                                            <state></state>
+                                                            <province></province>
+                                                            <postalcode></postalcode>
+                                                            <addressline></addressline>
+                                                            <longitude></longitude>
+                                                            <latitude></latitude>
+                                                            <country></country>
+                                                        </geoloc>
+                                                        <geoloc>
+                                                            <address1></address1>
+                                                            <city></city>
+                                                            <state></state>
+                                                            <province></province>
+                                                            <postalcode></postalcode>
+                                                            <addressline></addressline>
+                                                            <longitude></longitude>
+                                                            <latitude></latitude>
+                                                            <country></country>
+                                                        </geoloc>
+                                                   </geolocs>
+                                                   <rid></rid>
+                                            </formdata>
+                                        </inputform>
+                                    </inputforms>
+                                </root>
+                            </xml>
+                        </form>
+                    </div>

@@ -1,0 +1,394 @@
+html, body {
+	/*width: 100%; */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+
+a {color: #333333;}
+
+.searchbox {
+	margin: 0;
+}
+
+.searchbox input[type="text"], 
+.searchbox input[type="search"] {
+	/* width: 100%; */
+	-webkit-appearance: searchfield;
+}
+
+#locator_search {
+	height: inherit;
+}
+
+#locator_search #rightbutton{
+	position: relative;
+	width: 50px;
+	float: right;
+	top: 50%;
+	margin-top: -12px;
+}
+
+#driving_directions #rightbutton{
+	position: relative;
+	width: 50px;
+	float: right;
+	top: 50%;
+	margin-top: -10px;
+}
+
+form div.inputs {
+	float: right;
+	left: 0px;
+	position: absolute;
+	right: 60px;
+	width: auto;
+}
+
+.searchbox .searchboxBorder {
+	width: auto;
+	left: 0px;
+	right: 0px;
+	float: none;
+}
+
+#topbar {
+	margin-bottom: 0px;
+}
+
+#map_canvas {
+	height: 100%;
+}
+
+/**
+ * 	fixes checkboxes in the Google map
+ */
+#map_canvas input[type="checkbox"] {
+	width: auto;
+	height: auto;
+	background: none;
+	-webkit-appearance: checkbox;
+	border: 0;
+	float: none;
+	margin: 0;
+}
+
+li.menu {
+	height: auto;
+	padding: 10px 0px;
+	border-bottom: 1px solid #cdcdcd;
+}
+
+li.menu .name {
+	margin-top: 7px;
+}
+
+li.menu .arrow {
+	top: 50%;
+	margin-top: -7px!important;
+}
+
+.pageright{
+	position: absolute;
+	/*left: 100%;*/
+	/*width: auto;*/
+	right: 0px;
+	overflow:hidden;
+	
+	/*-webkit-transform: translateX(100%);*/
+	-moz-transform: translateX(100%);
+	-o-transform: translateX(100%);
+	-ms-transform: translateX(100%);
+	transform: translateX(100%);
+	
+	/*-webkit-transform: scaleX(0);
+	-moz-transform: scaleX(0);
+	-o-transform: scaleX(0);
+	-ms-transform: scaleX(0);
+	transform: scaleX(0);*/
+	
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	transition: all 500ms ease;
+}
+
+.pageright.selected {
+	/*left: 0%;*/
+	width: 100%;
+	
+	/*-webkit-transform: translateX(0%);*/
+	-moz-transform: translateX(0%);
+	-o-transform: translateX(0%);
+	-ms-transform: translateX(0%);
+	transform: translateX(0%);
+	
+	/*-webkit-transform: scaleX(1);
+	-moz-transform: scaleX(1);
+	-o-transform: scaleX(1);
+	-ms-transform: scaleX(1);
+	transform: scaleX(1);*/
+	
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	transition: all 500ms ease;
+}
+
+.pageleft {
+	position: absolute;
+	/*left: -100%;*/
+	/*width: 0px;*/
+	overflow:hidden;
+	
+	/*-webkit-transform: translateX(-100%);*/
+	-moz-transform: translateX(-100%);
+	-o-transform: translateX(-100%);
+	-ms-transform: translateX(-100%);
+	transform: translateX(-100%);
+	
+	/*-webkit-transform: scaleX(0);
+	-moz-transform: scaleX(0);
+	-o-transform: scaleX(0);
+	-ms-transform: scaleX(0);
+	transform: scaleX(0);*/
+		
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	transition: all 500ms ease;
+}
+
+.pageleft.selected {
+	/*left: 0%;*/
+	width: 100%;
+	
+	/*-webkit-transform: translateX(0%);*/
+	-moz-transform: translateX(0%);
+	-o-transform: translateX(0%);
+	-ms-transform: translateX(0%);
+	transform: translateX(0%);
+	
+	/*-webkit-transform: scaleX(1);
+	-moz-transform: scaleX(1);
+	-o-transform: scaleX(1);
+	-ms-transform: scaleX(1);
+	transform: scaleX(1);*/
+	
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	transition: all 500ms ease;
+}
+
+/*.selected {
+	left: 0%;
+	width: 100%;
+}*/
+
+.not-selected.left {
+	position:absolute;
+	/*left: -100%;*/
+	width: 0px;
+	overflow: hidden;
+	
+	/*-webkit-transform: translateX(-100%);*/
+	-moz-transform: translateX(-100%);
+	-o-transform: translateX(-100%);
+	-ms-transform: translateX(-100%);
+	transform: translateX(-100%);
+	
+	/*-webkit-transform: scaleX(0);
+	-moz-transform: scaleX(0);
+	-o-transform: scaleX(0);
+	-ms-transform: scaleX(0);
+	transform: scaleX(0);*/
+	
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	transition: all 500ms ease;
+}
+
+.not-selected.right {
+	position:absolute;
+	/*left: 100%;*/
+	width: 0px;
+	overflow: hidden;
+	
+	/*-webkit-transform: translateX(100%);*/
+	-moz-transform: translateX(100%);
+	-o-transform: translateX(100%);
+	-ms-transform: translateX(100%);
+	transform: translateX(100%);
+	
+	/*-webkit-transform: scaleX(0);
+	-moz-transform: scaleX(0);
+	-o-transform: scaleX(0);
+	-ms-transform: scaleX(0);
+	transform: scaleX(0);*/
+	
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	transition: all 500ms ease;
+}
+
+.left, .right {
+	float:none;
+}
+
+/**
+ * 	These CSS3 media queries make changes 
+ * to base CSS for larger screens (tablets,
+ * and computers)
+ */
+@media all and (min-width: 650px) {
+	
+	#backbutton {
+		display: none;
+	}
+	
+	.selected {
+		width: auto;
+	}
+	
+	.left, .right {
+		/*position: absolute;*/
+		float: left;
+		position:relative;
+		width: auto;
+	}
+	
+	.right.selected {
+		/*left: 50%;
+		right:0px;*/
+		width:50%;
+	}
+	
+	.left.selected:not(.sidebar) {
+		/*left: 50%;
+		right:0px;*/
+		width:50%;
+	}
+	
+	.sidebar {
+		/*left: 0px;
+		right: 50%;
+		width:50%;*/
+		float:left;
+	}
+}
+
+@media all and (min-width: 750px) {
+	
+	.right.selected {
+		/*left: 45%;
+		right:0px;*/
+		width: 55%;
+	}
+	
+	.left.selected:not(.sidebar) {
+		/*left: 45%;
+		right:0px;*/
+		width: 55%
+	}
+	
+	.sidebar {
+		/*left: 0px;
+		right: 55%
+		width: 45%;*/
+	}
+}
+
+@media all and (min-width: 1200px) {
+	
+	.right.selected {
+		/*left: 30%;
+		right:0px;*/
+		width: 70%;
+	}
+	
+	.left.selected:not(.sidebar) {
+		/*left: 30%;
+		right:0px;*/
+		width: 70%;
+	}
+	
+	.sidebar {
+		/*left: 0px;
+		right: 70%;*/
+		width: 30%;
+	}
+}
+
+@media all and (max-width: 650px) {
+	
+	.tablet-only {
+		display:none;
+	}
+}
+
+
+
+ 
+
+#footer {
+	clear:both;
+	/*background: url(''); */	
+	font-size: 11px;
+	text-align: center;
+	padding-bottom: 10px;	
+	/* background: #CE0829 url(../images/footer_backgound.jpg) repeat-x scroll 0 0; */
+}
+.footer_text { margin: 0 auto; color: #fff; text-align: left; padding-top: 10px;}
+.footer_links { margin: 0 auto; text-align: left; padding-top: 0px;}
+.footer_links ul { list-style: none;}
+.footer_links ul li { display: inline; color: #fff;}
+.footer_links ul li a{ color: #fff; text-decoration: none;}
+.footer_copyright {margin: 0 auto; text-align: left; color: #fff; padding-top: 10px; }
+.footer_copyright p { display: inline;}
+.footer_copyright a { text-decoration: none; color: #fff;}
+
+
+
+#map_canvas {
+	height: 220px;
+}
+
+
+#driving_directions_panel.selected {
+	width:100%;
+}
+
+#more_info_panel.selected {
+	width:100%;
+}
+
+.not-selected {
+	height:0px;
+}
+
+.hide {display:none;}
+
+.show {display:inline;}
+
+.hideClosed {display:none;}
+
+.showmessage{display:inline;}
+
+.number {
+	color: #FFFFFF;
+	left: 5px;
+    position: absolute;
+    text-align: center;
+    top: 5px;
+    width: 20px;
+}
+
+ 

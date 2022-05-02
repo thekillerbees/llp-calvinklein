@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+	<title>Etailer</title>
+<link type="text/css" href="/w2gi/css/lightwindow.css" rel="stylesheet" media="all" /> 
+			
+	<script type="text/javascript" src="/w2gi/javascript/ace/1.78/prototype.js"></script>
+	<script type="text/javascript" src="/w2gi/javascript/ace/1.78/W2GI_core.js"></script>
+	
+<script>
+	
+	var Custom = Class.create({});
+
+	/*  Class overides the default Proximity Search Error lightwindow with a 
+	    custom lightwindow and error message for a specific error response code. 
+	    A custom lightwindow html template must be placed within the main page's code.
+	*/
+	Custom.Etailers = Class.create(Custom, {
+		initialize: function(locator) {
+			ace.template.initialize();
+			var onlinePanel = $('online_comp_panel');
+			if ($('online_panel_load_message')) {
+				onlinePanel.innerHTML = $('online_panel_load_message').innerHTML;
+				onlinePanel.show();
+			}
+			document.observe('w2gi:onlineProductSearch', function(event){
+				onlinePanel.show();
+				if ($('online_panel_load_message')) {
+					onlinePanel.innerHTML = $('online_panel_load_message').innerHTML;
+				}
+			}.bind(this));
+			document.observe('w2gi:onlineProductError', function(event) {
+				onlinePanel.show();
+				if ($('online_panel_error_message')) {
+					onlinePanel.innerHTML = $('online_panel_error_message').innerHTML;
+				}
+			}.bind(this)); 
+		},
+		processError : function() {
+			document.fire("w2gi:onlineProductError");
+		},
+        	processProducts : function() {
+			//document.fire("w2gi:onlineProductSearch");
+		},
+
+		loadOnlineEtailers : function(){
+			var get_object = ace.util.retrieveGetVals();
+			if(!get_object.currency) get_object.currency = 'auto';
+			//var options = {formdataID : 'onlineetailersearch', alertError : false, like : 1 };
+			var options = {formdataID : 'onlineetailersearch', like : 1, alertError : false, onError : this.processError.bind(this) };
+			ace.table.update('online_comp_panel', get_object, this.processProducts.bind(this), options);
+		}
+	});
+
+</script>
+
+<style>
+	.storenamehide {
+		display: none;
+	}
+	.storenameshow{
+		display: block;
+	}
+
+	body{color: #000; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.2em; margin:0px;}
+	table td {font-size:11px;}
+	a{font-size: 11px;}
+	img {border:none;}
+
+	#online_comp_panel {
+		display:inline;
+		float:left;	
+		overflow:hidden;
+		padding-right:10px;
+		position:relative;
+		width:650px;
+	}
+
+	.div_row {
+		float:left;
+		margin:0 5px;
+		position:relative;
+		vertical-align: middle;
+		width:200px;
+		border-right: 1px solid #cdcdcd;
+	}
+	
+</style>
+</head>
+
+<body onload="var t = new Custom.Etailers();t.loadOnlineEtailers();">
+	<xml id="application_data" style="display: none;">
+		<root>
+            <ajaxurl>ajax?</ajaxurl>
+            <appkey>F5C66E24-E944-11EA-A1DF-53CCF48ECC77</appkey>
+			<inputform>
+				<formdata id="onlineetailersearch" like="">
+					<msrprange></msrprange>
+					<enablemap></enablemap>  
+					<order>storerank,random()</order> 
+				    <accounts>
+				    		<account></account>
+				    </accounts>
+				    <products>
+				             <product>
+				                     <sku></sku>
+				                     <upc></upc>
+				                     <currency></currency>
+				             </product>
+				    </products>
+
+
+				</formdata>
+			</inputform>		
+		</root>
+		
+	</xml>
+		
+
+	<div id="templates" style="display: none;">
+		<!-- online dealer template start // table format // not used here -->
+		<table id="collection_etailer_old" class="online_table" odd_row_class="odd" even_row_class="even" active_row_class="active" style="display: none;width: 100%;position: relative; " cellpadding="0" cellspacing="0" width="100%" border="0" slice_size="7">
+		   <tfoot>
+					<tr >
+						<td colspan="2" style="text-align:left;background-color:#FFFFFF; font-size: 10px; color: red; padding-bottom: 0px;"><a class="prev_results" action="prev_results" href="javascript:void(0);">Prev #{SLICE_PREV_SIZE}</a><a class="next_results" action="next_results" href="javascript:void(0);">Next #{SLICE_NEXT_SIZE}</a><br><Br><br></td>						
+					</tr>
+				</tfoot> 
+              <tbody>
+                <tr class="table_data">
+                    <td align="left" style="border-bottom: 1px dashed #000000; ">
+							<div class="storenamehide storenameshow#{STOREIMAGE}"><a href="#" link="#{BUYURL}" onclick="this.href=this.getAttribute('link')" target="_BLANK">#{STORENAME}</a></div>
+						<div style="margin: 5px 0 5px 20px; width: 140px; height: 55; position:relative;float:left;" >
+							<div style="margin: 5px 0 5px 5px; width: 140px; height: 55; background: #fff url(#{STOREIMAGE}) no-repeat;position:relative;float:left;" link="#{BUYURL}" onclick="this.href=this.getAttribute('link')" target="_BLANK">
+						</div>
+						</div>
+               </td>
+                    <td align="right" style="border-bottom: 1px dashed #000000; color:#978165;font-weight:normal;">Availability: #{INSTOCK}<br/><a href="#" link="#{BUYURL}" onclick="this.href=this.getAttribute('link')" target="_BLANK"><span class="buy_img">Buy Now >></span></a></td>    
+               </tr> 
+	        </tbody>
+		</table>
+				   
+		<!-- online dealer template end  -->
+		
+		
+		<!-- online dealer template start  -->
+
+		<div id="collection_etailer" class="online_table" odd_row_class="odd" even_row_class="even" active_row_class="active" style="display: none;width: 100%;position: relative; " cellpadding="0" cellspacing="0" width="100%" border="0">
+		   
+			<div class="div_body">
+				<div class="div_row"><!-- <a href="#" link="#{BUYURL}" onclick="this.href=this.getAttribute('link')" target="_BLANK"><span class="buy_img">#{STORENAME}</span></a> -->
+				
+   						<span>
+							<a href="#" link="#{BUYURL}" onClick="this.href=this.getAttribute('link')" target="_BLANK" style="margin:5px 0pt px 10px; width:113px; height:53px; position: relative; float: left; background:url(#{STOREIMAGE}) no-repeat; background-position:center center; position:relative; float:left; display:block; cursor:pointer;"></a>
+						</span>
+						
+						<a style="float:left; margin-top:15px;" href="#" link="#{BUYURL}" onclick="this.href=this.getAttribute('link')" target="_BLANK"><span class="buy_img">Buy Now >></span></a>
+				
+				</div>    
+			</div>
+			<div class="div_foot">
+
+				<div class="div_row"></div>    
+			</div>
+		</div>
+		
+		<!-- online dealer template end  -->
+
+	</div>	
+<!-- panel start -->
+
+	
+
+<div id="online_comp_panel" style="overflow:hidden;"></div>	
+
+<div id="online_panel_error_message" style="display:none;">No Online Results Found.</div>
+
+<div id="online_panel_load_message" style="display:none;">Searching ... please wait!</div> 
+
+
+		
+
+<!-- panel end -->
+</body>
+</html>
+  

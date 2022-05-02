@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>{{{page_title}}}</title>
+
+    <meta name="keywords" content="{{{keywords}}}" />
+    <meta name="description" content="{{{description}}}" />
+
+    <link rel="stylesheet" type="text/css" href="{{{basedir}}}/css/productlandingpages.css" />
+	<link type="text/css" href="/w2gi/css/lightwindow.css" rel="stylesheet" media="all"/>
+
+    <script type="text/javascript" src="http://static.where2getit.com/w2gi/javascript/ace/1.77/prototype.js"></script>
+    <script type="text/javascript" src="http://static.where2getit.com/w2gi/javascript/ace/1.77/W2GI_coreNH.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-17001921-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <div id="pageheader">
+        </div>
+
+        <div id="main-content">
+            <div id="main-content-wrapper">
+                {{#checkIf showerror}}
+                    <div id="err_msg">
+                        Sorry we could not complete your last request.  Please try again. We apologize for the inconvenience.
+                    </div>
+                {{/checkIf}}
+
+                <div id="product_title">
+                    {{{product_title}}}
+                </div>
+
+                <div id="bread_crumb">
+                    {{> 'incl_breadcrumb'}}
+                </div>
+
+                <div id="clist">
+                    {{#checkIf  NAME=cat_loop}}
+                        <TMPL_LOOP NAME=cat_loop>
+                            {{#checkIf  NAME=cat1_loop}}
+                                <TMPL_LOOP NAME=cat1_loop>
+                                    <div id="clist1">
+                                        <div id="c1_title">{{#checkIf  NAME=link1}}<a linktrack='ppcatinx jump to category' href="{{{link1}}}">{{/checkIf}}{{{name1}}}{{#checkIf  NAME=link1}}</a>{{/checkIf}}</div>
+                                        {{#checkIf  NAME=prod1_loop}}
+                                            <div id="plist">
+                                                <TMPL_LOOP NAME=prod1_loop>
+                                                    <div id="p_link"><a linktrack='ppcatindx{{{sku1p}}}' href="{{{link1p}}}">{{{name1p}}} ({{{sku1p}}})</a></div>
+                                                {{/each}}
+                                            </div>
+                                        {{/checkIf}}
+                                        {{#checkIf  NAME=cat2_loop}}
+                                            <TMPL_LOOP NAME=cat2_loop>
+                                                <div id="clist2">
+                                                    <div id="c2_title">{{#checkIf  NAME=link2}}<a linktrack='ppcatinx jump to sub category' href="{{{link2}}}">{{/checkIf}}{{{name2}}}{{#checkIf  NAME=link2}}</a>{{/checkIf}}</div>
+                                                    {{#checkIf  NAME=prod2_loop}}
+                                                        <div id="plist">
+                                                            <TMPL_LOOP NAME=prod2_loop>
+                                                                <div id="p_link"><a linktrack='ppcatindx{{{sku2p}}}' href="{{{link2p}}}">{{{name2p}}} ({{{sku2p}}})</a></div>
+                                                            {{/each}}
+                                                        </div>
+                                                    {{/checkIf}}
+                                                    {{#checkIf  NAME=cat3_loop}}
+                                                        <TMPL_LOOP NAME=cat3_loop>
+                                                            <div id="clist3">
+                                                                <div id="c3_title">{{#checkIf  NAME=link3}}<a linktrack='ppcatinx jump to sub-sub category' href="{{{link3}}}">{{/checkIf}}{{{name3}}}{{#checkIf  NAME=link3}}</a>{{/checkIf}}</div>
+                                                                {{#checkIf  NAME=prod3_loop}}
+                                                                    <div id="plist">
+                                                                        <TMPL_LOOP NAME=prod3_loop>
+                                                                            <div id="p_link"><a linktrack='ppcatindx{{{sku3p}}}' href="{{{link3p}}}">{{{name3p}}} ({{{sku3p}}})</a></div>
+                                                                        {{/each}}
+                                                                    </div>
+                                                                {{/checkIf}}
+                                                            </div>
+                                                        {{/each}}
+                                                    {{/checkIf}}
+                                                </div>
+                                            {{/each}}
+                                        {{/checkIf}}
+                                    </div>
+                                {{/each}}
+                            {{/checkIf}}
+                            {{#checkIf  NAME=prod_loop}}
+                                <div id="plist">
+                                    <TMPL_LOOP NAME=prod_loop>
+                                        <div id="p_link"><a linktrack='ppcatindx{{{skup}}}' href="{{{linkp}}}">{{{namep}}} ({{{skup}}})</a></div>
+                                    {{/each}}
+                                </div>
+                            {{/checkIf}}
+                        {{/each}}
+                    {{/checkIf}}
+                </div>
+
+			</div>
+        </div>
+
+        <div id="pagefooter">
+        </div>
+
+    </div>
+    <!-- Start XML data island  -->
+        <xml>
+            <root>
+                <ajaxurl>/ajax?</ajaxurl>
+                <appkey>{{{appkey}}}</appkey>
+            </root>
+        </xml>
+    <!-- End XML data island  -->
+</body>
+</html>

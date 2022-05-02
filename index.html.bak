@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+        <title>Store Locator</title>
+        <script>
+            var W2GI = {
+                config: {
+                    appkey: 'F5C66E24-E944-11EA-A1DF-53CCF48ECC77',
+                    autoStart: true,
+                    locator: {                        
+                        theme:null,
+                        noZoomOnPan: true,                        
+                        alertError: false,
+                        formdata: {
+                            <tmpl_if expr="is_wireless_device == 1">
+                            gps: 'first',
+                            <tmpl_else>
+                            geoip: true,
+                            </tmpl_if>
+                            dataview: 'store_default',
+                            limit: 50,
+                            geolocs: {
+                                geoloc: [{
+                                    addressline:    '',
+                                    country:        '',
+                                    latitude:       '',
+                                    longitude:      ''
+                                }]
+                            },
+                            searchradius: '10|25|50|100|250',                            
+                            where: {
+                              or: {
+                                retail : {eq:''},
+                                outlet : {eq:''},
+                                factory : {eq:''},
+                                promo : {eq:''}
+                              }
+                            }
+                        },
+                        drivingdirections: {
+                            disableDynamicRoutes: false,
+                            formdata: {
+                                <tmpl_if expr="is_wireless_device == 1">
+                                gps: 'first',
+                                <tmpl_else>
+                                geoip: true,
+                                </tmpl_if>
+                                dataview: 'store_default',
+                                map: {
+                                    size :'330,225',
+                                    icons:{
+                                        start: {
+                                            path: 'ddstartpin.png'
+                                        },
+                                        end:{
+                                            path: 'ddendpin.png'
+                                        }
+                                    }
+                                },
+                                geolocs: {
+                                    geoloc: [{
+                                        address1:       '',
+                                        city:           '',
+                                        state:          '',
+                                        province:       '',
+                                        postalcode:     '',
+                                        addressline:    '',
+                                        country:        '',
+                                        latitude:       '',
+                                        longitude:      ''
+                                    }]
+                                }
+                            }
+                        },
+                       imgPath:  'images/zoombar',
+                        controls: [{ name: 'panZoomBar', options: {} }],                        
+                        dynamicSearch: true,
+                        routeStyle: {
+                            strokeWidth:     8,
+                            strokeOpacity:  .5,
+                            strokeColor:    '#0000FF'
+                        },
+                        sources: [  
+                           { 
+                                name: 'SlippyMap W2GI',
+                                imageurl: '//st1.slippymap.com/tiles, //st2.slippymap.com/tiles',
+                                options: { 
+                                    map: 'smap-01'
+                                }
+                            },
+                            {
+                                name: 'SlippyMap Navteq',
+                                imageurl: '//st1.slippymap.com/tiles, //st2.slippymap.com/tiles',
+                                options: { 
+                                    map: 'smap-02'
+                                }
+                            }
+                        ]
+                    }
+
+                 },
+                 custom_ob: {
+                   updateRecords : function(recs) {
+                        var date = new Date();
+                        var today = date.getDay();
+                        $(recs).each (function(i,e) {
+                            if(e.postalcode)
+                            var postal = e.postalcode.length;
+                            if(postal == 10) {
+                                var cut = e.postalcode.substring(0, 5);
+                                e.postalcode = cut;
+                            }
+                            if (today == 0) {
+                                e.SUNCHECK = 1;
+                            }
+
+                            if (today == 1) {
+                                e.MONCHECK = 1;
+                            }
+
+                            if (today == 2) {
+                                e.TUECHECK = 1;
+                            }
+
+                            if (today == 3) {
+                                e.WEDCHECK = 1;
+                            }
+
+                            if (today == 4) {
+                                e.THRCHECK = 1;
+                            }
+
+                            if (today == 5) {
+                                e.FRICHECK = 1;
+                            }
+
+                            if (today == 6) {
+                                e.SATCHECK = 1;
+                            }
+
+                        }.bind(this));
+                        return recs;
+                    },
+                },
+            }
+        </script>
+        <script src="/w2gi/javascript/backbone/bb/lib/jquery.js"></script>
+        <script data-main="/w2gi/javascript/backbone/bb/dist/bones.min" src="/w2gi/javascript/backbone/bb/lib/require.js"></script>
+        <script src="javascript/custom.js"></script>
+        <script type="text/javascript">
+          W2GI.loaded = function($) { 
+            // on page load (for when there is no response)
+        parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+        // on initial response and searches
+        ace.util.DomEvent.on("w2gi:proximityresponse", function() {
+                  setTimeout(function(){
+                    parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                  }, 100);
+            });
+        // when no results are returned. Note that the delay must be at least 800 or the modal popup will not display properly
+        ace.util.DomEvent.on("w2gi:fetchError", function() {
+              setTimeout(function(){
+              parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+              }, 800);
+        });
+        // Browser is resized
+            $(window).resize(function() {
+                setTimeout(function(){
+                    parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                }, 100);
+            }); 
+        // When pagination is present and occurs
+            ace.util.DomEvent.on("w2gi:sliceupdated", function() {
+                setTimeout(function(){
+                    parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                }, 100);
+        });
+            ace.collection.appendOptions('#bubble_country', 'Account::Country', {}, 'account_country', 'name', 'description');
+          }
+          function searchCountry(country) {
+              require(['jquery'], function($) {
+                  $('.search-box').val('')
+                  $('.country_val').val(country)
+                  ace.util.searchExternal('locator_search');  
+              })         
+          } 
+
+          $('#map').on('pageshow', function(){
+            google.maps.event.trigger(map, "resize");
+        });
+        </script>    
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link href="//hosted.where2getit.com/w2gi/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    </head>
+    
+    <body>    	
+    	  <div id="w2gi_wrapper">
+    	
+            <div data-w2gi="locator" class="box-wrapper" role="main">
+            	
+            	<a class="sr-only sr-only-focusable" href="#poi">Skip to Store Listings</a>
+      
+                <div class="forms-poi-box" role="form">
+                    <div class="form-wrapper"> 
+                        <div class="locator-wrapper">
+                            <h1 class="sr-only">Find Locations Near You</h1> 
+                            <form id="locator_search" role="search" autocomplete="off" >
+                                <label for="search_input" class="sr-only">Enter street address, city, state or zip code</label>
+                                <input id="search_input" type="text" class="search-box" name="addressline" onfocus="this.value=''" placeholder="Enter street address, city, state or zip code"/>
+                                <button aria-label="Search" class="button-search">SEARCH</button>
+                               
+                                <label for="search_country" class="sr-only">Select a country</label>
+                                <select id="search_country" name="country">                        
+                                    <option value="">Select a country</option>       
+                                </select>
+                                
+                                <img tabindex="0" role="button" id="filter_button" src="images/filter_icon_down.png" onclick="open_filters();" alt="Open filters">
+                                <img tabindex="0" role="button" id="filter_button_up" src="images/filter_icon_up.png" onclick="close_filters();" alt="Close filters">
+                                <img tabindex="0" role="button" id="filter_button_mobile" src="images/filter_icon_down.png" onclick="open_filters_mobile();" alt="Open filters on mobile">
+                                <img tabindex="0" role="button" id="filter_button_up_mobile" src="images/filter_icon_up.png" onclick="close_filters_mobile();" alt="Close filters on mobile">
+                                
+                                <label for="searchradius" class="sr-only">Search Radius</label>
+                                <select id="searchradius" name="searchradius" style="display:none">
+                                  <option value="10|25|50|100|250">10 miles</option>
+                                  <option value="25|50|100|250">25 miles</option>
+                                  <option value="50|100|250">50 miles</option>
+                                  <option value="100|250">100 miles</option>
+                                  <option value="250">250 miles</option>
+                                </select>
+                                
+                                <div id="filters"> 
+                                    <div id="filter_bar">
+                                        <div>Filters</div>
+                                    </div>
+                                    <div class="filter_div">
+                                         <img class="filter_unselected" src="images/retail.png" onclick="toggleFilter(event);" alt="First filter unselected">
+                                         <img class="filter_selected" src="images/retail_highlighted.png" onclick="untoggleFilter(event);" alt="First filter selected">
+                                         <span>Retail</span>
+                                         <img class="check_image" src="images/filter_check.png" alt="First filter checkmark">
+                                         <label class="sr-only" for="show-stores-checkbox">Retail</label>
+                                         <input type="checkbox" name="retail" dynamic="true" value="1" id="show-stores-checkbox" class="filter_checkbox"/>
+                                    </div>
+                                    <div class="filter_div">
+                                         <img class="filter_unselected" src="images/outlet.png" onclick="toggleFilter(event);" alt="Second filter unselected">
+                                         <img class="filter_selected" src="images/outlet_highlighted.png" onclick="untoggleFilter(event);" alt="Second filter selected">
+                                         <span>Outlet</span>
+                                         <img class="check_image" src="images/filter_check.png" alt="Second filter checkmark">
+                                         <label class="sr-only" for="show-stores-checkbox1">Outlet</label>
+                                         <input type="checkbox" name="outlet" dynamic="true" value="1" id="show-stores-checkbox1" class="filter_checkbox"/>
+                                    </div>
+                                    <div class="filter_div">
+                                         <img class="filter_unselected" src="images/factory.png" onclick="toggleFilter(event);"  alt="Third filter unselected">
+                                         <img class="filter_selected" src="images/factory_highlighted.png" onclick="untoggleFilter(event);" alt="Third filter selected">
+                                         <span>Factory</span>
+                                         <img class="check_image" src="images/filter_check.png" alt="Third filter checkmark">
+                                         <label class="sr-only" for="show-stores-checkbox2">Factory</label>
+                                         <input type="checkbox" name="factory" dynamic="true" value="1" id="show-stores-checkbox2" class="filter_checkbox" />
+                                    </div>
+                                    <div class="filter_div">
+                                         <img class="filter_unselected" src="images/promotion.png" onclick="toggleFilter(event);" alt="Fourth filter unselected">
+                                         <img class="filter_selected" src="images/promotion_highlighted.png" onclick="untoggleFilter(event);" alt="Third filter selected">
+                                         <span>Promotion</span>
+                                         <img class="check_image" src="images/filter_check.png" alt="Fourth filter checkmark">
+                                         <label class="sr-only" for="show-stores-checkbox3">Promotion</label>
+                                         <input type="checkbox" name="promo" dynamic="true" value="1" id="show-stores-checkbox3" class="filter_checkbox"/>
+                                    </div>
+                                    <span role="button">
+                                        <div id="apply_button" onclick="applyFilters();">APPLY FILTERS</div>
+                                        <div id="apply_button_mobile" onclick="applyFilters_mobile();">APPLY FILTERS</div>
+                                    </span>
+                                </div>
+                            </form>
+                            <div>
+                                <div id="listview" role="button" onclick="showList();">List View</div>
+                                <div id="mapview" role="button" onclick="showMap();">Map View</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dd-form-wrapper" style="display:none"></div>   
+                <div class="wrapper" role="contentinfo">
+                    
+                    <div class="poi" id="poi"></div>
+                    <div class="map" id="mapEl"></div>   
+                    
+                    <div id="indicator"></div>
+                    
+                      <div class="attribution">
+	                    <span class="attribution">
+	                        Mapping Locator Powered by <a href="http://www.brandify.com/" target="_new">Brandify </a>Copyright &copy; <script>document.write(new Date().getFullYear())</script>, All Rights Reserved.
+	                    </span>
+	                    
+	                    <div id="navteqfooter" style="display:none">
+	                        <script type="text/javascript">
+	                            var d = new Date()
+	                            document.write(" <img src=/w2gi/images/logo_navteq_large.gif alt='Navteq Logo'/> ")
+	                            document.write(" &copy; Copyright ")
+	                            document.write(d.getFullYear())
+	                            document.write(" NAVTEQ Corp.  ")
+	                        </script>
+	                        <a href="http://www.where2getit.com/terms/terms.html" onClick="window.open(this.href,'_blank','width=988,height=600,scrollbars=yes,location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=yes');return false;">Use Subject to Terms and Conditions</a>
+	                    </div>
+	                </div>
+                
+                </div>
+              
+                <div class="overlay"></div>
+                <div class="modal" aria-hidden="true">
+                    <a href="#" class="closeBtn">Close</a>
+                    <p></p>
+                </div>
+                <div class="street-view-wrapper" aria-hidden="true"> 
+                    <a class="gs" data-action="close">Close</a>
+                    <div id="streetViewCtn" class="street-view"></div>
+                </div>
+            </div>
+            <!-- Templates -->
+            <div class="templates" aria-hidden="true">
+                <script id="locator_addressline" type="text/x-handlebars-template" >
+                    {{#if address1}}{{address1}}{{else}}{{#if addressline}}{{addressline}}{{/if}}{{ city }} {{ county }} {{ state }} {{postalcode}}{{/if}}
+                </script>
+                <script id="directions_addressline" type="text/x-handlebars-template">
+                    {{#if address1}}{{address1}} {{ city }} {{ state }} {{postalcode}} {{else}}{{#if addressline}}{{addressline}}{{/if}} {{ city }} {{ state }} {{postalcode}}{{/if}}
+                </script>
+                <script id="collection_multiple_address" type="text/x-handlebars-template">
+                    <h2>Please select your location</h2>
+                    <ul class="content-list address-suggestions">
+                        {{#each this}}
+                            <li data-id={{@index}}><strong>{{address1}} {{ city }} {{ county }}</strong>{{ state }} {{postalcode}}</li>
+                        {{/each}}
+                    </ul>
+                </script>
+                <!-- poi template start -->
+                <script id="collection_poi" type="text/x-handlebars-template"> 
+                    <h2>There are {{count}} locations near you</h2>
+                    <ul class="content-list poi-result">
+                        {{#each pois}}
+                         <div class="poi_wrapper">
+                            <li data-id="{{@index}}" data-uid="{{uid}}" class="poi-item" onclick="showMoreinfo({{uid}})">
+                             <div class="sub_poi_wrapper_mobile">
+                                <div class="sub_poi_wrapper_mobile_first">
+                                    <div class="arrow_div">
+                                        <img class="{{uid}}" data-action="more_info" onclick="moreinfo_change()" onkeypress="moreinfo_change()" src="images/chevron_right.png" alt="show details for location at {{address1}} {{city}} {{state}}">
+                                    </div>
+                                    <div>
+                                        <div class="icon_div_mobile" data-action="more_info">
+                                            <img src="images/map_pin_regular.png" data-action="more_info" alt="">
+                                            <span> {{collectionIndex}}</span> 
+                                        </div>
+                                        <div class="close_text">
+                                            Open until <span>10pm</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub_poi_wrapper_mobile_second">
+                                    <div class="poi_box">
+                                        <span data-action="more_info">{{name}}</span> 
+                                        <div data-action="more_info">
+                                            {{{address1}}}<br/>{{city}}, {{state}} {{postalcode}}
+                                        </div>
+                                        <img class="phone_icon" src="images/phone_icon.png" alt="Phone Icon">
+                                        <span class="desktopPhone">{{phone}}</span>
+                                        <span class="mobilePhone">
+                                            <a href="javascript:void(0);" onclick="window.parent.location = 'tel:{{phone}}';" >{{phone}}</a>
+                                        </span>
+                                        
+                                        <p style="margin-top:10px;">
+                                            {{#if url}}
+                                                <span style="margin-left:0px; display:inline; margin-right:10px;">
+                                                    <a href="javascript: void(0);" onclick="window.open('{{url}}','website','status=yes,toolbar=yes,menubar=yes,location=yes,scrollbars=yes,resizable=yes');">Website</a>
+                                                </span>{{/if}}
+                                            {{#if email}}
+                                                <span style="margin-left:0px; display:inline;" >
+                                                    <a href="javascript:void(0);" link="mailto:{{email}}" onclick="document.location = this.getAttribute('link')">Email Us</a>
+                                                </span>{{/if}}
+                                        </p>
+                                        <!--<span style="display:none !important">
+                                            <span class="viewBubble" style="margin-top:10px;">
+                                                <a data-action="open_bubble">Drive it</a> - Distance: {{_distance}} miles
+                                            </span>
+                                            <span>
+                                            Send location to <a class="lightwindow" data-width="366" data-height="515" data-url="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&action=emaillocatorstart&template=emaillocatorstart&uid={{uid}}" title="Send to Email" href="" >Email</a>
+                                             <a class="lightwindow" data-width="700" data-height="500" data-url="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&action=smslocatorstart&template=smslocatorstart&uid={{uid}}" title="Send to Mobile" href="" >Mobile</a> 
+                                            </span>
+                                            <span>
+                                            </span>
+                                            <span> <a data-initialtab="Hours" data-action="open_bubble">View Hours</a></span>
+                                        </span>-->
+                                    </div>
+                                </div>
+                             </div>
+                                <div class="sub_poi_wrapper">
+                                    <div>
+                                        <a data-action="more_info">
+                                        <div class="arrow_div" tabindex="0">
+                                            <img class="{{uid}}" data-action="more_info" onclick="moreinfo_change()" onkeypress="moreinfo_change()" src="images/chevron_right.png" alt="show details for location at {{address1}} {{city}} {{state}}">
+                                        </div>
+                                        </a>
+                                        <div class="icon_div" data-action="more_info">
+                                            <img src="images/map_pin_regular.png" data-action="more_info" alt="">
+                                            <span> {{collectionIndex}}</span> 
+                                        </div>
+                                        <div class="close_text">
+                                            Open until <span>10pm</span>
+                                        </div>
+                                    </div>
+                                    <img class="vert_line" src="images/v-rule-blue.png" alt="">
+                                    <div class="poi_box">
+                                        <span data-action="more_info">{{name}}</span> 
+                                        <div data-action="more_info">
+                                            {{{address1}}}<br/>{{city}}, {{state}} {{postalcode}}
+                                        </div>
+                                        <img class="phone_icon" src="images/phone_icon.png" alt="Phone Number">
+                                        <span class="desktopPhone">{{phone}}</span>
+                                        <span class="mobilePhone">
+                                            <a href="javascript:void(0);" onclick="window.parent.location = 'tel:{{phone}}';" >{{phone}}</a>
+                                        </span>
+                                        <p style="margin-top:10px;">
+                                            {{#if url}}
+                                                <span style="margin-left:0px; display:inline; margin-right:10px;">
+                                                    <a href="javascript: void(0);" onclick="window.open('{{url}}','website','status=yes,toolbar=yes,menubar=yes,location=yes,scrollbars=yes,resizable=yes');">Website</a>
+                                                </span>{{/if}}
+                                            {{#if email}}
+                                                <span style="margin-left:0px; display:inline;" >
+                                                    <a href="javascript:void(0);" link="mailto:{{email}}" onclick="document.location = this.getAttribute('link')">Email Us</a>
+                                                </span>{{/if}}
+                                        </p>
+                                        <!--<span style="display:none !important">
+                                            <span class="viewBubble" style="margin-top:10px;">
+                                                <a data-action="open_bubble">Drive it</a> - Distance: {{_distance}} miles
+                                            </span>
+                                            <span>
+                                            Send location to <a class="lightwindow" data-width="366" data-height="515" data-url="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&action=emaillocatorstart&template=emaillocatorstart&uid={{uid}}" title="Send to Email" href="" >Email</a>
+                                            <a class="lightwindow" data-width="700" data-height="500" data-url="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&action=smslocatorstart&template=smslocatorstart&uid={{uid}}" title="Send to Mobile" href="" >Mobile</a>
+                                            </span>
+                                            <span>
+                                            </span>
+                                            <span> <a data-initialtab="Hours" data-action="open_bubble">View Hours</a></span>
+                                        </span>-->
+                                    </div>
+                                </div>
+                                <div class="poi_mobile_directions" onclick="window.open('http://maps.apple.com?q={{address1}},{{city}},{{state}}{{postalcode}}')"> GET DIRECTIONS</div>
+                            </li>
+                         </div>
+                        {{/each}}
+                    </ul>
+                    <div class="poi_paging_wrapper">
+                        <span class="poi_paging_prev"><span class="fa fa-arrow-left"></span><span>Previous</span></span>
+                        <span class="poi_paging_next"><span>Next</span><span class="fa fa-arrow-right"></span></span>
+                    </div>
+                </script>
+                <!-- poi template end -->
+                 <script id="collection_more_info" type="text/x-handlebars-template" data-slicesize="1">
+                    <ul class="content-list poi-result moreinfo_box">
+                        <li data-id={{index}} data-uid={{uid}} class="poi-item">
+                            <div class="icon_div">
+                                <img src="images/map_pin_regular.png" alt="">
+                                <span> {{collectionIndex}}</span> 
+                            </div>
+                            <div class="more_info_header_container">
+                                <span class="more_info_header">About {{name}}</span>
+                            </div>
+                            <form class="directions_btn_wrapper" onsubmit="getdirections_moreinfo();">
+                                <label for="input_moreinfo" class="sr-only">Enter starting address</label>
+                                <input id="input_moreinfo" placeholder="Enter starting address" onfocus="this.value=''" type="text">
+                                <button id="button_moreinfo" onclick="getdirections_moreinfo();">
+                                    <img src="images/dd-alt.png" alt="Get Driving Directions">
+                                </button>
+                            </form>                 
+                            <div id="mobile_button_wrapper">
+                                <div id="moreinfo_mobile_back" data-action="show_all" onclick="moreinfo_changeback();" onkeypress="moreinfo_change()">Back to Results</div>
+                                <div onclick="window.open('http://maps.apple.com?q={{address1}},{{city}},{{state}}{{postalcode}}')" id="moreinfo_mobile_directions">Get Directions</div>
+                            </div>
+                            <a style="display:none;" id="open_bubble" data-action="open_bubble" class="open_bubble"></a>
+                            <div id="desktop_info">
+                                <div id="desktop_info_one">
+                                     <img src="images/address_icon.png" alt="">
+                                     <span class="add_info">Address</span>
+                                     <div>
+                                        {{address1}} <br/>
+                                        {{city}}, {{state}} {{postalcode}} <br/>
+                                    </div> 
+                                    <br/>
+                                     <img src="images/phone_icon.png"  style="float:left;" alt="Phone Number">
+                                     <span class="moreinfo_phone_text">Phone</span>
+                                     <div class="moreinfo_phone">
+                                        <a href="javascript:void(0);" onclick="window.parent.location = 'tel:{{phone}}';" >
+                                            <span class="phone">{{phone}}</span>
+                                        </a>
+                                    </div> 
+                                </div>
+                                <div id="desktop_info_two">
+                                    <img src="images/distance_icon.png" alt="">
+                                    <span class="distance_text">Distance</span>
+                                    <div>
+                                         <span class="distance"><strong>{{_distance}}</strong> miles away</span>
+                                    </div> 
+                                </div>
+                            </div>
+                             <div id="desktop_hours">
+                                <img src="images/clock_icon.png" alt="">
+                                <span>Hours</span>
+                                <div class="week_head">
+                                    <div class="weekinfo day{{MONCHECK}}">    
+                                        <div class="weekday">Monday:</div> 
+                                        <div class="weekhours">8:00 AM - 10 PM</div>
+                                    </div>
+                                    <div class="weekinfo day{{TUECHECK}}">
+                                        <div class="weekday">Tuesday:</div> 
+                                        <div class="weekhours">8:00 AM - 10 PM</div>
+                                    </div>
+                                    <div class="weekinfo day{{WEDCHECK}}">
+                                        <div class="weekday">Wednesday:</div> 
+                                        <div class="weekhours">8:00 AM - 10 PM</div>
+                                    </div>
+                                    <div class="weekinfo day{{THRCHECK}}">
+                                        <div class="weekday">Thursday:</div> 
+                                        <div class="weekhours">8:00 AM - 10 PM</div>
+                                    </div>
+                                    <div class="weekinfo day{{FRICHECK}}">
+                                        <div class="weekday">Friday:</div>  
+                                        <div class="weekhours">8:00 AM - 10 PM</div>
+                                    </div>
+                                    <div class="weekinfo day{{SATCHECK}}">
+                                        <div class="weekday">Saturday:</div>  
+                                        <div class="weekhours">8:00 AM - 10 PM</div>
+                                    </div>
+                                    <div class="weekinfo day{{SUNCHECK}}" style="padding-bottom:10px;">
+                                        <div class="weekday">Sunday:</div>  
+                                        <div class="weekhours">8:00 AM - 10 PM</div> 
+                                    </div> 
+                                </div>
+                            </div>
+                            <div id="moreinfo_back" tabindex="0" onclick="document.getElementById('back_image').click()" onkeypress="document.getElementById('back_image').click()">
+                                <img id="back_image" data-action="show_all" onclick="moreinfo_changeback();" src="images/back_to_search.png" alt="">
+                                <span>Back to Search</span>
+                            </div>
+                        </li>
+                    </ul>
+                </script>
+                <!--  <a data-action="show_all" href="javascript:void(0);">Back</a> -->
+                <!-- driving directions panel template end -->
+                <script id="collection_maneuvers" type="text/x-handlebars-template">
+                    <div role="link" id="search_return" onclick="window.location.reload()">
+                        <img src="images/back_to_search.png" alt="">
+                        <span>Back to Search Results</span>
+                    </div>
+                    <div class="dist_time"><span>Distance:</span> {{total_distance}} miles</div>      
+                    <div class="dist_time"><span>Drive time:</span> {{total_time}} minutes drive</div>
+                    <p class="maneuver_start">
+                        From (A): {{#if fromAddress.address1}} {{fromAddress.address1}}, {{/if}} {{fromAddress.city}} {{fromAddress.state}} {{fromAddress.postalcode}}
+                    </p>
+                    <ul class="content-list maneuver-result">
+                        {{#each maneuverlist}}
+                            <li data-id={{@index}} data-uid={{uid}}>
+                               {{incIndex @index}} {{text}} {{distance}} {{distanceuom}}
+                            </li>
+                        {{/each}}
+                    </ul>
+                    <p class="maneuver_end">
+                        To (B): {{#if toAddress.address1}} {{toAddress.address1}}, {{/if}} {{toAddress.city}} {{toAddress.state}} {{toAddress.postalcode}} </strong>
+                    </p>
+                </script>
+                <!-- driving directions panel template end -->
+                <!-- driving directions form template start -->
+                <script id="dd-template" type="text/x-handlebars-template">
+                    <form id="driving_directions" autocomplete="off">
+                         <div class="icon-bar">
+                            <a href="#" onclick="window.open(ace.util.printUrl('locator-print.html'), 'print', 'toolbar=no, resizable=yes, scrollbars=yes, menubar=yes');"><span class="fa fa-print"></span>Print</a>
+                        </div>
+                        <label for="start_address">
+                            <span>From:</span><input type="text" id="start_address" class="search-box"  data-action="start" name="addressline" placeholder="Start address">
+                        </label>
+                        <label for="end_address">
+                            <span>To:</span><input type="text" id="end_address" class="search-box"  data-action="end" name="addressline" placeholder="End address">
+                        </label>
+                            <button class="button-search dd-button-search">GET DIRECTIONS</button>
+                              <input type="hidden" id="longitude" name="longitude" aria-hidden="true"/>
+                              <input type="hidden" id="latitude" name="latitude" aria-hidden="true"/>
+                              <input type="hidden" id="dest_longitude" name="dest_longitude" aria-hidden="true"/>
+                              <input type="hidden" id="dest_latitude" name="dest_latitude" aria-hidden="true"/>
+                    </form>
+                </script>
+                <!-- driving directions form template end -->
+                <!-- icon template start  -->
+                <script id="default" type="text/x-handlebars-template">
+                    <div class="icon" data-bubbleid="bubble" style="pointer-events: none; cursor:none !important;" data-width="40" data-height="62" data-offsetx="-20" data-offsety="-62" data-labeloffsetx="0" data-labeloffsety="25"  data-fontfamily="Lato" data-fontcolor="#ffffff" data-fontsize="800 16px" data-display="true">
+                            <img class="alpha" src="images/map_pin_regular.png" style="cursor:pointer;" alt="Map Pin"/>
+                    </div>
+                </script>
+                <script id="default2" type="text/x-handlebars-template">
+                    <div class="icon" data-bubbleid="bubble" data-width="33" data-height="40" data-offsetx="-16" data-offsety="-40" data-labeloffsetx="0" data-labeloffsety="25"  data-fontcolor="#ffffff" data-fontsize="18" data-display="true">
+                            <img class="alpha" src="/w2gi/images/icons/gray-pin-shadow.png" style="cursor:pointer;" alt="Map Pin"/>
+                    </div>
+                </script>
+                <!-- icon template end -->
+                 <!-- bubble template start -->
+                <script id="bubble" data-offsetx="0" data-offsety="0" <tmpl_if name="is_wireless_device"> data-width="0" data-height="0" <tmpl_else> data-width="0" data-height="0" </tmpl_if>
+                    type="text/x-handlebars-template">
+
+                    <ul class="tabs" style="display:none;">
+                        <li class="active" data-tab="tab1">Address</li>
+                    </ul>
+                    <div class="tab-content active" data-tab="tab1">
+                        <ul>
+                          <li>{{address1}}<li>
+                          <li>{{city}}, {{state}} {{postalcode}}<li>
+                        </ul>
+                        <a href="javascript:void(0);" onclick="window.parent.location = 'tel:{{phone}}';" >
+                            {{phone}}
+                        </a>
+                        <div>Get Directions</div>
+                        <div class="dd-wrapper" style="display:none !important;">
+                            <form id="dd" autocomplete="off">
+                                <label for="input_bubble" class="sr-only">Enter Address</label>
+                                <input id="input_bubble" size="18" type="text" name="addressline" class="direction_address" value="{{addressline}}" />
+                                
+                                <input id="bubble_submit" type="submit" value="" class="search_arrow">
+                                <!-- <input size="19" type="text" name="addressline" style="display:none;" class="direction_address" value="{{address1}}, {{city}}, {{state}} {{postalcode}} " />
+                                <input type="submit" value="" class="search_arrow" style="display:none;"> -->
+                                <label for="bubble_country" class="sr-only">Country</label>
+                                <select id="bubble_country" name="country" class="country_selection" style="display:none">
+                                    <option value="">Select a country</option>
+                                     {{#each options}}
+                                    <option value="{{value}}" {{#if selected}}selected="selected"{{/if}}>{{text}}</option>
+                                    {{/each}}
+                                </select>
+                                <input type="submit" value="Go" style="display:none;" >
+                            </form>
+                        </div>
+                    </div>
+                </script>
+                <!-- bubble template end -->
+                <!-- center marker template start -->
+                <script id="center_marker" type="text/x-handlebars-template">
+                    <div class="icon" data-bubbleid="bubble" data-width="30" data-height="28"  data-offsetx="-15" data-offsety="-14" >
+                        <img class="alpha" src="/w2gi/images/icons/red-star.png" alt="Center Star" />
+                    </div>
+                </script>
+                <!-- center marker template end -->
+                <!-- dd end markers template start  -->
+                <script id="ddstarticon" type="text/x-handlebars-template">
+                    <div  class="end_icon" data-height="38" data-width="27" data-offsetx="-13" data-offsety="-38">
+                       <img class="alpha" src="images/ddstartpin-new.png" alt="Start Icon"/>
+                    </div>
+                </script>
+                <script id="ddendicon" type="text/x-handlebars-template">
+                    <div class="end_icon" data-height="38" data-width="27" data-offsetx="-13" data-offsety="-38">
+                        <img class="alpha" src="images/ddendpin-new.png" alt="End Icon"/>
+                    </div>
+                </script>
+                <!-- dd end markers template start  -->
+                <script id="panel_error_message" type="text/x-handlebars-template">
+                    <div id="error_message"><span class="locerror">{{error}}</span></div>
+                </script>
+            </div>
+        </div> <!-- end of w2gi wrapper -->
+        <script> 
+            var anchorIn = document.createElement('a');
+            anchorIn.setAttribute('href', '#');
+            anchorIn.setAttribute('title', 'Zoom In');
+
+            var anchorOut = document.createElement('a');
+            anchorOut.setAttribute('href', '#');
+            anchorOut.setAttribute('title', 'Zoom Out');
+                
+            setTimeout(function() {
+                var elIn = document.getElementById('OpenLayers_Control_PanZoom_zoomin_innerImage');
+                var elOut = document.getElementById('OpenLayers_Control_PanZoom_zoomout_innerImage');
+                document.getElementById('OpenLayers_Control_PanZoom_zoomin_innerImage').setAttribute("alt","zoom in the map");
+                document.getElementById('OpenLayers_Control_PanZoom_zoomout_innerImage').setAttribute("alt","zoom out the map");
+                document.getElementById('OpenLayers_Control_PanZoom_panright_innerImage').setAttribute("alt","Pan to the Right");
+                document.getElementById('OpenLayers_Control_PanZoom_panright').style.display = "none";    
+                document.getElementById('OpenLayers_Control_PanZoom_panup_innerImage').setAttribute("alt","Pan Up");
+                document.getElementById('OpenLayers_Control_PanZoom_panup').style.display = "none";
+                document.getElementById('OpenLayers_Control_PanZoom_pandown_innerImage').setAttribute("alt","Pan Down");
+                document.getElementById('OpenLayers_Control_PanZoom_pandown').style.display = "none";
+                document.getElementById('OpenLayers_Control_PanZoom_panleft_innerImage').setAttribute("alt","Pan Left");
+                document.getElementById('OpenLayers_Control_PanZoom_panleft').style.display = "none";           
+                elIn.parentNode.insertBefore(anchorIn, elIn);
+                anchorIn.appendChild(elIn);
+                elOut.parentNode.insertBefore(anchorOut, elOut);
+                anchorOut.appendChild(elOut);
+            }, 3000);
+        </script>
+        <script>
+            function entercheckOne (e) {
+                 if (13 == e.keyCode) {
+                   open_filters();
+                    }
+            }
+            var filterdown = document.getElementById("filter_button");
+            filterdown.addEventListener("keydown", entercheckOne, false);
+
+            function entercheckTwo (e) {
+                 if (13 == e.keyCode) {
+                   close_filters();
+                    }
+            }
+
+            var filterdown_up = document.getElementById("filter_button_up");
+            filterdown_up.addEventListener("keydown", entercheckTwo, false);
+
+            function entercheckThree(e) {
+                   if (13 == e.keyCode) {
+                    var target = event.target;
+                    target.click();
+                   }
+            }
+
+            function arrowLoad() {
+                var arrows = document.getElementsByClassName('arrow_div');
+                for (var i = 0; i < arrows.length; i++) {
+                    arrows[i].addEventListener("keydown", entercheckThree, true);
+                }
+            }
+
+            function delayFunction() {
+                window.setTimeout(arrowLoad, 2000);
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                delayFunction()
+            }, false);
+        </script>
+</body>
+</html>

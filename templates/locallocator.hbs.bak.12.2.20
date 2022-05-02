@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en" class=" usUser full homepage dj_webkit dj_safari dj_contentbox noRetinaLinesSupport ready loaded">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180374740-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-180374740-1');
+	</script> -->
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-5283NZX');</script>
+	<!-- End Google Tag Manager -->
+
+	 <script>
+      setTimeout(function(){
+        switchClass();
+      },50)
+       function switchClass() {
+        var htmlElement = document.getElementsByTagName("html")[0];
+        if(window.innerWidth > 960) {
+          if(!htmlElement.classList.contains('desktop')){
+            htmlElement.classList.add('desktop');
+          }
+          if(htmlElement.classList.contains('mobile')){
+            htmlElement.classList.remove('mobile');
+          }
+        } else {
+          if(htmlElement.classList.contains('desktop')){
+            htmlElement.classList.remove('desktop')
+          }
+          if(!htmlElement.classList.contains('mobile')){
+            htmlElement.classList.add('mobile');
+          }
+        }
+      }
+    
+    </script>
+
+	
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<link rel="shortcut icon" type="image/x-icon" href="//media1.calvinklein.com/images/static/e-comm20-09/favicon.ico"/>
+	<link rel="apple-touch-icon" sizes="57x57" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-57x57.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="//media1.calvinklein.com/images/static/e-comm20-09/apple/apple-icon-144x144.png" />
+	<link rel="canonical" href="{{{cityindex_url}}}{{{clientkey}}}/" />
+     <!-- BHODATA ='Mon $mon_hours,Tue $tues_hours,Wed $wed_hours,Thu $thurs_hours,Fri $fri_hours,Sat $sat_hours,Sun $sun_hours'; -->
+	<title>Calvin Klein - Apparel, Underwear, and more in {{{city_pc}}}, {{{state}}}{{{province}}} | {{{clientkey}}}</title>
+
+	<meta name="description" content="Store details for your local Calvin Klein store in {{{city_pc}}}, {{{state}}}{{{province}}}. Visit us for apparel, underwear, and more.">
+
+	<!--
+	Open Graph Tag IMPORTANT NOTE!
+	Use only one of the sets below.
+	Delete the other one not being used.
+	-->
+	<!-- Non-Restaurant Set -->
+	<meta property="fb:app_id" content="2800981903520638" />
+	<meta property="og:type" content="business.business" />
+	<meta property="og:url" content="{{{cityindex_url}}}{{{clientkey}}}/" />
+	<meta property="og:title" content="{{{name}}}" />
+	<meta property="og:description" content="Store details for your local Calvin Klein store in {{{city_pc}}}, {{{state}}}{{{province}}}. Visit us for apparel, underwear, and more." />
+	<meta property="og:image" content="https://locations.where2getit.com/calvinklein/images/local/ck-storefront.jpg" />
+	<meta property="og:image:height" content="315" />
+	<meta property="og:image:width" content="600" />
+	<meta property="business:contact_data:street_address" content="{{{address1_pc}}}" />
+	<meta property="business:contact_data:locality" content="{{{city_pc}}}" />
+	<meta property="business:contact_data:region" content="{{{state}}}" />
+	<meta property="business:contact_data:postal_code" content="{{{postalcode}}}" />
+	<meta property="business:contact_data:country_name" content="{{{country}}}" />
+	<meta property="business:contact_data:phone_number" content="{{{phone}}}" />
+	<meta property="business:contact_data:website" content="{{{cityindex_url}}}{{{clientkey}}}/" />
+	<meta property="place:location:latitude" content="{{{latitude}}}" />
+	<meta property="place:location:longitude" content="{{{longitude}}}" />
+	
+	<!-- BHODATA = 'Mon $mon_hours, Tue $tues_hours, Wed $wed_hours, Thu $thurs_hours, Fri $fri_hours, Sat $sat_hours, Sun $sun_hours'; -->
+
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/5.0.0/sanitize.min.css" /> -->
+	<link type="text/css" href="/w2gi/css/style.css" rel="stylesheet" media="all"/>
+	<link rel="stylesheet" type="text/css" href="/css/local/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="/css/local/pvh.css" />
+	<link rel="stylesheet" type="text/css" href="/css/local/ck.min.stripped.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="/css/local/main.alt.css" />
+	<!-- <script src="/js/ck.headerNav.js"></script> -->
+	<script src="/js/main.js"></script>
+
+			<script type="text/javascript">
+	            document.observe = document.fire = function () {
+	            };
+			</script>		
+			
+			
+			<script type="application/ld+json">
+		    {
+		      "@context": "http://schema.org",
+		      "@type": "BreadcrumbList",
+		      "itemListElement": [{
+		        "@type": "ListItem",
+		        "position": 1,
+		        "item": {
+		          "@id": "{{{topindex_url_lc}}}",
+		          "name": "Index"
+		        }
+		      },{
+		        "@type": "ListItem",
+		        "position": 2,
+		        "item": {
+		          "@id": "{{{stateindex_url_lc}}}",
+		          "name": "{{{state}}}{{{province}}}"
+		        }
+		      },{
+		        "@type": "ListItem",
+		        "position": 3,
+		        "item": {
+		          "@id": "{{{cityindex_url_lc}}}",
+		          "name": "{{{city}}}"
+		        }
+		      }]
+		    }
+		    </script>
+	    
+	    
+	    
+			<script type="application/ld+json">
+			{
+			  "@context":"http://schema.org",
+			  "@type":"ClothingStore",
+			  "@id":"{{{clientkey}}}",
+			  "name": "{{{NAME}}}",
+			  "address":{
+			    "@type":"PostalAddress",
+			    "streetAddress":"{{{address1}}}",
+			    "addressLocality":"{{{city}}}",
+			    "addressRegion":"{{{state}}}",
+			    "postalCode":"{{{postalcode}}}",
+			    "addressCountry":"{{{country}}}"
+			  },
+			"geo":{
+			    "@type":"GeoCoordinates",
+			    "latitude":{{{latitude}}},
+			    "longitude":{{{longitude}}}
+			  },
+			"branchOf": {
+			    "name":"Calvin Klein",
+			    "url": "https://calvinklein.com"
+			  },
+			  
+			 "url":"{{{cityindex_url}}}{{{clientkey}}}",
+			  "telephone":"{{{phone}}}",
+			  "logo" : "/calvinklein/images/local/ck-logo.svg",
+		      "image":"/calvinklein/images/local/ck-storefront.jpg",
+			 
+			  "openingHoursSpecification":[
+			      {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Monday"
+			        ],
+			        "opens":"{{{BHO_MON_OPEN}}}",
+			        "closes":"{{{BHO_MON_CLOSED}}}"
+			      },
+			      {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Tuesday"
+			        ],
+			        "opens":"{{{BHO_TUE_OPEN}}}",
+			        "closes":"{{{BHO_TUE_CLOSED}}}"
+			      },
+			      {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Wednesday"
+			        ],
+			        "opens":"{{{BHO_WED_OPEN}}}",
+			        "closes":"{{{BHO_WED_CLOSED}}}"
+			      },
+			      {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Thursday"
+			        ],
+			        "opens":"{{{BHO_THU_OPEN}}}",
+			        "closes":"{{{BHO_THU_CLOSED}}}"
+			      },
+			          {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Friday"
+			        ],
+			        "opens":"{{{BHO_FRI_OPEN}}}",
+			        "closes":"{{{BHO_FRI_CLOSED}}}"
+			      },    {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Saturday"
+			        ],
+			        "opens":"{{{BHO_SAT_OPEN}}}",
+			        "closes":"{{{BHO_SAT_CLOSED}}}"
+			      },
+			          {
+			        "@type":"OpeningHoursSpecification",
+			        "dayOfWeek":[
+			          "Sunday"
+			        ],
+			        "opens":"{{{BHO_SUN_OPEN}}}",
+			        "closes":"{{{BHO_SUN_CLOSED}}}"
+			      }
+			    ]
+			  //"menu":"http://www.example.com/menu", //if applied, use the tmpl_var to retrieve the database value
+			  //"acceptsReservations":"True" //if applied, use the tmpl_var to retrieve the database value
+			}
+			</script>		
+			
+
+			<script type="text/javascript" src="/w2gi/javascript/backbone/bb/lib/jquery.js"></script>
+			<script>
+	            var W2GI = {
+	                collection : {},
+	                config : {
+	                    appkey : '6A1DA4D2-8D8A-11E7-A07A-F839407E493E',
+	                    pageObserve : ['linktrack'],
+	                    autoStart : true,
+	                    locator : {
+	                        cgeo : false,
+	                        theme : null,
+	                        cdirections : false,
+	                        formdata : {
+	                            geoip : true,
+	                            dataview : 'store_default',
+	                            limit : 250,
+	                            geolocs : {
+	                                geoloc : [{
+	                                    addressline : '',
+	                                    country : '',
+	                                    latitude : '',
+	                                    longitude : ''
+	                                }]
+	                            },
+	                            searchradius : '20|50|75|100|500'
+	                        },
+	                        drivingdirections : {
+	                            disableDynamicRoutes : false,
+	                            formdata : {
+	                                dataview : 'store_default',
+	                                geolocs : {
+	                                    geoloc : [{
+	                                        address1 : '',
+	                                        city : '',
+	                                        state : '',
+	                                        province : '',
+	                                        postalcode : '',
+	                                        addressline : '',
+	                                        country : '',
+	                                        latitude : '',
+	                                        longitude : ''
+	                                    }]
+	                                }
+	                            }
+	                        },
+	                        imgPath : '/w2gi/images/zoombar/',
+	                        controls : [{
+	                            name : 'panZoom', // use panZoomBar if needs the full
+	                            // bar
+	                            options : {
+	                                zoomWheelEnabled : false
+	                            }
+	                        }],
+	                        //noZoomOnPan: true,
+	                        //zoom: 15,
+	                        dynamicSearch : false,
+	                        routeStyle : {
+	                            strokeWidth : 8,
+	                            strokeOpacity : 0.5,
+	                            strokeColor : '#0000FF'
+	                        },
+	                     
+							sources: [  
+	                           { 
+	                                name: 'Google Normal',
+	                                        options: {
+	                                        disableDoubleClickZoom : true,
+	                                        displayName : 'Map',
+	                                        projection: 'EPSG:900913', 
+	                                        units: 'km',
+	                                        type: 'roadmap', 
+	                                        maxZoomLevel:18,
+	                                    }
+	                            }
+	                        ]
+
+	                    }
+	                }
+	            };
+	            W2GI.collection.poi = [
+	            {{#checkIf pois}}
+            		{{#each pois}}
+        				{
+			                poinum : '{{poinum}}',
+			                icon : '{{icon}}',
+			                name : '{{name}}',
+			                address1 : '{{address1}}',
+			                address2 : '{{address2}}',
+			                city : '{{city}}',
+			                state : '{{state}}',
+			                province : '{{province}}',
+			                postalcode : '{{postalcode}}',
+			                country : '{{country}}',
+			                latitude : '{{latitude}}',
+			                longitude : '{{longitude}}',
+			                phone : '{{phone}}',
+			                mon_hours: '{{mon_hours}}',
+			                tues_hours: '{{tues_hours}}',
+			                wed_hours: '{{wed_hours}}',
+			                thurs_hours: '{{thurs_hours}}',
+			                fri_hours: '{{fri_hours}}',
+			                sat_hours: '{{sat_hours}}',
+			                sun_hours: '{{sun_hours}}',
+			                clientkey : '{{clientkey}}',
+			                uid : '{{uid}}',
+			                main_loc : '{{main_loc}}',
+			                loc_url : '{{loc_url}}'
+	            			} {{#checkUnless @last}},
+	            			{{/checkUnless}}
+	            		
+	            	{{/each}}
+	            {{else}}
+	            	{
+	            poinum : '{{poinum}}',
+	            icon : '{{icon}}',
+	            name : '{{name}}',
+	            address1 : '{{address1}}',
+	            address2 : '{{address2}}',
+	            city : '{{city}}',
+	            state : '{{state}}',
+	            province : '{{province}}',
+	            postalcode : '{{postalcode}}',
+	            country : '{{country}}',
+	            latitude : '{{latitude}}',
+	            longitude : '{{longitude}}',
+	            phone : '{{phone}}',
+	            mon_hours: '{{mon_hours}}',
+                tues_hours: '{{tues_hours}}',
+                wed_hours: '{{wed_hours}}',
+                thurs_hours: '{{thurs_hours}}',
+                fri_hours: '{{fri_hours}}',
+                sat_hours: '{{sat_hours}}',
+                sun_hours: '{{sun_hours}}',
+	            uid : '{{uid}}',
+	            main_loc : '{{main_loc}}',
+	            loc_url : '{{loc_url}}'
+	            }
+	           
+	            {{/checkIf}}
+	            ]
+
+	            var date = new Date();
+				var today = date.getDay();
+
+                for (var index = 0; index < W2GI.collection.poi.length; index++) {
+                	if(W2GI.collection.poi[index].sun_hours.toLowerCase() == 'closed' && W2GI.collection.poi[index].mon_hours.toLowerCase() == 'closed' && W2GI.collection.poi[index].tues_hours.toLowerCase() == 'closed' && W2GI.collection.poi[index].wed_hours.toLowerCase() == 'closed' && W2GI.collection.poi[index].thurs_hours.toLowerCase() == 'closed' && W2GI.collection.poi[index].fri_hours.toLowerCase() == 'closed' && W2GI.collection.poi[index].sat_hours.toLowerCase() == 'closed') {
+                                  W2GI.collection.poi[index].closehours = 'Closed';
+	                } else {
+
+	                    switch(today) {
+	                        case 0:
+	                        	W2GI.collection.poi[index].closehours = openClosed(W2GI.collection.poi[index].sun_hours,W2GI.collection.poi[index].mon_hours);
+	                            //W2GI.collection.poi[index].TODAYSHOURS = "Sunday " + W2GI.collection.poi[index].sun_hours;
+	                            
+	                        break;
+	                        case 1:
+	                           
+	                         
+	                                W2GI.collection.poi[index].closehours = openClosed(W2GI.collection.poi[index].mon_hours,W2GI.collection.poi[index].tues_hours);
+	                              //  W2GI.collection.poi[index].TODAYSHOURS = "Monday " + W2GI.collection.poi[index].mondayhours;
+	                          
+	                        break;
+	                        case 2:
+	                          	console.log('tues_hours = ' +  W2GI.collection.poi[index].tues_hours);
+	                                W2GI.collection.poi[index].closehours = openClosed(W2GI.collection.poi[index].tues_hours,W2GI.collection.poi[index].wed_hours);
+
+	                               // W2GI.collection.poi[index].TODAYSHOURS = "Tuesday " + W2GI.collection.poi[index].tuesdayhours;
+	                            
+	                        break;
+	                        case 3:
+	                           
+	                            	W2GI.collection.poi[index].closehours = openClosed(W2GI.collection.poi[index].wed_hours,W2GI.collection.poi[index].thurs_hours);
+	                               // W2GI.collection.poi[index].TODAYSHOURS = "Wednesday " + W2GI.collection.poi[index].wednesdayhours;
+	                           
+	                        break;
+	                        case 4:
+	                            
+	                            	W2GI.collection.poi[index].closehours = openClosed(W2GI.collection.poi[index].thurs_hours,W2GI.collection.poi[index].fri_hours);
+	                               // W2GI.collection.poi[index].TODAYSHOURS = "Thursday " + W2GI.collection.poi[index].thursdayhours;
+	                            
+	                        break;
+	                        case 5:
+	                           	W2GI.collection.poi[index].closehours = openClosed(W2GI.collection.poi[index].fri_hours,W2GI.collection.poi[index].sat_hours);
+	                               // W2GI.collection.poi[index].TODAYSHOURS = "Friday " + W2GI.collection.poi[index].fridayhours;
+	                           
+	                        break;
+	                        case 6:
+	                         
+	                            	W2GI.collection.poi[index].closehours = openClosed(W2GI.collection.poi[index].sat_hours,W2GI.collection.poi[index].sun_hours);
+	                              //  W2GI.collection.poi[index].TODAYSHOURS = "Saturday " + W2GI.collection.poi[index].saturdayhours;
+	                           
+	                        break;
+	                    }
+	                  
+	                }
+                }
+
+                 function openClosed(today, tomorrow){
+                	var date = new Date(),
+                    hour = date.getHours();
+                    if(today.toLowerCase() != 'closed'){
+                        var openHours = today.split('-'),
+                        openTime = parseInt(openHours[0].slice(0,1)),
+                        openTimeShow = openHours[0].replace(':00',''),
+                        closeTime = parseInt(openHours[1].slice(0,1)) + 12,
+                        closeTimeShow = openHours[0].replace(':00','') + ' - ' + openHours[1].replace(':00','');
+                    } else {
+
+                    }
+                    if(tomorrow.toLowerCase() != 'closed'){
+                        var closeTime2 = tomorrow.split('-')[0];
+                    } else {
+
+                    }
+                   if(openTime <= hour && hour <= closeTime){
+                    // console.log('Open until ' + closeTime)
+                    // $('.nearby_hours').addClass('open');
+                    return 'Open today ' + closeTimeShow
+                } else if(openTime > hour) {
+                    // console.log('Closed until ' + closeTime)
+                    return 'Closed until ' + openTimeShow + ' tomorrow'
+                } else if(hour > closeTime) {
+                    // console.log('Closed until ' + openTime2)
+                    return 'Closed until ' + closeTime2
+                }
+
+
+            }
+
+			</script>
+			<script data-main="/w2gi/javascript/backbone/bb/dist/bones.min" src="/w2gi/javascript/backbone/bb/lib/require.js"></script>
+			<script type="text/javascript">
+
+	            jQuery(document).on("w2gi:locatorloaded", function () {
+	                //console.log("loaded");
+	                {{#checkIf holiday_hours}}
+	                 	var date = new Date();
+                        var today = date.getDay();
+                        var todayStr = date.getTime();
+                        // var todayStr = new Date('2020-11-31').getTime();
+	                	
+	                	var hh = '{{{holiday_hours}}}';
+	                	var holidayArr = hh.split(',');
+	                	var holidayDates = [];
+                        var holidayTimes = [];
+                        // var holidayList = '';
+                        $('<ul class="holidayList"></ul>').insertAfter('.storeHours');
+	                	$.each(holidayArr,function(i,v){
+	                		
+	                		
+	                		var a = v.trim().split(' ')[0];
+	                		var b = a.split('/');
+	                		var c = new Date(b[2] + '-' + b[0] + '-' + b[1]).getTime();
+	                		if(v.trim().substring(v.trim().indexOf(" ") + 1) == 'Closed'){
+	                			var f = v.trim().substring(v.trim().indexOf(" ") + 1);
+	                		} else {
+	                			var f = v.trim().substring(v.trim().indexOf(" ") + 1).toLowerCase();
+	                		}
+	                		
+	                		var d = '<span>' + a.replace(/:00/g,'') + '</span>';
+	                		var e = '<span>' + f + '</span>';
+
+	                		var holidayLi = '<li>' + d + e.replace(/:00/g,'') + '</li>';
+
+	                		if (c - todayStr <= 604800000 && c > todayStr) {
+	                			if($('.holidayList h2').length){
+	                			} else {
+	                				$('.holidayList').append('<h2 style="margin-bottom: 10px;">Holiday Hours</h2>');
+	                			}
+	                			$('.holidayList').append(holidayLi);
+	                		}
+
+                        })
+                        
+					{{/checkIf}}
+	                
+	                if($(window).width() > 801) {
+	                	checkHeadingHeight();
+					}
+
+	                $('#btn-external').on('click', function (event, element) {
+	                    
+	                    $('li.poi-item').first().find('.open_bubble')[0].click();
+	                })
+
+	                ace.util.Event.on("popup:loaded", function () {
+	                    $('#bubble_hours').html($('#all_hours_table').html());
+	                    $("#map form.bubble_form_2").on("submit", function (evt) {
+	                        evt.preventDefault();
+	                    });
+	                    //$('#map .bubble_form_2 .bubble_input')[0].focus();
+
+	                    $('#map .bubble_form_2 .bubble_go2').on("click", function (event) {
+	                        generate_directions($('#map .bubble_form_2 .bubble_input').val(), $('#map .bubble_form_2 .bubble_endaddress').val());
+	                    });
+
+	                });
+
+
+					$('.storeHours li').each(function(){
+						// var a = $(this).html().replace(/:00/g,'').replace(/-/g,' - ');
+						var a = $(this).html().replace(/:00/g,'').replace(/-/g, ' - ');
+						$(this).html(a);
+					})
+		
+					{{#checkIf temp_closed '==' '1'}}
+					{{else}}
+	                var date = new Date();
+	                var day = date.getDay();
+	                switch (day) {
+                    case 0:
+                        $('.storeHours-item:last-of-type').addClass('bold');
+                        $('.storeHours-item.bold span:first-of-type').html('Today');
+                        break;
+                    case 1:
+                        $('.storeHours-item:first-of-type').addClass('bold');
+                        $('.storeHours-item.bold span:first-of-type').html('Today');
+                        break;
+                    case 2:
+                        $('.storeHours-item:nth-of-type(2)').addClass('bold');
+                        $('.storeHours-item.bold span:first-of-type').html('Today');
+                        break;
+                    case 3:
+                        $('.storeHours-item:nth-of-type(3)').addClass('bold');
+                        $('.storeHours-item.bold span:first-of-type').html('Today');
+                        break;
+                    case 4:
+                        $('.storeHours-item:nth-of-type(4)').addClass('bold');
+                        $('.storeHours-item.bold span:first-of-type').html('Today');
+                        break;
+                    case 5:
+                        $('.storeHours-item:nth-of-type(5)').addClass('bold');
+                        $('.storeHours-item.bold span:first-of-type').html('Today');
+                        break;
+                    case 6:
+                        $('.storeHours-item:nth-of-type(6)').addClass('bold');
+                        $('.storeHours-item.bold span:first-of-type').html('Today');
+                        break;
+                	}
+                	{{/checkIf}}
+
+                	// checkNearbyOpen()
+
+	            });
+
+	            	            function generate_directions (startaddress, endaddress) {
+
+	                endaddress = endaddress.replace("#", "poundsign");
+
+	                if (bubbleValidate(startaddress)) {
+	                    $('#directions_url').data('url', '' + startaddress + '&addressline=' + '{{{latitude}}},{{{longitude}}}' + '&addresslineDisplay=' + endaddress);
+	                    ace.util.alertExternal($('#directions_url'));
+	                    //$('#directions_url').click();
+	                    //performClick($('#directions_url'));
+	                }
+	            }
+
+	            function bubbleValidate (bubbleInput) {
+	                if (bubbleInput.length > 0 && bubbleInput.length < 5 && !isNaN(bubbleInput)) {
+	                    ace.util.alert("Please enter a valid ZIP code.");
+	                    return false;
+	                }
+
+	                if (bubbleInput.length == 0) {
+	                    ace.util.alert("Please enter a starting address.");
+	                    return false;
+	                }
+
+	                return true;
+	            }
+
+	            function performClick (node) {
+	                if ((navigator.userAgent.match(/Safari/i))) {
+	                    var evObj = document.createEvent('MouseEvents');
+	                    evObj.initMouseEvent('click', true, true, window);
+	                    node.dispatchEvent(evObj);
+	                } else {
+	                    node.click();
+	                }
+	            }
+
+
+
+	            function tConvert (time) {
+	               // Check correct time format and split into components
+	               time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+	                if (time.length > 1) { // If time format correct
+	                  time = time.slice (1);  // Remove full string match value
+	                  time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+	                  time[0] = +time[0] % 12 || 12; // Adjust hours
+	                }
+	                return time.join (''); // return adjusted time or original string
+	              }
+
+
+					window.addEventListener('DOMContentLoaded', function() {
+					    var collectionPoi = W2GI.collection.poi;
+					    var staticMap = document.getElementById('staticMap');
+					    var mapUrl;
+					    // if(window.innerWidth > 801) {
+					    	//var size = '959x601';
+					    // } else {
+					    // 	var size = '801x375';
+					    // }
+					    if (collectionPoi.length > 1) {
+					        var emptyMarkerArray = [];
+					            for (i = 1; i < collectionPoi.length; i++) {
+					            emptyMarkerArray.push('&markers=icon:https://stores.calvinklein.us/images/local/map-pin-local.'+[i]+'.png|' + collectionPoi[i].latitude + ',' + collectionPoi[i].longitude);
+					        }
+					        var populatedMarkerArray = emptyMarkerArray.join('');
+					        mapUrl = 'https://maps.googleapis.com/maps/api/staticmap?language=en&amp;key=AIzaSyC_poY9u57toWlNmTpIQmEjM7dw2zUJjh4&amp;channel=calvinklein&amp;autoscale=1&amp;size=959x601&amp;maptype=roadmap&amp;format=png&amp;visual_refresh=true&amp;markers=icon:https://stores.calvinklein.us/images/local/map-pin-local.png|{{{latitude}}},{{{longitude}}}' + populatedMarkerArray;
+					        staticMap.style.background = "center url('"+mapUrl+"')";
+					        // populateNearbyText(collectionPoi);
+					        } else {
+					      mapUrl = 'https://maps.googleapis.com/maps/api/staticmap?language=en&amp;key=AIzaSyC_poY9u57toWlNmTpIQmEjM7dw2zUJjh4&channel=calvinklein&amp;center={{{latitude}}},{{{longitude}}}&zoom=14&scale=1&size=959x601&maptype=roadmap&format=png&visual_refresh=true&markers=icon:https://hosted.where2getit.com/calvinklein/images/local/map-pin-local-1.png%7C{{{latitude}}},{{{longitude}}}';
+					        staticMap.style.background = "center url('"+mapUrl+"')";
+					    }
+					});
+
+					// function checkNearbyOpen(){
+
+					// }
+			</script>
+
+			<style>
+				.hidefirst0 {
+					display: none !important;
+				}
+				.hideit, .olPopupCloseBox {
+					display: none;
+				}
+
+				.hideit0000000 {
+					display: none;
+				}
+
+				.poi-result li:first-of-type {
+					display: none;
+				}
+				.outdoor {
+					display: block;
+					font-family: 'Klein Web';
+					font-size: 18px;
+					font-weight: 700;
+					margin: 15px 0 -8px;
+				}
+				.temp_closed {
+					color: #f00;
+				}
+
+				ul.holidayList {
+					font-size: 18px;
+					margin-left: 0;
+					padding-left: 0;
+				}
+
+				ul.holidayList:after {
+					clear: both;
+					content: '';
+					display: block;
+					height: 0;
+				}
+
+				ul.holidayList li span {
+					display: block;
+					float: left;
+				}
+
+				ul.holidayList li span:first-of-type {
+					width: 172px;
+				}
+
+				@media (max-width: 801px) {
+					ul.holidayList {
+						font-size: 16px;
+					}
+				}
+			</style>
+	 <script>
+      $(function(){
+        $(window).on('resize',function(){
+            switchClass();
+            checkHeadingHeight();
+        })
+      });
+
+		function checkHeadingHeight() {
+      		if($(window).width() > 801) {
+      			if($('h1').height() > 42){
+      				$('.covid').css('margin-top','0');
+      			}
+      		} else {
+      			if($('.covid').css('margin-top')){
+      				$('.covid').css('margin-top','');
+      			}
+      		}
+      	}
+    </script>
+
+</head>
+<body class="{{#checkIf is_wireless_device}} ae-lang-en ae-device-mobile {{else}} ae-lang-en ae-device-desktop rfk_wbh {{/checkIf}}">
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5283NZX"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<div class="page">
+
+	{{> 'header.simplified'}}
+	
+
+	<div id="templates" style="display: none;">
+			<script id="locator_addressline" type="text/x-handlebars-template">
+				^((#if address1^))^((address1^))^((else^))^((#if addressline^))^((addressline^))^((/if^))^(( city ^)) ^(( county ^)) ^(( state ^)) ^((postalcode^))^((/if^))
+			</script>
+		   	<script id="directions_addressline" type="text/x-handlebars-template">
+                ^((#if address1^))^((address1^)) ^(( city ^)) ^(( state ^)) ^((postalcode^)) ^((else^)) ^((#if addressline^))^((addressline^))^((/if^)) ^(( city ^)) ^(( state ^)) ^((postalcode^))^((/if^))
+            </script>
+			<script id="collection_multiple_address" type="text/x-handlebars-template">
+				<h3>Please select your location</h3>
+				<ul class="content-list address-suggestions">
+				^((#each this^))
+				<li data-id=^((@index^))><strong>^((address1^)) ^(( city ^)) ^(( county ^))</strong>^(( state ^)) ^((postalcode^))</li>
+				^((/each^))
+				</ul>
+			</script>
+
+			<!-- icon template start  -->
+			<script id="default" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="42" data-height="60" data-offsetx="-21" data-offsety="-30"  data-display="false" >
+				<img class="alpha" src="/images/local/map-pin.svg" alt="icon" />
+				<div action="open_bubble">
+				^((poinum^))
+				</div>
+				</div>
+			</script>
+			<script id="main_icon" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="42" data-height="60" data-offsetx="-21" data-offsety="-30" data-labeloffsetx="-1" data-labeloffsety="15" data-fontcolor="#ffffff" data-fontsize="10" data-fontweight="bold" data-display="false">
+				<img class="alpha" src="/images/local/map-pin.svg" alt="icon" />
+				<div action="open_bubble">
+				^((poinum^))
+				</div>
+				</div>
+			</script>
+			<script id="other_icon" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="42" data-height="60" data-offsetx="-21" data-offsety="-30" data-labeloffsetx="-1" data-labeloffsety="28" data-fontcolor="#ffffff" data-fontsize="10" data-fontweight="bold" data-display="false">
+				<img class="alpha" src="/images/local/map-pin.svg" alt="icon" />
+				<div action="open_bubble">
+				^((poinum^))
+				</div>
+				</div>
+			</script>
+			<script id="center_marker" type="text/x-handlebars-template">
+				<div class="icon" data-bubbleid="bubble" data-width="30" data-height="28"  data-offsetx="-11" data-offsety="-33">
+				<img class="alpha" alt="redstar" src="http://hosted.where2getit.com/w2gi/images/zoombar/blank.gif"/>
+				</div>
+			</script>
+			<script id="ddstarticon" type="text/x-handlebars-template">
+				<div class="end_icon" data-width="27" data-height="38" data-offsetx="-16" data-offsety="-28">
+				<img class="alpha" alt="start" src="http://static.where2getit.com/w2gi/images/icons/ddstartpin.png"/>
+				</div>
+			</script>
+			<script id="ddendicon" type="text/x-handlebars-template">
+				<div class="end_icon" data-width="27" data-height="38" data-offsetx="-16" data-offsety="-28">
+				<img class="alpha" alt="end" src="http://static.where2getit.com/w2gi/images/icons/ddendpin.png"/>
+				</div>
+			</script>
+			<!-- icon template end -->
+
+			<!-- bubble template start -->
+			<script id="bubble" data-offsetx="15" data-offsety="-18" {{#checkIf is_wireless_device}}data-width="1" data-height="1"{{else}}data-width="220" data-height="180" {{/checkIf}} type="text/x-handlebars-template">
+         
+         		<ul class="tabs" style="display:none;">
+				<li class="active" data-tab="tab1">Address</li>
+				<li data-tab="tab2">Hours</li>
+				<li data-tab="tab3">Amenities</li>
+				</ul>
+				<div class="tab-content active" data-tab="tab1">
+				<b>^((name^))</b>
+				<ul>
+				<li>^((address1^))</li>
+				<li>^((city^)), ^((state^)) ^((postalcode^))</li>
+				</ul>
+
+				<div class="dd-wrapper">
+				<div class="origin-select">
+				Directions:&nbsp; <a href="#" data-action="to" class="">To</a> | <a href="#" data-action="from">From</a> Here
+				</div>
+				<form id="dd" autocomplete="off" style="margin-top:5px;">
+				<span>From:</span> <br/>
+				<input size="19" type="text" name="addressline" value="^((addressline^))" style="width: 130px;"/>
+				<select id="bubble_country" name="country" class="country_selection" style="display:none;">
+				<option value="^((country^))">^((country^))</option>
+				</select>
+				<input type="submit" value="Go" style="width:30px;"/>
+				</form>
+				</div>
+				</div>
+				<div class="tab-content" data-tab="tab2">tab2</div>
+				<div class="tab-content" data-tab="tab3">
+				<div class="gboxDiv">
+				<a class="gs" data-action="show">Street View</a>
+				</div>
+				</div>
+			</script>
+			<!-- bubble template end -->
+
+			<!-- POI table template start -->
+			<script id="collection_poi" type="text/x-handlebars-template">
+
+				<ul class="content-list poi-result"> 
+
+				^((#each pois^))
+				<li data-id=^((@index^)) data-uid=^((uid^)) class="poi-item">
+					<div class="nearby_icon">
+						<img src="https://locations.where2getit.com/calvinklein/images/local/map-pin-local.png" alt="" />
+						<span>
+							^((@index^))
+						</span>
+					</div>
+					<div class="nearby_details">  
+						<div class="name">
+							<span>^((name^))</span>
+						</div>
+						<div class="address1">
+							^((address1^))
+						</div>
+						^((#if address2^))
+						<div class="address2">
+							^((address2^))
+						</div>
+						^((/if^))
+						<div>^((city^)), ^((state^))^((province^)) ^((postalcode^))</div>
+						<div>Phone: ^((phone^))</div>
+						<div class="nearby_hours ^((closehours^))">^((closehours^))</div>
+						<div class="nearby_btn_wrapper">
+							<button class="nearby_gd_details ga_w2gi_lp" data-galoc="CalvinKlein - ^((clientkey^))" data-gaact="Click_to_NearByStores" onclick="var deets = ['^((state^))','^((city^))','^((clientkey^))'];visitStorePage(deets)">Store Details</button>
+							<button class="nearby_gd_directions ga_w2gi_lp" data-galoc="CalvinKlein - ^((clientkey^))" data-gaact="Click_to_NearByStores_Directions" onclick="window.open('http://maps.apple.com/?daddr={{{name}}},{{{address1}}},{{{city_pc}}},{{{state}}}{{{province}}},{{{postalcode}}}','_blank');">Directions</button>
+						</div>
+						<div class="preferred">Preferred Loyalty Program Eligible</div>
+					</div>
+					
+				</li>
+				^((/each^))
+				</ul>
+			</script>
+			<!-- POI table template end -->
+
+			<!-- More Info table template start -->
+			<script id="collection_more_info" type="text/x-handlebars-template">
+				<table odd_row_class="odd" even_row_class="even" active_row_class="active" slice_size="5">
+				<thead>
+				<tr>
+				<td></td>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+				<td></td>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr recnum="#{POINUM}">
+				<td width="33px" valign="top">
+				<div templateid="#{ICON}"></div>
+				</td>
+				<td width="310px">
+				<a action="open_bubble" class="store_name" recnum="#{POINUM}" href="javascript:void(0);">#{NAME}</a>
+				<br/>
+				#{ADDRESS1}
+				<br/>
+				#{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}
+				<br/>
+				<strong>#{PHONE}</strong>
+				</td>
+				</tr>
+				<tr>
+				<td colspan="2">
+				<a action="show_all" recnum="#{POINUM}" href="javascript:void(0);">Show All Locations</a>
+				</td>
+				</tr>
+				</tbody>
+				</table>
+			</script>
+			<!-- More Info table template end -->
+
+			<!-- Ambiguous address table template start -->
+			<!--script id="collection_multiple_address" type="text/x-handlebars-template">
+				<table odd_row_class="odd" even_row_class="even" active_row_class="active">
+				<thead>
+				<tr>
+				<th>Did you mean:</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+				<td></td>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr recnum="#{POINUM}">
+				<td width="250px">
+				<a action="search_address" recnum="#{POINUM}" href="javascript:void(0);">#{ADDRESS1} #{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}</a>
+				<br/>
+				#{COUNTY}
+				</td>
+				</tr>
+				</tbody>
+				</table>
+			</script-->
+			<!-- Ambiguous address table template end -->
+
+			<!-- driving directions panel template end -->
+			<script id="collection_maneuvers" type="text/x-handlebars-template">
+				<p>
+				<a class="search_again" href="javascript:void(0);" target="_parent" onclick="window.location.reload()">Back to Store Details</a>
+				</p>
+
+				<h3>Driving Directions</h3>
+				<p><strong>Distance: ^((total_distance^)) miles.         Drive time: ^((total_time^)) minutes</strong></p>
+				<p class="maneuver_start">
+				From (A): <strong>^((#if fromAddress.address1^))^((fromAddress.address1^))^((else^))^((#if fromAddress.addressline^))^((fromAddress.addressline^))^((/if^)) ^(( fromAddress.city ^)) ^(( fromAddress.county ^)) ^(( fromAddress.state ^)) ^((fromAddress.postalcode^))^((/if^)) </strong>
+				</p>
+				<ul class="content-list maneuver-result">
+				^((#each maneuverlist^))
+				<li data-id=^((@index^)) data-uid=^((uid^))>
+				<strong>^((incIndex @index^)) </strong>^((text^)) ^((distance^)) ^((distanceuom^))
+				</li>
+				^((/each^))
+				</ul>
+				<p class="maneuver_end">
+				To (B): <strong>^((#if toAddress.address1^))^((toAddress.address1^))^((else^))^((#if toAddress.addressline^))^((toAddress.addressline^))^((/if^)) ^(( toAddress.city ^)) ^(( toAddress.county ^)) ^(( toAddress.state ^)) ^((toAddress.postalcode^))^((/if^)) </strong>
+				</p>
+
+			</script>
+
+			<!-- Maneuvers table template end -->
+			<div id="lightwindow_cache" params="lightwindow_width=400, lightwindow_height=300, lightwindow_loading_animation=false">
+				<span id="lightwindow_cache_data" style="line-height: auto;
+				overflow: visible,
+				position: relative;float: left;width: 100%;"></span>
+			</div>
+		</div>
+	<!-- End Locator Map/POI List Templates -->
+
+
+
+	<main data-w2gi="locator" id="w2gilocalmain" >
+
+		<div id="form">
+
+			<form id="locator_search" autocomplete="off"></form>
+			<form id="driving_directions" autocomplete="off" style="display: none;">
+
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								From:
+							</td>
+							<td>
+								<input class="addressentry" id="startaddress" type="text" size="28" name="addressline" value="Start address" onClick="clear_search_directions_box(this);"/>
+								To:
+							</td>
+							<td>
+								<input class="addressentry" id="endaddress" type="text" size="28" name="addressline" value="End address" onClick="clear_search_directions_box(this);"/>
+								<input id="driving_directions_button" type="submit" value="Get Directions" name="driving_directions"/>
+							</td>
+							<td>
+								<a class="search_toggle" href="javascript:void(0);" style="font-size:12px;">Search Again</a>
+							</td>
+						</tr>
+
+						<!-- <tr><td colspan="3" style="text-align:right;"></td></tr> -->
+					</tbody>
+				</table>
+			</form>
+		</div>
+		<!-- end of form -->
+		<nav class="nav">
+			<ul>
+				<li>
+					<a class="nav-item ga_w2gi_lp" data-galoc="CalvinKlein - {{{clientkey}}}" data-gaact="Click_to_IndexPage" data-linktrack="Top index page" href="{{{topindex_url_lc}}}" >Select a State</a>  
+				</li>
+				<li>
+					<a class="nav-item ga_w2gi_lp" data-galoc="CalvinKlein - {{{clientkey}}}" data-gaact="Click_to_StatePage" data-linktrack="State index page - {{{state_longname_pc}}}" href="{{{stateindex_url_lc}}}" >{{{state_longname_pc}}}</a> 
+				</li>
+				<li>
+					<a class="nav-item ga_w2gi_lp" data-galoc="CalvinKlein - {{{clientkey}}}" data-gaact="Click_to_CityPage" data-linktrack="City index page - {{{city_pc}}}" href="{{{cityindex_url_lc}}}" >{{{city_pc}}}</a>
+				</li>
+				<li>
+					<span>{{{name}}}</span>
+				</li>
+			</ul>
+		</nav>
+		<section class="storeMain">
+			<section class="nap_map">
+				<div class="nap">
+					<div class="storeContent-inner">
+						<div class="storeContent-preamble">
+							<!-- <h1 class="heading"><span class="hidden">Store details for your local </span>{{{name}}} Store <span class="hidden"> in {{{city}}}, {{{state}}}{{{province}}}</span></h1> -->
+							<h1 class="heading">{{{name}}} Store in {{{city}}}, {{{state}}}{{{province}}}</h1>
+							<div class="storeAddress">
+								<div class="storeAddress_nap">
+									<span class="storeAddress-text" aria-label="store address">
+										{{{address1}}}<br>
+										{{#checkIf address2}}{{{address2}}}<br>{{/checkIf}}
+										{{{city_pc}}}, {{{state}}}{{{province}}} {{{postalcode}}}</span>
+									</span>
+									<!-- <a class="storeAddress-link" data-linktrack="phone-click-{{{clientkey}}}" href="tel:{{{phone}}}" aria-label="Phone number">
+										{{{phone}}}
+									</a> -->
+									<br>
+									<span>{{{phone}}}</span>
+								</div>
+								<div class="directions_wrapper">
+									<a data-linktrack="directions-click-{{{clientkey}}}" class="sa-get-dir ga_w2gi_lp" data-galoc="CalvinKlein - {{{clientkey}}}" data-gaact="Click_to_GetDirections" href="http://maps.apple.com/maps?q={{{name}}},{{{address1}}} {{{city_pc}}},{{{state}}}{{{province}}},{{{postalcode}}}"> Get Directions </a>
+<!-- 									<a data-linktrack="directions-click-{{{clientkey}}}" class="sa-get-dir" href="http://maps.google.com/maps?q={{{name}}}, {{{address1}}}  {{{city_pc}}}, {{{state}}}{{{postalcode}}}"> Get Directions </a> -->
+								</div>
+							</div>
+							<div class="store_hours_wrapper">
+								{{#checkIf temp_closed '==' '1'}}
+								<style>
+									@media (min-width: 802px){
+										.covid {
+											margin-top: -257px;
+										}
+									}
+								</style>
+								<h2 class="temp_closed">Temporarily Closed</h2>
+								{{else}}
+								<h2>
+									Store Hours
+								</h2>
+								{{#checkIf outdoor '==' '1'}}
+									<span class="outdoor">Outdoor Shopping Center</span>
+								{{/checkIf}}
+								<ul class="storeHours">
+									{{#checkIf mon_hours}}
+									<li class="storeHours-item">
+										<span>
+											Monday
+										</span>
+										<span>
+											{{{mon_hours}}}
+										</span>
+									</li>
+									{{/checkIf}}
+									{{#checkIf tues_hours}}
+									<li class="storeHours-item">
+										<span>
+											Tuesday
+										</span>
+										<span>
+											{{{tues_hours}}}
+										</span>
+									</li>
+									{{/checkIf}}
+									{{#checkIf wed_hours}}
+									<li class="storeHours-item">
+										<span>
+											Wednesday
+										</span>
+										<span>
+											{{{wed_hours}}}
+										</span>
+									</li>
+									{{/checkIf}}
+									{{#checkIf thurs_hours}}
+									<li class="storeHours-item">
+										<span>
+											Thursday
+										</span>
+										<span>
+											{{{thurs_hours}}}
+										</span>
+									</li>
+									{{/checkIf}}
+									{{#checkIf fri_hours}}
+									<li class="storeHours-item">
+										<span>
+											Friday
+										</span>
+										<span>
+											{{{fri_hours}}}
+										</span>
+									</li>
+									{{/checkIf}}
+									{{#checkIf sat_hours}}
+									<li class="storeHours-item">
+										<span>
+											Saturday
+										</span>
+										<span>
+											{{{sat_hours}}}
+										</span>
+									</li>
+									{{/checkIf}}
+									{{#checkIf sun_hours}}
+									<li class="storeHours-item">
+										<span>
+											Sunday
+										</span>
+										<span>
+											{{{sun_hours}}}
+										</span>
+									</li>
+									{{/checkIf}}
+								</ul>
+								{{/checkIf}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="map" id="map">
+					<div id="staticMap">
+						<div id="googleAttribution">
+							<img src="/images/local/google.jpg">
+						</div>
+						<div id="googleDate">
+							<script type="text/javascript">
+								var d = new Date ()
+								document.write("Map data @")
+								document.write(d.getFullYear());
+								document.write
+							</script>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="covid">
+				<h2>COVID-19 Information</h2>
+				<p>We are working to provide a safe environment for our customers by limiting occupancy to promote social distancing and increasing frequency of routine cleaning. Associates and customers are required to wear a mask at all times inside the store to maintain a safe environment.</p>
+				<p>For more information:</p>
+				<p>
+					<a href="https://www.calvinklein.ca/en/covid-19-information" target="_blank" class="ga_w2gi_lp" data-galoc="CalvinKlein - {{{clientkey}}}" data-gaact="Click_to_Covid_CanadaShoppers">Canada Shoppers</a>
+					<span>&nbsp;&nbsp;</span>
+					<a href="https://www.calvinklein.us/en/covid-19-information" target="_blank" class="ga_w2gi_lp" data-galoc="CalvinKlein - {{{clientkey}}}" data-gaact="Click_to_Covid_USShoppers">US Shoppers</a>
+				</p>
+			</section>
+			<section class="about">
+				<h2>About {{{name}}}</h2>
+				<p>A clothing store for women and men, shop the latest arrivals in underwear, apparel, accessories and more.</p>
+			</section>
+			<section class="panel_wrapper">
+				<h2>Nearby Stores</h2>
+				<div id="panel" class="poi panel"></div>
+			</section>
+			<div class="streetView" style="display:none;">
+			</div>
+			<div class="w2gifooter">
+				<div id="w2gifooter">
+			    	<script type="text/javascript">
+			
+						var d = new Date()
+			
+						document.write("<a href='http://www.brandify.com' target='_new'>Store Locator Software</a> Powered by Brandify ")
+			                            document.write("Copyright &copy; ")
+						document.write(d.getFullYear())
+			
+						document.write(", All Rights Reserved.<br/>")                		
+			
+					</script>
+			   
+			    </div><br/>
+			</div>
+		</section>
+
+		
+	</main> <!-- close of #w2gilocalmain -->
+	{{> 'footer.simplified'}}
+	<style>
+		
+	</style>
+	<script>
+
+		/*  $(function(){
+        $('.searchButtonWrapper').on('click',function(){
+          $(this).parent().css({'visibility':'hidden'}).animate({'opacity':'0'});
+          $('#headerNavList').css({'visibility':'hidden'}).animate({'opacity':'0'});
+          $('.searchWrapper,.menuIcon').removeClass('hidden').css({'visibility':'visible'}).animate({'opacity':'1'});
+          $('<div class="searchShadow" style="visibility: hidden; opacity: 0;" onclick="$(\'.searchWrapper,.menuIcon,.searchShadow\').addClass(\'hidden\').css({\'visibility\':\'hidden\'}).animate({\'opacity\':\'0\'});$(\'#headerTopRight,#headerNavList\').css({\'visibility\':\'visible\'}).animate({\'opacity\':\'1\'});setTimeout(function(){$(\'.searchShadow\').remove();},100);"></div>').appendTo('body');$('.searchShadow').css({'visibility':'visible'}).animate({'opacity':'1'});
+        });
+        $('.desktop .menuIcon').on('click',function(){
+          $('.searchWrapper,.menuIcon,.searchShadow').addClass('hidden').css({'visibility':'hidden'}).animate({'opacity':'0'});
+          $('#headerTopRight,#headerNavList').css({'visibility':'visible'}).animate({'opacity':'1'});
+          setTimeout(function(){
+            $('.searchShadow').remove();
+          },100);
+        });
+      });*/
+      $(function(){
+        $('.mobile #menuButton').on('click',function(){
+          $('body').css({'overflow':'hidden','position':'relative'});
+          $('#menuButton').addClass('open');
+          $('#headerNavWrapper').addClass('visible open').animate({'left':'0'}).css({'height':'100vh'});
+          $('.shadow').removeClass('hidden').show().css({'visibility':'visible'}).animate({'opacity':'1'})
+        });
+        $('.navBarCloseWrapper a, .shadow').on('click',function(){
+          $('body').css({'overflow':'','position':''});
+          $('#headerNavWrapper').animate({
+            'left':'-100%'
+          },function(){
+            $('#headerNavWrapper').removeClass('visible open').css({'height':''})
+          });
+          $('.shadow').animate({
+            'opacity':'0'
+          },function(){
+            $('.shadow').addClass('hidden').css({'visibility':'hidden'})
+          });
+        });
+            
+        $('.plusIcon').on('click',function(){
+          $(this).closest('.dropDownColumn').removeClass('close').addClass('open')
+          $(this).parent().next().css({'visibility':'visible','display':'block','height':'auto'}).animate({'opacity':'1'});
+        })
+
+        $('.minusIcon').on('click',function(){
+          $(this).parent().next().animate({'opacity':'0'});
+          $(this).parent().next().css({'visibility':'hidden','display':'none','height':'0'})
+          $(this).closest('.dropDownColumn').removeClass('open').addClass('close');
+        });
+
+        $('.footer-links-col.expand').on('click',function(){
+          var $linkCol = $(this);
+          var $footerLink = $(this).find('.footer-link');
+          var $heading = $linkCol.find('h5');
+          var openClass = 'open';
+
+          var $this = $heading;
+          var $parent = $linkCol;
+
+          $linkCol.removeAttr('style');
+
+          if($parent.hasClass(openClass)) {
+
+            $linkCol.removeClass(openClass);
+
+          } else {
+
+            var height = 0;
+
+            $this.parent($linkCol).find('> *').each(function() {
+              height = height+$(this).outerHeight();
+            });
+
+            $this.parent($linkCol).height(height);
+
+            $($linkCol).removeClass(openClass);
+            $parent.addClass(openClass);
+
+          }
+        })
+
+      // }
+    });
+
+		function visitStorePage(add) {
+			var a = 'https://stores.calvinklein.us/' + add[0].toLowerCase() + '/' + add[1].toLowerCase().replace(/ /g,'-') + '/' + add[2];
+			window.open(a,'_self');
+		
+		}
+	</script>
+	<script>
+		
+	</script>
+</div>
+<!-- <div class="searchShadow"></div> -->
+</body>
+</html>
+

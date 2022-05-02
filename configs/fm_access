@@ -1,0 +1,3 @@
+filesystem.writable=false
+filesystem.exclude_directory_pattern=/^mcith$|^cgi-bin$|^local$|^mobile$|^sites$|^xml$/i
+general.disabled_tools=createdir,createdoc,zip,upload,edit,rename,cut,copy,paste,delete,download,insert

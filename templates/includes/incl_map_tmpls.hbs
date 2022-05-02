@@ -1,0 +1,261 @@
+        <!--*** Edit configurations according to your Local Page Template needs:
+        offsetx = how much higher or lower (in pixels) the item should be placed
+        offsety = how much to the left (in pixels) and right the item should be placed
+        slice_size = how many POI items to show in the list
+        ***-->
+        <div id="templates" style="display: none;">
+            <!-- icon template start  -->
+            <div id="default" class="icon" bubbleid="bubble" width="30px" height="27px" offsetx="-16" offsety="-28">
+                <img class="alpha" alt="" src="http://static.where2getit.com/w2gi/images/icons/pin.png"/>
+                <div action="open_bubble" recnum="#{POINUM}">#{POINUM}</div>
+            </div>
+            <!--*** Start Main Icon Template
+            Use the icon template below if you are showing multiple locations and want one
+            location's icon to be different than the rest ***-->
+            <div id="main_icon" class="icon" bubbleid="bubble" width="45px" height="38px" offsetx="-16" offsety="-28">
+                <img class="alpha" alt="" src="http://static.where2getit.com/w2gi/images/icons/pin.png"/>
+            </div>
+            <!--*** End Main Icon Template ***-->
+
+            <!--*** If you do not want to display the center point marker replace the
+            the images/icons/red-star.png with images/spacer.png below ***-->
+            <div id="center_marker" class="icon" bubbleid="bubble" width="30px" height="28px" offsetx="-11" offsety="-33">
+                <img class="alpha" alt="" src="http://static.where2getit.com/w2gi/images/icons/red-star.png"/>
+            </div>
+
+            <div id="ddstarticon" class="end_icon" width="27px" height="38px" offsetx="-16" offsety="-28">
+                <img class="alpha" alt="" src="http://static.where2getit.com/w2gi/images/icons/ddstartpin.png"/>
+            </div>
+            <div id="ddendicon" class="end_icon" width="27px" height="38px" offsetx="-16" offsety="-28">
+                <img class="alpha" alt="" src="http://static.where2getit.com/w2gi/images/icons/ddendpin.png"/>
+            </div>
+            <!-- icon template end -->
+
+            <!--*** Bubble Templates - there are many different possibilities for how a bubble
+            can look and act.  Below are three possible examples to build from. ***-->
+
+            <!--*** The bubble template below is for a side column location map of about 200px
+            in width.
+
+            1) Adjust all the height, width, top, left and margin setings
+            in the bubble div and in the bubble_location.css file accordingly
+            2) Adjust the offstex and offsety settings in the "bubble" div
+            ***-->
+            <!-- small map bubble template start -->
+            <div id="bubble" offsetx="-98" offsety="-164" style="margin: 25px; width: 200px; height: 150px;">
+                <img class="alpha bubble_close" alt="" src="http://static.where2getit.com/w2gi/images/spacer.png" />
+                <img class="alpha mainbubble" alt="" src="http://static.where2getit.com/w2gi/images/bubble/popover_200_150/popover_200_150.png" />
+                <div class="mainbubblecontent">
+                    <div class="mainbubblelocationname">#{NAME}</div>
+                    <div class="mainbubbletabcontent" >
+                        <div class="tab_content activetabcontent">
+                            <div>#{ADDRESS1}</div>
+                            <div>#{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}</div>
+                            <div>Phone: #{PHONE}</div>
+                            <div>Hours: #{HOURS}</div>
+                            <div style="padding-bottom:5px">Distance: #{_DISTANCE} miles away</div>
+                            <!-- <form autocomplete="off">
+                                <span class="dir" style="margin-right: 5px; ">Get directions from:</span><a linktrack="Bubble - directions to" style="font-size: 10px; display: none;" href="javascript:void(0);">To</a><br />
+                                <input recnum="#{POINUM}" type="text" name="addressline" value="" class="textfield"/> <input recnum="#{POINUM}" type="button" value="Go" class="go" name=""/>
+                                <div class="address_helper">(111 Main St, Chicago, IL 60613)</div>
+                            </form> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- small map bubble template end -->
+
+            <!--*** The bubble template below is for a side column location map of about 300px
+            in width.
+
+            1) Adjust all the height, width, top, left and margin setings
+            in the bubble div and in the bubble_location.css file accordingly
+            2) Adjust the offstex and offsety settings in the "bubble" div
+            ***-->
+            <!-- medium map bubble template start  -->
+            <!--
+                <div id="bubble" offsetx="-180" offsety="-240" style="margin: 25px; width: 285px; height: 245px;">
+                <img class="alpha bubble_close" src="http://static.where2getit.com/w2gi/images/spacer.png" />
+                <img class="alpha mainbubble" src="http://static.where2getit.com/w2gi/images/bubble/popoversmall/popover-small.png" />
+                <div class="mainbubblecontent">
+                    <div class="mainbubblelocationname">#{NAME}</div>
+                    <div class="mainbubbletabcontent" >
+                        <div class="tab_content activetabcontent">
+                            <div>#{ADDRESS1}</div>
+                            <div>#{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}</div>
+                            <div> Phone: #{PHONE}</div>
+                            <div>Hours: #{HOURS}</div>
+                            <div style="padding-bottom:5px">Distance: #{_DISTANCE} miles away</div>
+                            <form autocomplete="off">
+                                <span class="dir" style="margin-right: 5px; ">Get directions from:</span><a style="font-size: 10px; display: none;" href="javascript:void(0);">To</a><br />
+                                <input recnum="#{POINUM}" type="text" name="addressline" value="" class="textfield"/> <input recnum="#{POINUM}" type="button" value="Go" class="go" name=""/>
+                                <div class="address_helper">(111 Main St, Chicago, IL 60613)</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+            <!-- medium map bubble template end -->
+
+            <!--*** The bubble template below is for a bubble with tabs across the top.
+            1) Adjust all the height, width, top, left and margin setings
+            in the bubble div and in the bubble_location.css file accordingly
+            2) Adjust the offstex and offsety settings in the "bubble" div
+            ***-->
+            <!-- tabbed bubble template start  -->
+            <!--
+            <div id="bubble" offsetx="-135" offsety="-270" style="margin: 25px; width: 276px; height: 235px;">
+                <img class="alpha bubble_tab activetab tab1" src="http://static.where2getit.com/w2gi/images/spacer.png" />
+                <div class="tab_label tab1label">Address</div>
+                <img class="alpha bubble_tab nonactivetab tab2" src="http://static.where2getit.com/w2gi/images/spacer.png" />
+                <div class="tab_label tab2label">Hours</div>
+                <img class="alpha bubble_close" src="http://static.where2getit.com/w2gi/images/spacer.png" />
+
+                <img class="alpha mainbubble" src="http://static.where2getit.com/w2gi/images/bubble/popover/popover.png" />
+                <div class="mainbubblecontent" >
+                    <div class="mainbubblelocationname">#{NAME}</div>
+                    <div class="mainbubbletabcontent" >
+                        <div class="tab_content activetabcontent">
+                            <div>#{ADDRESS1}</div>
+                            <div>#{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}</div>
+                            <div style="color:black;font-size:12px;font-weight:bold">#{PHONE}</div>
+                            <div style="padding-top: 0.7em;">
+                                <form style="position: absolute; left: 0px; top: 60px; height: 60px; width: 240px;" autocomplete="off">
+                                    <span class="dir" style="font-size: 12px; color: black; margin-right: 5px">Get directions from:</span><a style="font-size: 12px;" href="javascript:void(0);">To</a>
+                                    <input recnum="#{POINUM}" type="text" name="addressline" value=""/>
+                                    <input recnum="#{POINUM}" type="submit" value="Go"/>
+                                    <div class="address_helper">(111 Main St, Chicago, IL 60613)</div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab_content nonactivetabcontent" >
+                            <div>#{HOURS}</div>
+                            <div style="color:black;font-size:16px;font-weight:bold">#{PHONE}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+            <!-- tabbed bubble template end -->
+
+            <!-- POI table template start -->
+            <table id="collection_poi" odd_row_class="odd" even_row_class="even" active_row_class="active" slice_size="5">
+                <tbody >
+                    <tr recnum="#{POINUM}">
+                        <td>
+                            <a action="open_bubble" recnum="#{POINUM}" href="javascript:void(0);" class='store_name' >#{NAME}</a><br/>
+                            #{ADDRESS1}<br/>
+                            #{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}<br />
+                            Phone: #{PHONE}<br />
+                            <a action="more_info" linktrack="POI - more info" recnum="#{POINUM}" href="javascript:void(0);" onClick="_gaq.push(['_trackEvent', 'Interactions', 'More Info']);">More Info</a><br />
+                            Send Address To:
+                            <a href="javascript: void(0);" action="linktrack" linktrack="POI - #{UID} - Send to Email" onclick="window.open('/lite?appkey={{{appkey}}}&action=emaillocatorstart&uid=#{UID}','EMAIL','width=680,height=450,status=yes,toolbar=no,menubar=no,location=no'); _gaq.push(['_trackEvent', 'Interactions', 'Send Location to Email']);">E-mail</a>
+                            |
+                            <a href="javascript: void(0);" action="linktrack" linktrack="POI - #{UID} - Send to Mobile" onclick="window.open('/lite?appkey={{{appkey}}}&action=smslocatorstart&uid=#{UID}','MOBILE','width=680,height=450,status=yes,toolbar=no,menubar=no,location=no'); _gaq.push(['_trackEvent', 'Interactions', 'Send Location to Phone']);">Mobile</a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- POI table template end -->
+
+            <!-- More Info table template start -->
+            <table id="collection_more_info" odd_row_class="odd" even_row_class="even" active_row_class="active" slice_size="5">
+                <thead>
+                    <tr><td></td></tr>
+                </thead>
+                <tfoot>
+                    <tr><td></td></tr>
+                </tfoot>
+                <tbody>
+                    <tr recnum="#{POINUM}">
+                        <td width="33px" valign="top">
+                            <div templateid="#{ICON}">
+                            </div>
+                        </td>
+                        <td width="310px">
+                            <a action="open_bubble" class="store_name" recnum="#{POINUM}" href="javascript:void(0);">#{NAME}</a><br/>
+                            #{ADDRESS1}<br/>
+                            #{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}<br/>
+                            <strong>#{PHONE}</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a action="show_all" recnum="#{POINUM}" href="javascript:void(0);">Show All Locations</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- More Info table template end -->
+
+            <!-- Ambiguous address table template start -->
+            <table id="collection_multiple_address" odd_row_class="odd" even_row_class="even" active_row_class="active">
+                <thead>
+                    <tr>
+                        <th>Did you mean:</th>
+                    </tr>
+                </thead>
+                <tfoot><tr><td></td></tr></tfoot>
+                <tbody>
+                    <tr recnum="#{POINUM}">
+                        <td width="250px">
+                            <a action="search_address" recnum="#{POINUM}" href="javascript:void(0);">#{ADDRESS1} #{CITY}, #{STATE}#{PROVINCE} #{POSTALCODE}</a><br/>
+                            #{COUNTY}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Ambiguous address table template end -->
+            <!-- Maneuvers table template start -->
+            <table id="collection_maneuvers" odd_row_class="odd" even_row_class="even" active_row_class="active">
+                <thead>
+                    <tr>
+                        <th class="maneuver">
+                            Total distance: #{TOTAL_DISTANCE} #{DISTANCE_UNIT}<br/>
+                            Total time: #{TOTAL_TIME} #{TIME_UNIT}<br/>
+                            <a class="reverse_directions" style="font-size: 11px;" href="javascript:void(0);">Get reverse directions</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="maneuver">
+                            <div>
+                                <br/><strong style="color: #339900;">From (A): </strong><br/>
+                                <span class="addressline">
+                                    <div class="address_line1" ></div>
+                                    <div>
+                                        <span class="address_city"></span>
+                                        <span class="address_state"></span>
+                                        <span class="address_zip"></span>
+                                    </div>
+                                </span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th class="maneuver">
+                            <div>
+                                <strong style="color:#FF0000;"> To (B):</strong><br/>
+                                <span class="addressline">
+                                    <div class="address_line1" ></div>
+                                    <div>
+                                        <span class="address_city"></span>
+                                        <span class="address_state"></span>
+                                        <span class="address_zip"></span>
+                                    </div>
+                                </span>
+                            </div>
+                        </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td class="maneuver">#{ID}. #{TEXT} #{DISTANCE} #{DISTANCEUOM}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Maneuvers table template end -->
+        </div>

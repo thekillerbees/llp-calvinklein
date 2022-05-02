@@ -1,0 +1,3 @@
+User-agent: * 
+Disallow:  
+Sitemap: https://stores.calvinklein.us/sitemap.xml.gz

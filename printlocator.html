@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>OL Map</title>
+        <script>
+            var W2GI = { 
+                config: { 
+                    appkey: 'F5C66E24-E944-11EA-A1DF-53CCF48ECC77',
+                    autoStart: true,
+                    locator: {  
+                        cgeo: false,
+                        cdirections: false, 
+                        formdata: {
+                            geoip: false,
+                            dataview: 'store_default',
+                            limit: 50,
+                            geolocs: {
+                                geoloc: [{
+                                    addressline:    '',
+                                    country:        '',
+                                    latitude:       '',
+                                    longitude:      ''
+                                }]
+                            },
+                            map: {
+                                size: '726,500',
+                                icons:{
+                                    default:{
+                                        offset:'36,13',
+                                        path: 'gray-pin-shadow.png',
+                                        label: {
+                                            color: 'ffffff',
+                                            font: 'arial-bold',
+                                            size: '9',
+                                            offset: '37,5'
+                                        }
+                                    },
+                                    center_marker: {
+                                        path: 'red-star.png'
+                                    }
+                                }
+                            },
+                            searchradius: '15|25|50|100|250'
+                        },
+                        drivingdirections: {
+                            disableDynamicRoutes: false,
+                            formdata: {
+                                dataview: 'store_default',                            
+                                geolocs: {
+                                    geoloc: [{
+                                        address1:       '',
+                                        city:           '',
+                                        state:          '',
+                                        province:       '',
+                                        postalcode:     '',                                        
+                                        addressline:    '',
+                                        country:        '',
+                                        latitude:       '',
+                                        longitude:      ''
+                                    }]
+                                },
+                                rid: '',
+                                map: {
+                                    size: '726,500',
+                                    icons:{
+                                        start: { path: 'ddstartpin.png' },
+                                        end : { path: 'ddendpin.png' }
+                                    }
+                                }
+                            }
+                        },
+                        noZoomOnPan: false,
+                        dynamicSearch: true,
+                        routeStyle: {   
+                            strokeWidth:     8,
+                            strokeOpacity:  .5,
+                            strokeColor:    '#0000FF' 
+                        },
+                        sources: [
+                            { 
+                                name: 'SlippyMap W2GI',
+                                imageurl: '//st1.slippymap.com/tiles, //st2.slippymap.com/tiles',
+                                options: { 
+                                    map: 'smap-01'
+                                }
+                            },
+                            {
+                                name: 'SlippyMap Navteq',
+                                imageurl: '//st1.slippymap.com/tiles, //st2.slippymap.com/tiles',
+                                options: { 
+                                    map: 'smap-02'
+                                }
+                            }
+                        ]
+                    }
+
+                }
+            }
+        </script>
+		<script data-main="/w2gi/javascript/backbone/bb/dist/bones.min" src="/w2gi/javascript/backbone/bb/lib/require.js"></script>
+		
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link href="//hosted.where2getit.com/w2gi/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/base-responsive-print.css">
+	</head>
+	<body>
+		<div data-w2gi="locator" class="box-wrapper">
+            <div class="form-wrapper">
+                <div class="location-wrapper"> 
+                    <label>
+                        <button class="button-location"><i class="fa fa-location-arrow"></i>Use location</button>
+                    </label>
+                    <span class="divider-text">- or -</span>
+                </div>
+                <form id="locator_search" autocomplete="off">              	
+
+                	<input type="text" class="search-box" name="addressline" placeholder="Enter street address, city, state or zip code"/>
+                	
+                	<select name="searchradius" style="display:none;">
+                		<option value=""></option>
+						<option value="15">15 miles</option>
+						<option value="25">25 miles</option>
+						<option value="50">50 miles</option>
+						<option value="100">100 miles</option>
+					</select>
+                        		
+                </form>
+            </div>
+            <div class="dd-form-wrapper" style="display:none"></div>
+            <div class="wrapper">
+                
+                <img id="map_url_image" />
+                <div class="map" style="opacity:0;"></div>    
+                
+                <div class="poi"></div>            
+            </div>
+            <div class="attribution">
+                <span class="attribution">
+                    Mapping Locator Powered by <a href="http://www.brandify.com/" target="_new">Brandify </a>Copyright © <script>document.write(new Date().getFullYear())</script>, All Rights Reserved.
+                </span>
+            </div>
+            <div class="overlay"></div>
+            <div class="modal">                    
+                <a href="#" class="closeBtn">Close</a>
+                <p></p>
+            </div>
+            <div class="street-view-wrapper">
+                <a class="gs" data-action="close">Close</a>
+                <div id="streetViewCtn" class="street-view"></div>
+            </div>
+		</div>
+
+        <!-- Templates -->
+        <div class="templates">
+    		<script id="locator_addressline" type="text/x-handlebars-template">
+                {{#if address1}}{{address1}}{{else}}{{#if addressline}}{{addressline}}{{/if}}{{ city }} {{ county }} {{ state }} {{postalcode}}{{/if}}
+    		</script>
+            <script id="directions_addressline" type="text/x-handlebars-template">
+                {{address1}} {{ city }} {{ county }} {{ state }} {{postalcode}}
+            </script>
+            <script id="collection_multiple_address" type="text/x-handlebars-template"> 
+                <h3>Please select your location</h3>
+                <ul class="content-list address-suggestions">
+                    {{#each this}}
+                        <li data-id={{@index}}><strong>{{address1}} {{ city }} {{ county }}</strong>{{ state }} {{postalcode}}</li>
+                    {{/each}}
+                </ul>
+            </script>
+            <!-- poi template start --> 
+            <script id="collection_poi" type="text/x-handlebars-template">
+                <a href="#" style="float:right: margin-right:10px;" onclick="window.print();return false;"><img alt="Print" src="/w2gi/images/iconbar/print.gif"/> Print </a>
+             
+                <ul class="content-list poi-result">
+                    {{#each pois}}
+                        <li data-id={{@index}} data-uid={{uid}} class="poi-item">
+                            
+                            <em class="poi_number">{{collectionIndex}}</em>
+                            <p><b>{{name}}</b></p>
+                            <p>
+                                {{address1}}<br/>
+                                {{city}}, {{state}} {{postalcode}} 
+                            </p>
+                           
+                            <p class="distance">{{_distance}} miles away</p>
+                            <p class="phone">{{phone}}</p>
+                           
+                        </li>
+                    {{/each}}
+                </ul>
+            </script>
+            <!-- poi template end -->
+            <!-- driving directions panel template end -->
+            <script id="collection_maneuvers" type="text/x-handlebars-template">
+               
+                	 <h3>Directions <a href="#" style="float:right: margin-right:10px;" onclick="window.print();return false;"><img alt="Print" src="/w2gi/images/iconbar/print.gif"/> </a>
+             		</h3>
+                <p> <b>Distance:</b> {{total_distance}} miles.         <br/>
+                	<b>Drive time:</b> {{total_time}} minutes
+                </p>
+                <p class="maneuver_start">
+                    From (A): <strong>{{fromAddress.address1}}{{fromAddress.address}} {{ fromAddress.city }} {{ fromAddress.county }}</strong>{{ fromAddress.state }} {{fromAddress.postalcode}}
+                </p>
+                <ul class="content-list maneuver-result">
+                    {{#each maneuverlist}}
+                        <li data-id={{@index}} data-uid={{uid}}>
+                            <strong>{{incIndex @index}} </strong>{{text}} {{distance}} {{distanceuom}}
+                        </li>
+                    {{/each}}
+                </ul>
+                <p class="maneuver_end">
+                    To (B): <strong>{{toAddress.address1}}{{toAddress.address}} {{ toAddress.city }} {{ toAddress.county }}</strong>{{ toAddress.state }} {{toAddress.postalcode}}
+                </p>
+                <p>
+                    <a class="search_again" target="_parent" onclick="window.parent.location.href = '/locator.html'">Search again</>
+                </p>
+            </script>
+            <!-- driving directions panel template end -->
+            <!-- driving directions form template start -->
+            <script id="dd-template" type="text/x-handlebars-template">
+                <form id="driving_directions" autocomplete="off" style="display:none;">
+
+                    <label>
+                        <span>From:</span><input type="text" class="search-box"  data-action="start" name="addressline" placeholder="Start address">
+                    </label>
+                    <label>                    
+                        <span>To:</span><input type="text" class="search-box"  data-action="end" name="addressline" placeholder="End address">
+                    </label>        
+                        <button class="button-search"><i class="fa fa-search"></i>Search</button>
+                        <img style="cursor: pointer;" class="reverse" width="14" height="16" src="images/flip_white.png" title="Switch start and end address" alt="Switch start and end address"/>
+                          <input type="hidden" id="longitude" name="longitude"/>
+                          <input type="hidden" id="latitude" name="latitude"/>
+                          <input type="hidden" id="dest_longitude" name="dest_longitude"/>
+                          <input type="hidden" id="dest_latitude" name="dest_latitude"/>
+                    
+                </form>
+            </script>
+            <!-- driving directions form template end -->
+            <!-- bubble template start -->
+            <script id="bubble" data-offsetx="10" data-offsety="-20" data-width="296" data-height="220" type="text/x-handlebars-template">
+                <ul class="tabs">
+                    <li class="active" data-tab="tab1">Address</li>
+                    <li data-tab="tab2">Hours</li>
+                    <li data-tab="tab3">Amenities</li>
+                </ul>
+                <div class="tab-content active" data-tab="tab1">
+                    <h3>{{name}}</h3>
+                    <ul>
+                      <li>{{address1}}<li>
+                      <li>{{city}}, {{state}} {{postalcode}}<li>
+                      <li>{{phone}}<li>
+                      <li>Distance: {{_distance}} miles<li>                  
+                    </ul>
+                    <div class="dd-wrapper">
+                        <div class="origin-select"> 
+                            Get directions:<a href="#" data-action="to" class="">To here</a>|<a href="#" data-action="from">From here</a> 
+                        </div>
+                        <form id="dd" autocomplete="off">                                    
+                            <span>From:</span>
+                            <input size="19" type="text" name="addressline" value="{{addressline}}" />
+                            <select id="bubble_country" name="country" class="country_selection" >
+                              <option value="US">US</option>
+                              <option value="CA">Canada</option>
+                            </select>
+                            <input type="submit" value="Go"/>                                    
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-content" data-tab="tab2">tab2</div>
+                <div class="tab-content" data-tab="tab3">
+                    <div class="gboxDiv">
+                        <a class="gs" data-action="show">Street View</a>
+                    </div>
+                </div>
+            </script>
+            <!-- bubble template end -->
+            <!-- icon template start  -->
+            <script id="default" type="text/x-handlebars-template">
+                <div class="icon" data-bubbleid="bubble" data-width="29" data-height="29" data-offsetx="-15" data-offsety="-29" data-labeloffsetx="0" data-labeloffsety="17"  data-fontcolor="#FFF" data-fontsize="13" data-display="true">
+                        <img class="alpha" src="images/panel-location-pin.png"/>                     
+                </div>
+            </script>
+            <!-- icon template end -->
+            <!-- dd end markers template start  -->
+            <script id="ddstarticon" type="text/x-handlebars-template">
+                <div  class="end_icon" data-height="38" data-width="27" data-offsetx="-16" data-offsety="-28">
+                    <img class="alpha" src="/w2gi/images/icons/ddstartpin.png"/>
+                </div>
+            </script>
+            <script id="ddendicon" type="text/x-handlebars-template">
+                <div class="end_icon" data-height="38" data-width="27" data-offsetx="-16" data-offsety="-28">
+                    <img class="alpha" src="/w2gi/images/icons/ddendpin.png"/>
+                </div>
+            </script>
+            <!-- dd end markers template start  -->
+            <!-- lightwindow template start -->
+
+            <!-- lightwindow template end -->
+        </div>
+	</body>
+</html>

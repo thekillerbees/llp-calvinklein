@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<vxml version="2.0">
+<form>
+  <field name="address" type="digits">
+      <prompt>
+        Thanks for calling  please enter or say you zip code to find the nearest location.
+      </prompt>
+  </field>
+  <block>
+    <prompt>
+      Please wait while we search for a location.
+    </prompt>
+    <submit namelist="address" next="http://ivr.dev.where2getit.com/lite?action=locatorsearch&appkey=>331EB86C-E945-11EA-A1DF-53CCF48ECC77&limit=5&provider=vxml">
+  </block>
+</form>
+</vxml>
+

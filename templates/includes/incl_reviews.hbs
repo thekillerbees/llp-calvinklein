@@ -1,0 +1,29 @@
+<div id="reviews_wrapper">
+	<div id="reviews_title">Customer Reviews</div>
+	{{#checkIf  NAME=amazon_list}}
+		<TMPL_LOOP NAME=amazon_list>
+			<div id="review_listing">
+				<div id="review_title_wrapper">
+					<div id="review_stars" style="float:left;">
+						<img src="/eureka/images/stars_{{{star_img}}}.gif"  border="0" /> 
+					</div>
+					<div id="review_title" style="float:left;">
+						{{{review_title}}}
+					</div>
+					<div id="review_date">
+						{{{review_date}}}
+					</div>
+					<div id="clear"></div>
+				</div>
+
+				<div id="reviewer">
+					By <strong>{{{review_name}}}</strong> {{#checkIf  NAME=review_location}}( {{{review_location}}} ) {{/checkIf}}
+				</div>
+
+				<div id="review_content">
+					{{{review_content}}}
+				</div>
+			</div>
+		{{/each}}
+	{{/checkIf}}
+</div>

@@ -1,0 +1,50 @@
+/* TOGGLE SECTION 
+   REMOVE comments to turn features OFF */
+
+/* Country Pull-Downs  */ 
+select#search_country, select#bubble_country, select#orig_country, select#dest_country {display:none;} 
+
+/* Send to Email | Mobile */
+/*
+.sendto {display:none;} 
+*/
+
+/*  Send Directions to Email | Mobile */ 
+/*
+#senddirectionsto {display:none;} 
+*/
+
+/*  Criteria Boxes  */
+#criteriacontainter {display:none;} 
+
+/* END TOGGLE  SECTION */
+
+
+
+/* CRITERIA DISPLAY LOGIC */
+
+.display 	{display:none;}
+.display0 	{display:none;}
+.displayN 	{display:none;}
+.displayno 	{display:none;}
+
+.display1 	{display:inline;}
+.displayY 	{display:inline;}
+.displayyes {display:inline;}
+
+.hidetext 	{display:none;}
+.showUS 	{display:inline;}
+.showCA 	{display:inline;}
+
+/* END CRITERIA DISPLAY LOGIC */
+
+
+
+/* Utilities */
+
+.clear {clear:both;}
+.floatL {float:left;}
+.floatR {float:right;}
+.zero {margin:0;padding:0;border-width:0;}
+
+/* End Utilities */

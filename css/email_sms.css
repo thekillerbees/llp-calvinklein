@@ -1,0 +1,68 @@
+
+html, body, div, p, table, td, d1, pre, code {
+background-color:#ffffff;
+font-size:12px;
+font-weight:normal;
+font-family: Arial,Helvetica,sans-serif;
+text-align:left;
+overflow-x: hidden;
+color: #444;
+}
+
+
+body {
+	margin: 0;
+	border: 0;
+	padding: 15px 15px 5px 15px;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+a {color: #C73434;}
+
+h1 {
+margin:0px; 
+font-size: 18px;
+}
+
+h2 {
+margin:0px; 
+font-size:14px;
+}
+
+.special {color:#000; cursor: help; font-weight:bold;}
+
+.divmargin {margin-bottom:15px;}
+
+.mapbox {width:100%; text-align: left; }
+.mapbox img {text-align: left;  max-width:100%;}
+
+.go_button{
+background-color:#444;
+border:1px solid #444;
+color:#FFFFFF;
+font-size:11px;
+font-family: Arial,Helvetica,sans-serif;
+font-weight:bold;
+padding:4px 3px;
+cursor:pointer;
+text-transform: uppercase;
+float:right;
+}
+
+.confirmation {
+padding: 10px 0 12px 0; 
+border-bottom: 1px solid #ccc; 
+font-size:16px; 
+font-weight:bold; 
+}
+
+.ddpanel, textarea, input[type=text] {
+	border: 1px solid #ccc;
+}
+input[type=text] {
+	width: 55%;
+}
+textarea {
+	width:98%; height:60px; font-family: Arial,Helvetica,sans-serif; font-size:12px;
+}

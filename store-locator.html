@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+        <title>Store Locator</title>
+
+        <script>
+            var W2GI = {
+                config: {
+                    appkey: 'F5C66E24-E944-11EA-A1DF-53CCF48ECC77',
+                    autoStart: true,
+                    locator: {                        
+                        theme:null,                        
+                        noZoomOnPan: true,
+                        locatorlocale: 'en_EN',
+                        alertError: false,
+                        formdata: {
+                            geoip: true,
+                            dataview: 'store_default',
+                            limit: 20,
+                            geolocs: {
+                                geoloc: [{
+                                    addressline:    '',
+                                    country:        '',
+                                    latitude:       '',
+                                    longitude:      ''
+                                }]
+                            },
+                            searchradius: '30|50|100|250',                            
+                            where: {
+                              or: {
+                                icon : {like:''}
+                              }
+                            }
+                        },
+                        drivingdirections: {
+                            disableDynamicRoutes: false,
+                            formdata: {
+                                <tmpl_if expr="is_wireless_device == 1">
+                                gps: 'first',
+                                <tmpl_else>
+                                geoip: true,
+                                </tmpl_if>
+                                dataview: 'store_default',
+                                map: {
+                                    size :'330,225',
+                                    icons:{
+                                        start: {
+                                            path: 'ddstartpin.png'
+                                        },
+                                        end:{
+                                            path: 'ddendpin.png'
+                                        }
+                                    }
+                                },
+                                geolocs: {
+                                    geoloc: [{
+                                        address1:       '',
+                                        city:           '',
+                                        state:          '',
+                                        province:       '',
+                                        postalcode:     '',
+                                        addressline:    '',
+                                        country:        '',
+                                        latitude:       '',
+                                        longitude:      ''
+                                    }]
+                                }
+                            }
+                        },
+                       imgPath:  'images/icons/zoombar_new',
+                        controls: [{ name: 'zoom', options: {} }],
+                        dynamicSearch: true,
+                        routeStyle: {
+                            strokeWidth:     8,
+                            strokeOpacity:  .5,
+                            strokeColor:    '#0000FF'
+                        },
+                        sources: [  
+                           { 
+                                name: 'Google Normal',
+                                        options: {
+                                        disableDoubleClickZoom : true,
+                                        displayName : 'Map',
+                                        projection: 'EPSG:900913', 
+                                        units: 'm',
+                                        type: 'roadmap', 
+                                        maxZoomLevel:18,
+                                    }
+                            }
+                        ]
+                    }
+
+                 },
+                 custom_ob: {
+                   updateRecords : function(recs) {
+                        var date = new Date();
+                        var today = date.getDay();
+                        var records;
+                        $(recs).each (function(i,e) {
+                            
+                            if(e.postalcode)
+                            var postal = e.postalcode.length;
+
+                            if(postal == 10) {
+                                var cut = e.postalcode.substring(0, 5);
+                                e.postalcode = cut;
+                            }
+                            //if(e.holidayhours){
+                             //   temp = e.holidayhours;
+                            //    e.holidayhours1=temp.replace(/,/g,"<br>");
+                           // } 
+
+                           if(e.holidayhours){
+                                e.holidayhour = e.holidayhours.replace(/,/g,'<br>');
+                            }
+
+                            if (today == 0) {
+                                e.SUNCHECK = 1;
+                                e.TODAYHOURS = e.sundayclose;
+                            }
+
+                            if (today == 1) {
+                                e.MONCHECK = 1;
+                                 e.TODAYHOURS = e.mondayclose;
+                            }
+
+                            if (today == 2) {
+                                e.TUECHECK = 1;
+                                e.TODAYHOURS = e.tuesdayclose;
+                            }
+
+                            if (today == 3) {
+                                e.WEDCHECK = 1;
+                                e.TODAYHOURS = e.wednesdayclose;
+                            }
+
+                            if (today == 4) {
+                                e.THRCHECK = 1;
+                                e.TODAYHOURS = e.thursdayclose;
+                            }
+
+                            if (today == 5) {
+                                e.FRICHECK = 1;
+                                e.TODAYHOURS = e.fridayclose;
+                            }
+
+                            if (today == 6) {
+                                e.SATCHECK = 1;
+                                e.TODAYHOURS = e.saturdayclose;
+                            }
+
+                            if(e.city){
+                              e.city2 = e.city.toLowerCase().replace(/ /g,"-");
+                            }
+
+                            if(e.state){
+                              e.state2 = e.state.toLowerCase().replace(/ /g,"-");
+                            }else if (e.province) {
+                                e.state2 = e.province.toLowerCase().replace(/ /g,"-");
+                            }
+
+                        }.bind(this));
+                        recs = shuffleArray(recs);
+                        return recs;
+                    },
+                },
+            }
+        </script>
+        <script src="/w2gi/javascript/backbone/bb/lib/jquery.js"></script>
+        <script data-main="/w2gi/javascript/backbone/bb/dist/bones.min" src="/w2gi/javascript/backbone/bb/lib/require.js"></script>
+        <script src="javascript/custom.d.js"></script>
+        <script type="text/javascript">
+          var clUid;
+          var collectionCount;
+
+          W2GI.loaded = function($) { 
+            // on page load (for when there is no response)
+            parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+
+            ace.util.DomEvent.on("w2gi:directionsupdated", function() {
+                var els = document.getElementsByClassName('updateUID')
+                for (let index = 0; index < els.length; index++) {
+                    els[index].href = els[index].href + clUid
+                    
+                }
+            })
+            // on initial response and searches
+            ace.util.DomEvent.on("w2gi:proximityresponse", function() {
+                  setTimeout(function(){
+                    parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                    document.getElementById("counts").innerHTML = collectionCount;
+                  }, 100);
+            });
+            // when no results are returned. Note that the delay must be at least 800 or the modal popup will not display properly
+            ace.util.DomEvent.on("w2gi:fetchError", function() {
+                  setTimeout(function(){
+                  parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                  }, 800);
+            });
+            // Browser is resized
+            $(window).resize(function() {
+                setTimeout(function(){
+                    parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                }, 100);
+            }); 
+            // When pagination is present and occurs
+            ace.util.DomEvent.on("w2gi:sliceupdated", function() {
+                setTimeout(function(){
+                    parent.postMessage("w2gi:iframeHeightUpdated" + "//" + $('#w2gi_wrapper').height() + "//" + $('#w2gi_wrapper').width(),"*");
+                }, 100);
+            });
+            ace.collection.appendOptions('#bubble_country', 'Account::Country', {}, 'account_country', 'name', 'description');
+          }
+          function searchCountry(country) {
+              require(['jquery'], function($) {
+                  $('.search-box').val('')
+                  $('.country_val').val(country)
+                  ace.util.searchExternal('locator_search');  
+              })         
+          } 
+
+          $('#map').on('pageshow', function(){
+                google.maps.event.trigger(map, "resize");
+          });
+
+          
+
+          function shuffleArray(array) {
+              var i = array.length;
+              while(i--){
+                 if(array[i].icon == "warehouse") {
+                    array.splice(i,1);
+                 }
+              }
+              collectionCount = array.length;
+              return array;
+          }
+
+        </script>    
+        <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link href="//hosted.where2getit.com/w2gi/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/custom.s.css">
+        <link rel="stylesheet" href="https://use.typekit.net/xlu8arf.css">
+        <!--<link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet'>-->
+        <style>
+            div.filter_div > span {
+                display: inline-block;
+                max-width: calc(100% - 102px);
+                height: auto;
+            }
+             body{
+                font-family: futura-pt, sans-serif;
+                /*font-family: futura std, sans-serif;*/
+                font-weight: 400;
+                font-style: normal;
+            }
+            #listview.active{
+                background-color:#00174f;
+            }
+            #mapview.default{
+                background-color:white;
+            }
+            .country-drop{
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                height: 36px;
+                width: 223px;
+                margin-top: 10px;
+                margin-left: 15px;
+                padding-left: 10px;
+                background: url(images/new/chevron_down.png) no-repeat scroll 194px 11px;
+                text-indent: 1px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+             @media (max-width: 801px) and (min-width: 1px){
+               #moreinfo_mobile_directions, #moreinfo_mobile_back {
+                      min-width: 107px;
+               }
+               .poi_mobile_directions {
+                      display: inline-block;
+               }
+               .poi {
+                top: 34px !important;
+                max-height: 850px !important;
+                }
+                .wrapper {
+                    top: 274px;
+                }
+                #locator_search {
+                    margin-bottom: 13px;
+                }
+             } 
+            
+            @media (min-width: 802px){
+            .map{
+                width: calc(100% - 350px);
+                left: 350px;
+            }
+            }
+
+            #iconOverlay {
+                display:none;
+                position: absolute;
+                z-index: 99;
+                top: calc(50% - 39px);
+                left: calc(50% - -142px);
+            }
+
+            @media (max-width:800px) {
+                #iconOverlay {
+                    visibility:hidden;
+                }
+                .country-drop{
+                    max-width: calc(100% - 100px);
+                }
+                .poi {
+                    max-height: 588px;
+                }
+                .close_text {
+                    right: calc(78% - 24px);
+                    width: 70px;
+                }
+            }
+            @media (max-width: 350px) and (min-width: 1px) {
+                .close_text {
+                    right: auto;
+                }
+                .store-email{display:none;}
+                .poi_mobile_directions {margin-top:29px;}
+                .more_info_header h1{
+                    font-size:16px;
+                }
+            }
+             .content-list {
+                max-height: 700px !important;
+             } 
+             .more_info_header h1{
+                font-size:20px;
+             }
+             .about-header11{
+                display:block;
+             }
+             .about-header10{
+                display:none;
+             }
+             .hide-header11{
+                display:none;
+             }
+             .hide-header10{
+                display:block;
+             }
+             #moreinfo_back {
+                 width: 92px;
+                top: 1px;
+                padding: 10px 0px;
+                float:left;
+            }
+            .remove403 {display:none !important;}
+            .reveal403 {display:block !important}
+
+            .sub_poi_wrapper_mobile_second {
+                height: auto;
+            }
+            .poi_box div {
+                max-width: 207px;
+            }
+            #back_image {
+                 margin-left: 10px;
+            }
+            .poi{
+                max-height: 588px;
+                top: 226px;
+            }
+            #filters {
+                top: 195px;
+            }
+            #search_country{
+                font-family: futura-pt, sans-serif;
+                margin-top: 1px;
+            }
+
+            .hideShow, hideShow0 {
+                display:block;
+            }
+            .hideShow1 {
+                display:none !important;
+            }
+            .showHide, .showHide0 {
+                display:none !important;
+            }
+            .showHide1 {
+                display:block;
+                font-weight:bold;
+            }
+
+            .specialSection {
+                display:none;
+            }
+
+            .lobby-head {
+                font-weight: bold;
+                margin: 13px 0px 3px;
+                color:rgb(51, 51, 51);
+            }
+        </style>  
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCC5D4H"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div id="w2gi_wrapper">
+            <div data-w2gi="locator" class="box-wrapper">
+            <div id="iconOverlay">
+                    <img src="images/new/pin.png" style="width: 50px;" alt="Map Pin">
+                </div>
+                <div class="forms-poi-box">
+                    <div class="form-wrapper" >
+                        <div class="locator-wrapper" role="form">
+                            <h1 style="position:absolute; left:-9999px;">Find Locations Near You</h1> 
+                            <form id="locator_search" role="search" autocomplete="off" >
+                               <label for="search_country" style="margin: 1rem;font-size: 17px;color: #00174f;">Country/Region</label>
+                                <select tabindex="4" class="ga_w2gi_loc" data-galoc="TommyHilfiger - SearchButton" data-gaact="Click_to_SelectCountry" id="search_country" name="country" style="">                        
+                                    <option value="">Select a country</option>       
+                                </select>
+                                <label for="icons" style="position:absolute; left:-9999px;">Select a country</label>
+                                
+                                <label for="search_input" style="display:block;margin: 1rem 0px 1px 1rem;font-size: 17px;color: #00174f;">Address, City, State, or Zip Code</label>
+                                <input id="search_input" tabindex="3" type="text" class="search-box" name="addressline" onfocus="this.value=''" placeholder="Enter street address, city, state or zip code"/>
+                                <button tabindex="5" aria-label="Search" class="button-search ga_w2gi_loc" data-galoc="TommyHilfiger - SearchButton" data-gaact="Click_to_Search">SEARCH</button>
+                                <input style="position:absolute; left:-9999px;" type="submit" aria-label="Search" role="button" value="" name="search"/>
+                                <select tabindex="4" id="icons" name="icon" onchange="filterselect()" class="country-drop" style="visibility:hidden;">                        
+                                    <option value="">Filter by</option> 
+                                          <option value="company">Company</option>
+                                          <option value="popup">popup</option>
+                                          <option value="clearance">Clearance</option>
+                                          <option value="specialty">Specialty</option>
+        
+                                </select>
+                                <span tabindex="0" role="link" id="filter_button" class="ga_w2gi_loc" data-galoc="TommyHilfiger - OpenFilter" data-gaact="Click_to_OpenFilter" onclick="open_filters();">Filter +</span>
+                                <span tabindex="0" role="link" id="filter_button_up" class="ga_w2gi_loc" data-galoc="TommyHilfiger - CloseFilter" data-gaact="Click_to_CloseFilter" onclick="close_filters();">Filter -</span>
+                                <!--<img tabindex="0" role="link" id="filter_button" src="images/new/filter_icon_down_th.png" onclick="open_filters();" alt="Open filters" >
+                                <img tabindex="0" role="link" id="filter_button_up" src="images/new/filter_icon_up_th.png" onclick="close_filters();" alt="Close filters"> -->
+                                 <span tabindex="0" role="link" id="filter_button_mobile" class="ga_w2gi_loc" data-galoc="TommyHilfiger - MobileOpenFilter" data-gaact="Click_to_MobileOpenFilter" onclick="open_filters_mobile();" alt="Open filters on mobile">Filter +</span>
+                                <span tabindex="0" role="link" id="filter_button_up_mobile" class="ga_w2gi_loc" data-galoc="TommyHilfiger - MobileCloseFilter" data-gaact="Click_to_MobileCloseFilter" onclick="close_filters_mobile();" alt="Close filters on mobile">Filter -</span>
+
+                                <!--<img tabindex="0" role="link" id="filter_button_mobile" src="images/new/filter_icon_down_th.png" onclick="open_filters_mobile();" alt="Open filters on mobile">
+                                <img tabindex="0" role="link" id="filter_button_up_mobile" src="images/new/filter_icon_up_th.png" onclick="close_filters_mobile();" alt="Close filters on mobile"> -->
+                                <label for="searchradius" style="position:absolute; left:-9999px;" aria-hidden="true">Search Radius</label>
+                                <select id="searchradius" tabindex="6" style="display:none;" name="searchradius" aria-hidden="true">
+                                    <option value=""></option>
+                                    <!--<option value="15">15 miles</option>-->
+                                    <option value="30">30 miles</option>
+                                    <option value="50">50 miles</option>
+                                    <option value="100">100 miles</option>
+                                </select>
+                                <div id="filters">
+                                    <div id="filter_bar">
+                                        <div>Filters</div>
+                                    </div>
+                                    <div tabindex="11" class="filter_div">
+                                         <img class="filter_unselected ga_w2gi_loc" data-galoc="TommyHilfiger - FilterSelectCompanyStore" data-gaact="Click_to_FilterSelectCompanyStore" src="images/new/retail_th.png" onclick="toggleFilter(event);" alt="First filter unselected">
+                                         <img class="filter_selected ga_w2gi_loc" data-galoc="TommyHilfiger - FilterUnselectCompanyStore" data-gaact="Click_to_FilterUnselectCompanyStore" src="images/new/retail_th.png" onclick="untoggleFilter(event);" alt="First filter selected">
+                                         <span class="ga_w2gi_loc" data-galoc="TommyHilfiger - FilterCompanyStore" data-gaact="Click_to_FilterCompanyStore" style="cursor:pointer;top:3px;" onclick="toggleFilters(event);">Tommy Hilfiger Company Stores (Retail & Outlet)</span>
+                                         <img class ="check_image ga_w2gi_loc" data-galoc="TommyHilfiger - FilterCompanyStore" data-gaact="Click_to_FilterCompanyStore" src="images/new/filter_check.png" alt="First filter checkmark" style="right: 11px;">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox">Company</label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="company" id="show-stores-checkbox" class="filter_checkbox"/>
+                                    </div>
+                                    <div tabindex="11" class="filter_div">
+                                         <img class="filter_unselected ga_w2gi_loc" data-galoc="TommyHilfiger - FilterSelectPopupShops" data-gaact="Click_to_FilterSelectPopupShops" src="images/new/retail_th.png" onclick="toggleFilter(event);" alt="First filter unselected">
+                                         <img class="filter_selected ga_w2gi_loc" data-galoc="TommyHilfiger - FilterUnselectPopupShops" data-gaact="Click_to_FilterUnselectPopupShops" src="images/new/retail_th.png" onclick="untoggleFilter(event);" alt="First filter selected">
+                                         <span class="ga_w2gi_loc" data-galoc="TommyHilfiger - FilterPopupShops" data-gaact="Click_to_FilterPopupShops" style="cursor:pointer;" onclick="toggleFilters(event);">Pop-up Shops</span>
+                                         <img class ="check_image ga_w2gi_loc" data-galoc="TommyHilfiger - FilterPopupShops" data-gaact="Click_to_FilterPopupShops" src="images/new/filter_check.png" alt="First filter checkmark">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox"></label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="popup" id="show-stores-checkbox" class="filter_checkbox"/>
+                                    </div>
+                                    <div tabindex="12" class="filter_div" style="display:none;"> 
+                                         <img class="filter_unselected ga_w2gi_loc" data-galoc="TommyHilfiger - FilterSelectDepartmentStores" data-gaact="Click_to_FilterSelectDepartmentStores" src="images/new/outlet_th.png" onclick="toggleFilter(event);" alt="Second filter unselected">
+                                         <img class="filter_selected ga_w2gi_loc" data-galoc="TommyHilfiger - FilterUnselectDepartmentStores" data-gaact="Click_to_FilterUnselectDepartmentStores" src="images/new/outlet_th.png" onclick="untoggleFilter(event);" alt="Second filter selected">
+                                         <span class="ga_w2gi_loc" data-galoc="TommyHilfiger - FilterDepartmentStore" data-gaact="Click_to_FilterDepartmentStore">Department Stores</span>
+                                         <img class ="check_image ga_w2gi_loc" data-galoc="TommyHilfiger - FilterDepartmentStores" data-gaact="Click_to_FilterDepartmentStores" src="images/new/filter_check.png" alt="Second filter checkmark">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox1">department</label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="department" id="show-stores-checkbox1" class="filter_checkbox"/>
+                                    </div>
+                                    <div tabindex="13" class="filter_div" style="display:none;">
+                                         <img class="filter_unselected ga_w2gi_loc" data-galoc="TommyHilfiger - FilterSelectSpecialtyStore" data-gaact="Click_to_FilterSelectSpecialtyStore" src="images/new/promotion_th.png" onclick="toggleFilter(event);" alt="Fourth filter unselected">
+                                         <img class="filter_selected ga_w2gi_loc" data-galoc="TommyHilfiger - FilterUnselectSpecialtyStore" data-gaact="Click_to_FilterUnselectSpecialtyStore" src="images/new/promotion_th.png" onclick="untoggleFilter(event);" alt="Third filter selected">
+                                         <span class="ga_w2gi_loc" data-galoc="TommyHilfiger - FilterSpecialtyStore" data-gaact="Click_to_FilterSpecialtyStore">Specialty Stores</span>
+                                         <img class ="check_image ga_w2gi_loc" data-galoc="TommyHilfiger - FilterSpecialtyStore" data-gaact="Click_to_FilterSpecialtyStore" src="images/new/filter_check.png" alt="Fourth filter checkmark">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox3">Specialty</label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="specialty" id="show-stores-checkbox3" class="filter_checkbox"/>
+                                    </div>
+                                    <div tabindex="14" class="filter_div" style="display:none;">
+                                         <img class="filter_unselected" src="images/new/promotion_th.png" onclick="toggleFilter(event);" alt="Fourth filter unselected">
+                                         <img class="filter_selected" src="images/new/promotion_th.png" onclick="untoggleFilter(event);" alt="Third filter selected">
+                                         <span>TH Specialty Stores</span>
+                                         <img class ="check_image" src="images/new/filter_check.png" alt="Fourth filter checkmark">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox3">Specialty</label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="specialty" id="show-stores-checkbox3" class="filter_checkbox"/>
+                                    </div>
+                                    <div tabindex="15" class="filter_div">
+                                         <img class="filter_unselected ga_w2gi_loc" data-galoc="TommyHilfiger - FilterSelectClearanceStore" data-gaact="Click_to_FilterSelectCleananceStore" src="images/new/factory.png" onclick="toggleFilter(event);"  alt="Third filter unselected">
+                                         <img class="filter_selected ga_w2gi_loc" data-galoc="TommyHilfiger - FilterUnselectClearanceStore" data-gaact="Click_to_FilterUnselectCleananceStore" src="images/new/factory.png" onclick="untoggleFilter(event);" alt="Third filter selected">
+                                         <span class="ga_w2gi_loc" data-galoc="TommyHilfiger - FilterClearanceStore" data-gaact="Click_to_FilterClearanceStore" style="cursor:pointer;" onclick="toggleFilters(event);">Clearance Stores</span>
+                                         <img class ="check_image ga_w2gi_loc" data-galoc="TommyHilfiger - FilterClearanceStore" data-gaact="Click_to_FilterCleananceStore" src="images/new/filter_check.png" alt="Third filter checkmark">
+                                         <label style="position:absolute; left:-9999px;" for="show-stores-checkbox2">Clearance</label>
+                                         <input type="checkbox" name="icon" dynamic="true" value="clearance" id="show-stores-checkbox2" class="filter_checkbox" />
+                                    </div>
+                                    
+                                    <span tabindex="16" aria-label="Click here to apply filters" role="button">
+                                        <div class="ga_w2gi_loc" data-galoc="TommyHilfiger - ApplyFilters" data-gaact="Click_to_ApplyFilters" id="apply_button" onclick="applyFilters();">APPLY FILTERS</div>
+                                        <div class="ga_w2gi_loc" data-galoc="TommyHilfiger - MobileApplyFilters" data-gaact="Click_to_MobileApplyFilters" id="apply_button_mobile" onclick="applyFilters_mobile();">APPLY FILTERS</div>
+                                    </span>
+                                </div>
+                            </form>
+                            <div>
+                                <div class="ga_w2gi_loc" data-galoc="TommyHilfiger - ListView" data-gaact="Click_to_ListView" id="listview" tabindex="1" aria-label="List View" role="link" onclick = "showList();">List View</div>
+                                <div class="ga_w2gi_loc" data-galoc="TommyHilfiger - MapView" data-gaact="Click_to_MapView" id="mapview" tabindex="2" aria-label="Map View" role="link" onclick= "showMap();">Map View</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dd-form-wrapper" style="display:none"></div>
+                <div class="wrapper">
+                    <div id="mapEl" class="map"></div>
+                    <div id="poiEl" class="poi"></div>
+                    <div id="indicator"></div>
+                </div>
+                <div class="attribution">
+                    <span class="attribution">
+                        Mapping Locator Powered by <a href="http://www.brandify.com/" target="_new">Brandify </a>Copyright &copy; <script>document.write(new Date().getFullYear())</script>, All Rights Reserved.
+                    </span>
+                    
+                    <div id="navteqfooter" style="display:none">
+                        <script type="text/javascript">
+                            var d = new Date()
+                            document.write(" <img src=/w2gi/images/logo_navteq_large.gif alt='Navtech Logo'/> ")
+                            document.write(" &copy; Copyright ")
+                            document.write(d.getFullYear())
+                            document.write(" NAVTEQ Corp.  ")
+                        </script>
+                        <a href="http://www.where2getit.com/terms/terms.html" onClick="window.open(this.href,'_blank','width=988,height=600,scrollbars=yes,location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=yes');return false;">Use Subject to Terms and Conditions</a>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+                <div class="modal">
+                    <a href="#" class="closeBtn">Close</a>
+                    <p></p>
+                </div>
+                <div class="street-view-wrapper">
+                    <a class="gs" data-action="close">Close</a>
+                    <div id="streetViewCtn" class="street-view"></div>
+                </div>
+            </div>
+            <!-- Templates -->
+            <div class="templates">
+                <script id="locator_addressline" type="text/x-handlebars-template" aria-hidden="true">
+                    {{#if address1}}{{address1}}{{else}}{{#if addressline}}{{addressline}}{{/if}}{{ city }} {{ county }} {{ state }} {{postalcode}}{{/if}}
+                </script>
+                <script id="directions_addressline" type="text/x-handlebars-template">
+                    {{#if address1}}{{address1}} {{ city }} {{ state }} {{postalcode}} {{else}}{{#if addressline}}{{addressline}}{{/if}} {{ city }} {{ state }} {{postalcode}}{{/if}}
+                </script>
+                <script id="collection_multiple_address" type="text/x-handlebars-template">
+                    <h3>Please select your location</h3>
+                    <ul class="content-list address-suggestions">
+                        {{#each this}}
+                            <li data-id={{@index}}><strong>{{address1}} {{ city }} {{ county }}</strong>{{ state }} {{postalcode}}</li>
+                        {{/each}}
+                    </ul>
+                </script>
+                <!-- poi template start -->
+                <script id="collection_poi" type="text/x-handlebars-template"> 
+                    <h3>There are <span id="counts" style="color:#fff;">{{count}}</span> locations near you</h3>
+                    <ul class="content-list poi-result">
+                        {{#each pois}}
+                         <div class ="poi_wrapper">
+                            <li data-id={{@index}} data-uid={{uid}} class="poi-item" >
+                             <div class = "sub_poi_wrapper_mobile">
+                                <div class="sub_poi_wrapper_mobile_first">
+                                    <div class="arrow_div">
+                                        <img class="{{uid}} ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_MoreInfo" data-action="more_info" onclick="showMoreinfo({{uid}}); moreinfo_change()" src="images/new/chevron_right_th.png" alt="more info arrow for location {{collectionIndex}}">
+                                    </div>
+                                    <div>
+                                        <div class="icon_div_mobile" data-action="more_info">
+                                            <img src="images/new/map_pin_regular_th.png" data-action="more_info" alt="Map Pin">
+                                            <span> {{collectionIndex}}</span> 
+                                        </div>
+                                        <div class = "close_text">
+                                            {{_distance}} </br>{{_distanceuom}}s
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub_poi_wrapper_mobile_second">
+                                    <div class = "poi_box">
+                                        <a class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_StoreDetail" href="https://stores.tommy.com/{{state2}}/{{city2}}/{{clientkey}}/" onclick="window.open('https://stores.tommy.com/{{state2}}/{{city2}}/{{clientkey}}/', '_top')">
+                                            <span class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_StoreDetail">{{mall_name}}</span>
+                                        </a>
+                                        <div class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_MoreInfo" data-action="more_info">
+                                            {{{address1}}}<br/>{{city}}, {{state}} {{postalcode}}
+                                            {{#if TODAYHOURS}}
+                                                <span class="hideShow{{temp_closed}}" style="font-size:15px">Open until: {{TODAYHOURS}}</span>
+                                                <span class="showHide{{temp_closed}}" style="font-size:15px">Temporarily Closed</span>
+                                            {{/if}}
+                                             
+                                            {{#if holidayhours}}<p class="hideShow{{temp_closed}}" style="font-weight: bold;margin: 10px 2px 5px;">Holiday Hours</p> <p class="hideShow{{temp_closed}}" style="margin: 2px 0px 7px 0px;font-size: 13px;line-height: 1.5;letter-spacing: -1px;"> {{{holidayhour}}}</p> {{/if}}
+                                        </div>
+                                        <!-- <img class="phone_icon" src="images/new/phone_icon.png" alt="Phone Icon">-->
+                                        {{#if phone}}
+                                        <i class="phone_icon fas fa-phone" style="transform: scaleX(-1);"></i>
+                                        <span class="desktopPhone">{{phone}}</span>
+                                        <span class="mobilePhone">
+                                            <a class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_MobileCall" role="link" aria-label="phone number" href="javascript:void(0);" onclick="window.parent.location = 'tel:{{phone}}';" >{{phone}}</a>
+                                        </span>
+                                        {{/if}}
+                                        <p style="margin-top:10px;">
+                                            {{#if url}}
+                                                <span style="margin-left:0px; display:inline; margin-right:10px;">
+                                                    <a class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_Website" href="javascript: void(0);" onclick="window.open('{{url}}','website','status=yes,toolbar=yes,menubar=yes,location=yes,scrollbars=yes,resizable=yes');">Website</a>
+                                                </span>{{/if}}
+                                            {{#if email}}
+                                                <span style="margin-left:0px; display:inline;" >
+                                                    <a class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_EmailUs" href="javascript:void(0);" link="mailto:{{email}}" onclick="document.location = this.getAttribute('link')">Email Us</a>
+                                                </span>{{/if}}
+                                        </p>
+                                        <!--<span style="display:none !important">
+                                            <span class="viewBubble" style="margin-top:10px;">
+                                                <a data-action="open_bubble">Drive it</a> - Distance: {{_distance}} miles
+                                            </span>
+                                            <span>
+                                            Send location to <a class="lightwindow" data-width="366" data-height="515" data-url="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&action=emaillocatorstart&template=emaillocatorstart&uid={{uid}}" title="Send to Email" href="" >Email</a>
+                                             <a class="lightwindow" data-width="700" data-height="500" data-url="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&action=smslocatorstart&template=smslocatorstart&uid={{uid}}" title="Send to Mobile" href="" >Mobile</a> 
+                                            </span>
+                                            <span>
+                                            </span>
+                                            <span> <a data-initialtab="Hours" data-action="open_bubble">View Hours</a></span>
+                                        </span>-->
+                                    </div>
+                                </div>
+                             </div>
+                                <div class = "sub_poi_wrapper">
+                                    <div>
+                                        <a data-action="more_info">
+                                        <div class="arrow_div" tabindex="13" role="link" aria-label="click for more info">
+                                            <img class="{{uid}} ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_MoreInfo" data-action="more_info" onclick="moreinfo_change()" src="images/new/chevron_right_th.png" alt="more info arrow for location {{collectionIndex}}">
+                                        </div>
+                                        </a>
+                                        <div class="icon_div" data-action="more_info">
+                                            <img src="images/new/map_pin_regular_th.png" data-action="more_info" alt="Map Pin">
+                                            <span> {{collectionIndex}}</span> 
+                                        </div>
+                                        <div class = "close_text">
+                                          {{#if _distance}} {{_distance}} </br>{{_distanceuom}}s {{/if}}
+                                        </div>
+                                    </div>
+                                    <img class="vert_line" src="images/new/v-rule-blue.png" alt="Divider">
+                                    <div class = "poi_box">
+                                        <a class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_StoreDetail" href="https://stores.tommy.com/{{state2}}/{{city2}}/{{clientkey}}/" onclick="window.open('https://stores.tommy.com/{{state2}}/{{city2}}/{{clientkey}}/', '_top')"><span class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_StoreDetail" style="cursor: pointer;">{{mall_name}}</span></a>
+                                        <div>
+                                            {{{address1}}}<br/>{{city}}, {{state}} {{postalcode}}<br/>
+                                            {{#if TODAYHOURS}}
+                                                 <span class="hideShow{{temp_closed}}" style="font-size:15px">Open until: {{TODAYHOURS}}</span>
+                                                 <span class="showHide{{temp_closed}}" style="font-size:15px">Temporarily Closed</span>
+                                            {{/if}}
+
+                                            <div class="specialHours" style="display:none;">{{holidayhours}}</div>
+                                            <div class="specialSection" style="font-size:13px; margin-top:5px;">
+                                                <div class="lobby-head">SPECIAL HOURS</div>
+                                                <div class="specialInfo" style="font-size: 15px;"></div>
+                                            </div>
+
+                                            {{#if holidayhours}}
+                                             <p class="hideShow{{temp_closed}}" style="display:none !important; font-weight: bold;margin: 13px 0px 3px;">Holiday Hours</p> <p class="hideShow{{temp_closed}}"style="display:none !important; margin: 2px 0px 7px 0px;font-size: 15px;line-height: 1.5;letter-spacing: -1px;"> {{{holidayhour}}}</p>
+                                            {{/if}}
+                                            <a class="store-email updateUID ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_S2Email" style="font-weight: 700;color: #00174f;" params="lightwindow_height=450,lightwindow_width=720,lightwindow_loading_animation=false" href="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&amp;action=emaillocatorstart&amp;template=emaillocatorstart&amp;uid={{uid}}"
+                                            title="Send to Email" onclick="window.open(this.href, 'Send to Email', 'width=720, height=450, toolbar=no, resizable=yes, scrollbars=yes, menubar=yes'); return false;">Send To Email</a></br>
+                                            <a class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_StoreDetail" style="font-weight: 700;color: #00174f;" href='https://stores.tommy.com/{{state2}}/{{city2}}/{{clientkey}}/'>Store Details</a>
+                    
+                                        </div>
+                                        <!--<img class="phone_icon" src="images/new/phone_icon.png" alt="Phone Icon">-->
+                                        {{#if phone}}
+                                        <i class="phone_icon fas fa-phone" style="transform: scaleX(-1);"></i>
+                                        <span aria-label="Phone number" class="desktopPhone">{{phone}}</span>
+                                        {{/if}}
+                                        
+                                        <span class="mobilePhone">
+                                            <a class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_MobileCall" role="link" aria-label="phone number" href="javascript:void(0);" onclick="window.parent.location = 'tel:{{phone}}';" >{{phone}}</a>
+                                        </span>
+                                        <p style="margin-top:10px;">
+                                            {{#if url}}
+                                                <span style="margin-left:0px; display:inline; margin-right:10px;">
+                                                    <a class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_Website" href="javascript: void(0);" onclick="window.open('{{url}}','website','status=yes,toolbar=yes,menubar=yes,location=yes,scrollbars=yes,resizable=yes');">Website</a>
+                                                </span>{{/if}}
+                                            {{#if email}}
+                                                <span style="margin-left:0px; display:inline;" >
+                                                    <a class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_EmailUs" href="javascript:void(0);" link="mailto:{{email}}" onclick="document.location = this.getAttribute('link')">Email Us</a>
+                                                </span>{{/if}}
+                                        </p>
+                                        <!--<span style="display:none !important">
+                                            <span class="viewBubble" style="margin-top:10px;">
+                                                <a data-action="open_bubble">Drive it</a> - Distance: {{_distance}} miles
+                                            </span>
+                                            <span>
+                                            Send location to <a class="lightwindow" data-width="366" data-height="515" data-url="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&action=emaillocatorstart&template=emaillocatorstart&uid={{uid}}" title="Send to Email" href="" >Email</a>
+                                            <a class="lightwindow" data-width="700" data-height="500" data-url="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&action=smslocatorstart&template=smslocatorstart&uid={{uid}}" title="Send to Mobile" href="" >Mobile</a>
+                                            </span>
+                                            <span>
+                                            </span>
+                                            <span> <a data-initialtab="Hours" data-action="open_bubble">View Hours</a></span>
+                                        </span>-->
+                                    </div>
+                                </div>
+                                <a class = "poi_mobile_directions ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_StoreDetailPage" href='https://stores.tommy.com/{{state2}}/{{city2}}/{{clientkey}}/'>STORE DETAILS PAGE</a>
+                                <a class = "poi_mobile_directions ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_MobileDirections" href='https://maps.apple.com?q={{brandname}} {{address1}},{{city}},{{state}}{{postalcode}}'> GET DIRECTIONS</a>
+                                <!--<div class = "poi_mobile_directions" style="display:none" onclick="window.open('http://maps.apple.com?q={{brandname}} {{address1}},{{city}},{{state}}{{postalcode}}')"> GET DIRECTIONS</div>-->
+                            </li>
+                         </div>
+                        {{/each}}
+                    </ul>
+                    <div class="poi_paging_wrapper">
+                        <span class="poi_paging_prev"><i class="fa fa-arrow-left"></i><span>Previous</span></span>
+                        <span class="poi_paging_next"><span>Next</span><i class="fa fa-arrow-right"></i></span>
+                    </div>
+                </script>
+                <!-- poi template end -->
+                 <script id="collection_more_info" type="text/x-handlebars-template" data-slicesize="20">
+                    <ul class="content-list poi-result moreinfo_box">
+                        <li data-id={{index}} data-uid={{uid}} class="poi-item">
+                            <div class="icon_div">
+                                <img src="images/new/pin.png" alt="Map Pin">
+                                <!--<span> {{collectionIndex}}</span> -->
+                                
+                            </div>
+                            
+                            <div class="more_info_header_container">
+                                <span class ="more_info_header reveal{{clientkey}}" style="display:none">
+                                  <h1>About Tommy Jeans Platform</h1>
+                                </span>
+                                <span class ="more_info_header remove{{clientkey}}">
+                                  <h1>About {{name}}</h1>
+                                </span>
+                                <div role="link" id="moreinfo_back" tabindex="16">
+                                    <img id="back_image" data-action="show_all" onclick="moreinfo_changeback();" src="images/new/back-btn.png" alt="Back Arrow">
+                                    <!--<i id="back_image" data-action="show_all" onclick="moreinfo_changeback();" class="far fa-arrow-alt-circle-left fa-2x"></i>-->
+                                    <span class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_BackToResults" data-action="show_all" onclick="moreinfo_changeback();">Back</span>
+                                  </div>
+                            </div>
+
+                            
+                                             
+                            <div id="mobile_button_wrapper">
+                                    <div id="moreinfo_mobile_back" class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_MobileBackToResults" data-action="show_all" onclick="moreinfo_changeback();">Back to Results</div>
+                                    <div class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_MobileGetDirections" onclick="window.open('http://maps.apple.com?q={{brandname}} {{address1}},{{city}},{{state}}{{postalcode}}')" id="moreinfo_mobile_directions">Get Directions</div>
+                                </div>
+                            <a style="display:none;" id="open_bubble" data-action="open_bubble" class="open_bubble"></a>
+                            <div id="desktop_info">
+                                <div id ="desktop_info_one">
+                                     <!--<img src="images/new/address_icon.png" alt="Address Icon">-->
+                                     <i class="far fa-map" style="float:left;color:#00174f;font-size: 16px;margin-top: 2px;"></i>
+                                     <span class="add_info">Address</span>
+                                     <div>
+                                        {{address1}} <br/>
+                                        {{city}}, {{state}} {{postalcode}} <br/>
+                                    </div> 
+                                    <br/>
+                                     <!--<img src="images/new/phone_icon.png"  style="float:left;" alt="Phone Icon">-->
+                                     {{#if phone}}
+                                     <i class="phone_icon fas fa-phone" style="transform: scaleX(-1);"></i>
+                                     <span class="moreinfo_phone_text">Phone</span>
+                                     <div class="moreinfo_phone">
+                                        <a role="link" tabindex="15" href="javascript:void(0);" onclick="window.parent.location = 'tel:{{phone}}';" >
+                                            <span class="phone">{{phone}}</span>
+                                        </a>
+                                    </div> 
+                                    {{/if}}
+                                </div>
+                                <div id ="desktop_info_two">
+                                    <!--<img src="images/new/distance_icon.png" alt="Distance Icon">-->
+                                    <i class="fas fa-car" style="float:left;color:#00174f;font-size: 16px;margin-top: 2px;"></i>
+                                    <span class="distance_text">Distance</span>
+                                    <div>
+                                         <span class="distance"><strong>{{_distance}}</strong> miles away</span>
+                                    </div> 
+                                </div>
+                            </div>
+                            <form class="directions_btn_wrapper" onsubmit="getdirections_moreinfo();">
+                                <label for="input_moreinfo" style="position:absolute; left:-9999px;">Enter starting address</label>
+                                <input tabindex="14" id="input_moreinfo" placeholder="Enter starting address" onfocus="this.value=''; clUid='{{uid}}'" type="text">
+                                <button id="button_moreinfo" class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_DrivingDirections" onclick="getdirections_moreinfo();">
+                                    <img class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_DrivingDirections" src="images/new/dd-alt.png">
+                                </button>
+                            </form>
+                            
+                             <div id="desktop_hours" class="hideShow{{temp_closed}}">
+                                {{#if TODAYHOURS}}
+                                <div style="display: inline;">
+                                <!--<img src="images/new/clock_icon.png" alt="Hours Icon">-->
+                                <i class="far fa-clock" style="float:left;color:#00174f;font-size: 16px;margin-top: 2px;"></i>
+                                <span>Hours</span>
+                                <div class="week_head">
+                                    <div class="weekinfo day{{MONCHECK}}">    
+                                        <div class="weekday">Monday:</div> 
+                                        <div class="weekhours">{{mondayopen}} - {{mondayclose}}</div>
+                                    </div>
+                                    <div class="weekinfo day{{TUECHECK}}">
+                                        <div class="weekday">Tuesday:</div> 
+                                        <div class="weekhours">{{tuesdayopen}} - {{tuesdayclose}}</div>
+                                    </div>
+                                    <div class="weekinfo day{{WEDCHECK}}">
+                                        <div class="weekday">Wednesday:</div> 
+                                        <div class="weekhours">{{wednesdayopen}} - {{wednesdayclose}}</div>
+                                    </div>
+                                    <div class="weekinfo day{{THRCHECK}}">
+                                        <div class="weekday">Thursday:</div> 
+                                        <div class="weekhours">{{thursdayopen}} - {{thursdayclose}}</div>
+                                    </div>
+                                    <div class="weekinfo day{{FRICHECK}}">
+                                        <div class="weekday">Friday:</div>  
+                                        <div class="weekhours">{{fridayopen}} - {{fridayclose}}</div>
+                                    </div>
+                                    <div class="weekinfo day{{SATCHECK}}">
+                                        <div class="weekday">Saturday:</div>  
+                                        <div class="weekhours">{{saturdayopen}} - {{saturdayclose}}</div>
+                                    </div>
+                                    <div class="weekinfo day{{SUNCHECK}}" style="padding-bottom:10px;">
+                                        <div class="weekday">Sunday:</div>  
+                                        <div class="weekhours">{{sundayopen}} - {{sundayclose}}</div> 
+                                    </div> 
+                                </div>
+                                </div>
+                                {{/if}}
+                            </div>
+
+                            {{#if holidayhours}}<p style="margin-left: 23px;"><i class="far fa-clock" style="float:left;color:#00174f;font-size: 16px;margin-top: 2px;"></i> <span style="font-size: 15px;padding: 3px 26px;font-weight: bold;">Holiday Hours</span></p> <p style="margin: 8px 0px; width: 213px; margin-left: 23px;line-height: 1.5;font-size: 15px;"> {{{holidayhour}}}</p> {{/if}}
+                            
+                            
+                        </li>
+                    </ul>
+                </script>
+                <!--  <a data-action="show_all" href="javascript:void(0);">Back</a> -->
+                
+                <!-- driving directions panel template end -->
+                <script id="collection_maneuvers" type="text/x-handlebars-template">
+                    <div role="link" tabindex="20" id="search_return" onclick="window.location.reload()" style="visibility: hidden;">
+                        <i id="back_image" data-action="show_all" onclick="moreinfo_changeback();" class="far fa-arrow-alt-circle-left fa-2x"></i>
+                        <!--<img src="images/new/back_to_search.png" alt="Back Arrow">-->
+                        <span class="ga_w2gi_loc" data-galoc="{{name}} - {{clientkey}}" data-gaact="Click_to_BackToSearchResults">Back to Search Results</span>
+                    </div>
+                    <div class = "dist_time"><span>Distance:</span> {{total_distance}} miles</div>      
+                    <div class = "dist_time"><span>Drive time:</span> {{total_time}} minutes drive</div>
+                    <p class="maneuver_start">
+                        From (A): {{#if fromAddress.address1}} {{fromAddress.address1}}, {{/if}} {{fromAddress.city}} {{fromAddress.state}} {{fromAddress.postalcode}}
+                    </p>
+                    <ul class="content-list maneuver-result">
+                        {{#each maneuverlist}}
+                            <li data-id={{@index}} data-uid={{uid}}>
+                               {{incIndex @index}} {{text}} {{distance}} {{distanceuom}}
+                            </li>
+                        {{/each}}
+                    </ul>
+                    <p class="maneuver_end">
+                        To (B): {{#if toAddress.address1}} {{toAddress.address1}}, {{/if}} {{toAddress.city}} {{toAddress.state}} {{toAddress.postalcode}} </strong>
+                    </p>
+                </script>
+                
+                <!-- driving directions panel template end -->
+                <!-- driving directions form template start -->
+                <script id="dd-template" type="text/x-handlebars-template">
+                
+                    <div role="link" tabindex="20" id="search_return" onclick="window.location.reload()" style="margin-top: 12px;">
+                        <i id="back_image" data-action="show_all" onclick="moreinfo_changeback();" class="far fa-arrow-alt-circle-left fa-2x"></i>
+                        <!--<img src="images/new/back_to_search.png" alt="Back Arrow">-->
+                        <span>Back to Search Results</span>
+                    </div>
+                    <form id="driving_directions" autocomplete="off">
+                         <div class="icon-bar">
+                            <a href="#" onclick="window.open(ace.util.printUrl('locator-print.html'), 'print', 'toolbar=no, resizable=yes, scrollbars=yes, menubar=yes');"><i class="fa fa-print"></i>Print</a>
+                        </div>
+                        <label for="start_address">
+                            <span>From:</span><input tabindex="17" type="text" id="start_address" class="search-box"  data-action="start" name="addressline" placeholder="Start address">
+                        </label>
+                        <label for="end_address">
+                            <span>To:</span><input tabindex="18" type="text" id="end_address" class="search-box"  data-action="end" name="addressline" placeholder="End address">
+                        </label>
+                            <button role="link" tabindex="19" class="button-search dd-button-search">GET DIRECTIONS</button>
+                              <input type="hidden" id="longitude" name="longitude" aria-hidden="true"/>
+                              <input type="hidden" id="latitude" name="latitude" aria-hidden="true"/>
+                              <input type="hidden" id="dest_longitude" name="dest_longitude" aria-hidden="true"/>
+                              <input type="hidden" id="dest_latitude" name="dest_latitude" aria-hidden="true"/>
+                    </form>
+                    <span style="padding: 1rem;">
+                    <a class="store-phone updateUID" style="display:none; margin-right: 1rem;font-weight: 700;" params="lightwindow_height=450,lightwindow_width=720,lightwindow_loading_animation=false" href="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&amp;action=smslocatorstart&amp;template=smsdirectionstart&amp;uid={{uid}}"
+                    title="Send to Mobile" onclick="window.open(this.href, 'Send to Mobile', 'width=720, height=450, toolbar=no, resizable=yes, scrollbars=yes, menubar=yes'); return false;">Send To Phone</a>
+                    
+                    <a class="store-email updateUID" style=" display:none; font-weight: 700;" params="lightwindow_height=450,lightwindow_width=720,lightwindow_loading_animation=false" href="/lite?appkey=F5C66E24-E944-11EA-A1DF-53CCF48ECC77&amp;action=emaillocatorstart&amp;template=emaillocatorstart&amp;uid={{uid}}"
+                    title="Send to Email" onclick="window.open(this.href, 'Send to Email', 'width=720, height=450, toolbar=no, resizable=yes, scrollbars=yes, menubar=yes'); return false;">Send To Email</a>
+                    
+                    </span>
+                </script>
+                <!-- driving directions form template end -->
+                
+                <!-- icon template start  -->
+                <script id="default" type="text/x-handlebars-template">
+                    <div class="icon mappin" data-bubbleid="bubble" style="pointer-events: none; cursor:none !important;" data-width="40" data-height="62" data-offsetx="-32" data-offsety="-33" data-labeloffsetx="0" data-labeloffsety="25"  data-fontfamily="futura-pt" data-fontcolor="#00174f" data-fontsize="600 10px" data-display="true">
+                            <img class="alpha" src="images/new/pin_opt-3.png" style="cursor:pointer;" alt="Map Pin"/>
+                    </div>
+                </script>
+                <script id="default2" type="text/x-handlebars-template">
+                    <div class="icon" data-bubbleid="bubble" data-width="33" data-height="40" data-offsetx="-16" data-offsety="-40" data-labeloffsetx="0" data-labeloffsety="25"  data-fontcolor="#ffffff" data-fontsize="18" data-display="true">
+                            <img class="alpha" src="/w2gi/images/icons/gray-pin-shadow.png" style="cursor:pointer;" alt="Map Pin"/>
+                    </div>
+                </script>
+                <!-- icon template end -->
+                 <!-- bubble template start -->
+                <script id="bubble" data-offsetx="10" data-offsety="0" 
+                    <tmpl_if name="is_wireless_device">data-width="200" data-height="216" data-margintop="100" data-marginbottom="0" data-marginleft="100" data-marginright="100" <tmpl_else>data-width="0" data-height="0" data-margintop="100" data-marginbottom="0" data-marginleft="100" data-marginright="100"</tmpl_if>
+                    type="text/x-handlebars-template">
+
+                    <ul class="tabs" style="display:none;">
+                        <li class="active" data-tab="tab1">Address</li>
+                    </ul>
+                    <div class="tab-content active" data-tab="tab1">
+                        <ul>
+                          <li>{{address1}}<li>
+                          <li>{{city}}, {{state}} {{postalcode}}<li>
+                        </ul>
+                        <a role="link" aria-label="phone number" href="javascript:void(0);" onclick="window.parent.location = 'tel:{{phone}}';" >
+                            <div>{{phone}}</div>
+                        </a>
+                        <div>Get Directions</div>
+                        <div class="dd-wrapper" style="display:none !important;">
+                            <form id="dd" autocomplete="off">
+                                <label for="input_bubble" style="position:absolute; left:-9999px;" aria-hidden="true">Enter Address</label>
+                                <input id="input_bubble" size="18" type="text" name="addressline" class="direction_address" value="{{addressline}}" />
+                                <label for="bubble_submit" style="position:absolute; left:-9999px;" aria-hidden="true">Submit Address</label>
+                                <input id="bubble_submit" type="submit" value="" class="search_arrow">
+                                <!-- <input size="19" type="text" name="addressline" style="display:none;" class="direction_address" value="{{address1}}, {{city}}, {{state}} {{postalcode}} " />
+                                <input type="submit" value="" class="search_arrow" style="display:none;"> -->
+                                <label for="bubble_country" style="position:absolute; left:-9999px;" aria-hidden="true">Country</label>
+                                <select id="bubble_country" name="country" class="country_selection" style="display:none">
+                                    <option value="">Select a country</option>
+                                     {{#each options}}
+                                    <option value="{{value}}" {{#if selected}}selected="selected"{{/if}}>{{text}}</option>
+                                    {{/each}}
+                                </select>
+                                <input type="submit" value="Go" style="display:none;" >
+                            </form>
+                        </div>
+                    </div>
+                </script>
+                <!-- bubble template end -->
+                <!-- center marker template start -->
+                <script id="center_marker" type="text/x-handlebars-template">
+                    <div class="icon" data-bubbleid="bubble" data-width="30" data-height="28"  data-offsetx="-15" data-offsety="-14" >
+                        <img class="alpha" src="/w2gi/images/icons/red-star.png" alt="Center Star" />
+                    </div>
+                </script>
+                <!-- center marker template end -->
+                <!-- dd end markers template start  -->
+                <script id="ddstarticon" type="text/x-handlebars-template">
+                    <div  class="end_icon" data-height="38" data-width="27" data-offsetx="-13" data-offsety="-38">
+                       <img class="alpha" src="images/new/ddstartpin-new.png" alt="Start Icon"/>
+                    </div>
+                </script>
+                <script id="ddendicon" type="text/x-handlebars-template">
+                    <div class="end_icon" data-height="38" data-width="27" data-offsetx="-13" data-offsety="-38">
+                        <img class="alpha" src="images/new/ddendpin-new.png" alt="End Icon"/>
+                    </div>
+                </script>
+                <!-- dd end markers template start  -->
+                <script id="panel_error_message" type="text/x-handlebars-template">
+                    <div id="error_message"><span class="locerror">{{error}}</span></div>
+                </script>
+            </div>
+        </div> <!-- end of w2gi wrapper -->
+        <script> 
+            var anchorIn = document.createElement('a');
+            anchorIn.setAttribute('href', '#');
+            anchorIn.setAttribute('title', 'Zoom In');
+
+            var anchorOut = document.createElement('a');
+            anchorOut.setAttribute('href', '#');
+            anchorOut.setAttribute('title', 'Zoom Out');
+                
+        </script>
+        <script>
+            function entercheckOne (e) {
+                 if (13 == e.keyCode) {
+                   open_filters();
+                    }
+            }
+            var filterdown = document.getElementById("filter_button");
+            filterdown.addEventListener("keydown", entercheckOne, false);
+
+            function entercheckTwo (e) {
+                 if (13 == e.keyCode) {
+                   close_filters();
+                    }
+            }
+
+            var filterdown_up = document.getElementById("filter_button_up");
+            filterdown_up.addEventListener("keydown", entercheckTwo, false);
+
+            function entercheckThree(e) {
+                   if (13 == e.keyCode) {
+                    var target = event.target;
+                    target.click();
+                   }
+            }
+
+            function arrowLoad() {
+                var arrows = document.getElementsByClassName('arrow_div');
+                for (var i = 0; i < arrows.length; i++) {
+                    arrows[i].addEventListener("keydown", entercheckThree, true);
+                }
+            }
+
+            function rebuildData(data, index) {
+                var dataInfo = document.getElementsByClassName('specialInfo');
+                var dataSection = document.getElementsByClassName('specialSection');
+                var specialCount = 0;
+                for (i = 0; i < data.length; i++) { 
+                    if (data[i].showStatus === true) {
+                        specialCount ++;
+                        dataInfo[index].innerHTML += data[i].month + '/' + data[i].day + '/' + data[i].year + ': ' + data[i].storeValue + '<br/>';
+                    }
+                }
+                if (specialCount > 0) {
+                    dataSection[index].style.display="block";
+                }
+            }
+
+            function addWeek(data, index) {
+                var newDate = new Date();
+                var todaysDate = newDate.getUTCDate();
+                var getYear = new Date().getFullYear();
+                var getMonth = new Date().getMonth();
+                var getDate = new Date(). getDate();
+                var dayNumber = parseInt(getDate) + 14;
+                getDate = dayNumber.toString();
+
+                var fullDate = new Date(Date.UTC(getYear, (getMonth), getDate, 8, 00));
+
+                for (i = 0; i < data.length; i++) { 
+                    if ((data[i].utcDateEnd <= fullDate) && (data[i].showStatus === true)){
+                        data[i].showStatus = true;
+                    } else {
+                        data[i].showStatus = false;
+                    }
+                }
+                rebuildData(data, index);
+            }
+
+            function compareDates(data, index) {
+                var newDate = new Date();
+                var todaysDate = newDate.getUTCDate();
+                for (i = 0; i < data.length; i++) {
+                    if(data[i].utcDate >= newDate) {
+                        data[i].showStatus = true;
+                    } else {
+                        data[i].showStatus = false;
+                    }
+                }
+                addWeek(data, index);
+            }
+
+            function convertUTC(data, index) {
+                for (i = 0; i < data.length; i++) { 
+                    var locationMonth = data[i].month;
+                    var locationDay = data[i].day;
+                    var dayNumber = parseInt(locationDay) + 1;
+                    var endNumber = parseInt(locationDay) + 8;
+                    locationDay = dayNumber.toString();
+                    locagtionDayEnd = endNumber.toString();
+                    var locationYear = data[i].year;
+                    var fullDate = new Date(Date.UTC(locationYear, (locationMonth -1), locationDay, 8, 00));
+                    var endDate = new Date(Date.UTC(locationYear, (locationMonth -1), locagtionDayEnd, 8, 00));
+                    data[i].utcDate = fullDate;
+                    data[i].utcDateEnd = endDate;
+                }
+                compareDates(data, index);
+            }
+
+            function reformatData(data, index) {
+                var dataArray =[];
+                for (i = 0; i < data.length; i++) { 
+                    var dataObject = new Object();
+                    var dataDate = data[i][0];
+                    var monthDayYear = data[i][0].split("/");
+                    dataObject.month = monthDayYear[0];
+                    dataObject.day = monthDayYear[1];
+                    dataObject.year = monthDayYear[2];
+                    dataObject.storeValue = data[i][1] + data[i][2] + data[i][3];
+                    dataArray.push(dataObject);
+                }
+                convertUTC(dataArray, index);
+            }
+
+            function cleanseData(data, index) {
+                var cleansedArray = [];
+                for (i = 0; i < data.length; i++) { 
+                    if (data[i][0] === "") {
+                        data[i].splice(0, 1,);
+                        newData = data[i];
+                    } else {
+                        newData = data[i];
+                    }
+                    cleansedArray.push(newData);
+                }
+                reformatData(cleansedArray, index);
+            }
+
+            function sortHours(hoursData) {
+                if (hoursData.textContent.length > 0) {
+                    var splitHours = hoursData.textContent.split(",");
+                    var hoursArray = [];
+                    for (i = 0; i < splitHours.length; i++) { 
+                        var keyPair = splitHours[i].split(" ");
+                        hoursArray.push(keyPair);
+                    }
+                    cleanseData(hoursArray, hoursData.index);
+                }
+            }
+
+            function getSpecialHours() {
+                var hoursData = document.getElementsByClassName('specialHours');
+                var DataArray = []
+                for (i = 0; i < hoursData.length; i++) { 
+                    var temp = hoursData[i];
+                    hoursData[i].index = i;
+                    DataArray.push(hoursData[i]);
+                };
+                for (i = 0; i < DataArray.length; i++) { 
+                    sortHours(DataArray[i]);
+                }
+            }
+
+            function delayFunction() {
+                window.setTimeout(arrowLoad, 2000);
+                window.setTimeout(getSpecialHours, 2000);
+
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                delayFunction();
+            }, false);
+        </script>
+</body>
+
+</html>

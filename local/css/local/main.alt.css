@@ -1,0 +1,716 @@
+html.mobile .logoWrapper,html.mobile #headerTopRight,html.mobile #headerMyAccountNavWrapper, html.desktop #headerLinks, html.desktop div#searchBar {
+    display: none;
+}
+
+/* static map styles */
+
+#staticMap {
+    width:100%;
+    height:100%;
+    cursor:pointer;
+    position: relative;
+}
+ 
+#staticMap + div {
+    display: none;
+}
+ 
+ #loading {
+    display:none;
+    position:absolute;
+    padding-top:33%;
+    float:right;
+    text-align:center;
+    z-index:9999;
+}
+ 
+#googleAttribution {
+    width: 65px;
+    position: absolute;
+    bottom: 5px;
+    background: #E8E8E8;
+    pointer-events:none;
+}
+ 
+#googleAttribution img {
+    width:100%;
+}
+ 
+#googleDate {
+    position: absolute;
+    bottom: 5px;
+    background: #F8F8F8;
+    color: #6A6F73;
+    font-size: 10px;
+    width: 124px;
+    font-family: helvetica;
+    text-align: center;
+    font-weight: bold;
+    float: right;
+    height: 15px;
+    pointer-events:none;
+    right: 0;
+}
+
+main {
+    font-family: 'Klein Web';
+    margin: 0 auto;
+    max-width: 1480px;
+    /*padding-top: 112px;*/
+    width: 100%;
+}
+
+main * {
+    -webkit-font-smoothing: antialiased;
+}
+
+/* nav */
+
+main nav {
+    margin: 30px 0;
+}
+
+main nav ul {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+main nav ul li {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+}
+
+main nav ul li:last-of-type {
+    margin-right: 0;
+}
+
+main nav ul li:after {
+    content: '/';
+    margin-left: 10px;
+    /*padding: 0 3px;*/
+}
+
+main nav ul li:last-of-type:after {
+    content: none;
+    margin-right: 0;
+}
+
+main nav ul li a, main nav ul li span {
+    color: #222;
+    font-size: 14px;
+    line-height: 1.79;
+}
+
+section:after {
+    clear: both;
+    content: '';
+    display: block;
+    height: 0;
+}
+
+.storeMain {
+    /*margin-top: 112px;*/
+    /*margin-top: 102px;*/
+    margin-top: 42px;
+}
+
+.nap {
+    float: left;
+    width: 501px;
+}
+
+.map {
+    float: right;
+    height: 601px;
+    width: calc(100% - 521px);
+}
+
+h1 {
+    color: #222222;
+    /*font-family: Klein Web Condensed;*/
+    font-family: 'Klein Web';
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 0;
+    /*letter-spacing: -0.3px;*/
+}
+
+.storeAddress {
+
+  font-family: 'Klein Web';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.39;
+  color: #4b4b4c;
+  margin-bottom: 40px;
+}
+
+.storeAddress-link {
+    cursor: pointer;
+    display: block;
+}
+
+.directions_wrapper {
+    margin: 22px 0 0;
+}
+
+.directions_wrapper a {
+    border: 1px solid #222;
+    border-radius: 2px;
+    background-color: #222;
+    color: #fff;
+    display: inline-block;
+    height: 50px;
+    font-size: 1.333rem;
+    font-weight: 500;
+    line-height: 50px;
+    /*padding: 10px 25px 11px;*/
+    text-align: center;
+    text-decoration: none;
+    transition: 250ms background ease;
+    width: 148px;
+}
+
+.directions_wrapper a:hover {
+    background-color: #fff;
+    color: #222;
+}
+
+.store_hours_wrapper {
+    border-top: 1px solid rgba(34,34,34,.4);
+    font-size: 20px;
+    line-height: 25px;
+    padding-top: 25px;
+    max-width: 375px;
+    width: 100%;
+}
+
+.store_hours_wrapper h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.store_hours_wrapper .bold {
+    /*font-size: 22px;*/
+    font-weight: 700;
+}
+
+ul.storeHours {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 24px 0 0;
+    padding: 0;
+}
+
+ul.storeHours li:after {
+    clear: both;
+    content: '';
+    display: block;
+    height: 0;
+}
+
+ul.storeHours li span {
+    display: block;
+    float: left;
+}
+
+ul.storeHours li span:first-of-type {
+    width: 172px;
+}
+
+.covid {
+    max-width: 375px;
+    width: 100%;
+}
+
+.covid-listing {
+    margin: 25px 0 0;
+}
+
+.covid p, .covid-listing p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 0 0 10px;
+}
+
+.about {
+    /*margin-top: 45px;*/
+    /*margin-top: -30px;*/
+    /*margin-top: -11px;*/
+    margin-top: 21px;
+    max-width: 375px;
+    width: 100%;
+}
+
+@media (min-width: 802px) {
+    .covid {
+        margin-top: -37px;
+    }
+}
+
+.covid h2, .about h2, .covid-listing h2 {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0 0 24px;
+}
+
+.covid span, .covid-listing span {
+    display: inline-block;
+    padding: 0 3px;
+}
+
+.about p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 0;
+}
+
+.panel_wrapper {
+    margin: 33px 0 60px;
+    max-width: 375px;
+    width: 100%;
+}
+
+.panel_wrapper h2 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    margin: 0;
+}
+
+.poi-result {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.poi-result li {
+    border-top: 1px solid rgba(34,34,34,.4);
+}
+
+.poi-result li:after {
+    clear: both;
+    content: '';
+    display: block;
+    height: 0;
+}
+
+.nearby_icon {
+    float: left;
+    margin-right: 21px;
+    min-height: 120px;
+    position: relative;
+    width: 40px;
+}
+
+.nearby_icon img  {
+    height: 30px;
+    left: 50%;
+    position: absolute;
+    top: 23px;
+    transform: translateX(-50%);
+    width: 21px;
+    z-index: 10;
+}
+
+.nearby_icon span {
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    top: 26px;
+    text-align: center;
+    width: 100%;
+    z-index: 20;
+}
+
+.nearby_details {
+    float: left;
+    padding: 16px 0 19px;
+    width: calc(100% - 61px);
+}
+
+.nearby_details .name, .loc_name {
+    color: #222;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0 0 7px;
+}
+
+.nearby_details div:not(.name):not(.nearby_hours) {
+    color: #666660;
+    font-size: 14px;
+    line-height: 1.79;
+}
+
+.nearby_hours {
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.79;
+    position: relative;
+}
+
+.nearby_hours:before {
+    background-color: #dd0707;
+    border-radius: 50%;
+    content: '';
+    display: inline-block;
+    height: 10px;
+    margin: 0 10px 0 0;
+    /*position: absolute;*/
+    width: 10px;
+}
+
+.nearby_hours.Open:before {
+    background-color: #098a00;
+}
+
+.nearby_btn_wrapper {
+    margin-top: 11px;
+}
+
+.nearby_btn_wrapper button {
+    background-color: transparent;
+    border: none;
+    color: #222;
+    display: inline-block;
+    font-size: 14px;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.nearby_btn_wrapper button:after {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    content: '';
+    display: block;
+    position: relative;
+    top: -2px;
+    width: 100%;
+}
+
+.nearby_btn_wrapper button:first-of-type {
+    margin-right: 36px;
+}
+
+.preferred {
+    color: #666660;
+    margin-top: 12px;
+}
+
+#w2gifooter {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Covid footer message */
+/*
+.covid-footer {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #222222;
+    background: #ffffff;
+    font-family: Klein Web Condensed;
+    font-weight: normal;
+    display: none;
+    font-size: 13px;
+}
+
+html.mobile .covid-footer {
+    font-size: 13px;
+}
+*/
+#headerMyAccountNavWrapper {
+    display: none;
+}
+
+/* city */
+
+#mainContainer {
+    padding-bottom: 20px;
+}
+
+#cityItemContainer {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#cityItemContainer .nearbyCoords {
+    display: none;
+}
+
+.cityitemList {
+    margin: 0 0 38px;
+}
+
+.cityitemList:last-of-type {
+    margin: 0;
+}
+
+.cityInfo {
+
+}
+
+.cityInfo:after, .city_btn_wrapper:after {
+    clear: both;
+    content: '';
+    display: block;
+    height: 0;
+}
+
+.cityInfo_addresswrapper {
+    color: #666660;
+    font-size: 14px;
+    line-height: 1.79;
+}
+
+.cityInfo .nearby_icon img {
+    top: 5px;
+}
+
+.cityInfo .locationInfo {
+    float: left;
+}
+
+.city_btn_wrapper {
+    margin-top: 11px;
+}
+
+.city_btn_wrapper button {
+    background-color: transparent;
+    border: none;
+    color: #222;
+    display: inline-block;
+    font-size: 14px;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.city_btn_wrapper button:after {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    content: '';
+    display: block;
+    position: relative;
+    top: -2px;
+    width: 100%;
+}
+
+.city_btn_wrapper button:first-of-type {
+    margin-right: 36px;
+}
+
+.storeMain.stateList ul, .storeMain.indexList ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.storeMain.stateList ul li a, .storeMain.indexList ul li a {
+    color: #666660;
+    font-size: 14px;
+    line-height: 1.79;
+}
+
+.storeMain.indexList ul {
+    max-width: 320px;
+    overflow: hidden;
+}
+
+.storeMain.indexList ul li {
+    float: left;
+    width: 50%;
+}
+
+.storeMain.indexList h3:nth-of-type(2) {
+    margin-top: 40px;
+}
+
+@media (max-width: 640px) {
+
+}
+
+@media (max-width: 1530px) and (min-width: 802px){
+    .storeMain {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: calc(100% -40px);
+    }
+}
+
+@media (max-width: 1530px){
+     .nav {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: calc(100% - 40px);
+    }
+}
+
+@media (max-width: 960px) {
+    #mainContainer {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+} 
+
+@media (max-width: 801px) {
+    .storeMain {
+        margin-top: 8px;
+    }
+
+    .city .storeMain, .state .storeMain, .index .storeMain {
+        padding-left: 20px;
+    }
+    
+    .nap {
+        float: none;
+        margin-bottom: 29px;
+        padding-left: 20px;
+        width: calc(100% - 20px);
+    }
+
+    h1 {
+        font-size: 16px;
+        line-height: 2.19;
+    }
+
+    .storeAddress {
+        font-size: 16px;
+        line-height: 1.56;
+    }
+
+    .directions_wrapper a {
+        font-size: 14px;
+        height: 41px;
+        line-height: 41px;
+        width: 137px;
+    }
+
+    .w2gi-backbone div.map {
+        float: none;
+        height: 375px;
+        width: 100%;
+    }
+
+    .store_hours_wrapper {
+        border-top: 0;
+        padding-top: 0;
+    }
+
+    .store_hours_wrapper:before,.panel_wrapper:before {
+        background-color: #f2f2f2;
+        box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        content: '';
+        display: block;
+        height: 5px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .store_hours_wrapper h2 {
+        font-size: 16px;
+        padding-top: 21px;
+    }
+
+    ul.storeHours {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .covid {
+        margin-top: 21px;
+        padding-left: 20px;
+        width: calc(100% - 20px);
+    }
+
+    .about {
+        margin-top: 21px;
+        padding-left: 20px;
+        width: calc(100% - 20px);
+    }
+
+    .covid h2, .about h2, .covid-listing h2 {
+        font-size: 16px;
+        line-height: 1.56;
+    }
+
+    .about p {
+        font-size: 14px;
+        line-height: 1.79;
+        max-width: 285px;
+    }
+
+    .covid p {
+       font-size: 14px;
+        line-height: 1.79;
+        max-width: 285px;
+    }
+
+    .covid-listing p {
+       font-size: 14px;
+        line-height: 1.79;
+        padding-right: 20px;
+    }
+
+    .panel_wrapper {
+        padding-left: 20px;
+        width: calc(100% - 20px);
+    }
+
+    .panel_wrapper h2 {
+        font-size: 14px;
+        line-height: 25px;
+        padding-top: 15px;
+    }
+
+    .poi-result li:first-of-type {
+        border-top: none;
+    }
+
+    .nearby_details .name {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    #w2gifooter {
+        font-size: 12px
+    }
+
+/*    li.poi-item:nth-of-type(2), li.poi-item:nth-of-type(3) {
+        display: none;
+    }*/
+}
+
+@media (max-width: 640px) {
+
+    main nav {
+        margin: 20px 0;
+        /*padding-left: 20px;*/
+    }
+
+    main nav ul li a, main nav ul li span {
+        font-size: 12px;
+    }
+
+    main nav ul li {
+        margin-right: 5px;
+    }
+
+    main nav ul li:after {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 520px) {
+    .w2gifooter {
+        padding: 0 20px;
+    }
+}
